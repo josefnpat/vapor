@@ -38,7 +38,7 @@ else
   data = json.decode(raw)
 end
 
-table.sort(data, function(a,b) return a.name < b.name end )
+table.sort(data.games, function(a,b) return a.name < b.name end )
 
 love.graphics.setMode(love.graphics.getWidth(),padding*(#data.games+2)+offset,false,false,0)
 
