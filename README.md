@@ -32,6 +32,7 @@ Vapor - LÖVE Distribution Client
 Your game must
 * load and run,
 * be playable,
+* not start in fullscreen mode,
 * use LÖVE 0.8.0,
 * not use libraries not supplied by love.
 
