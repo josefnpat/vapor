@@ -130,8 +130,10 @@ function love.mousepressed(x,y,button)
       dogame(gameobj)
     end
   elseif button == "r" then
-    love.filesystem.remove(fname(gameobj,gameobj.stable))
-    love.filesystem.remove(imgname(gameobj))
+    if gameobj then
+      love.filesystem.remove(fname(gameobj,gameobj.stable))
+      love.filesystem.remove(imgname(gameobj))
+    end
   end
 end
 
