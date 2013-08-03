@@ -58,7 +58,7 @@ function dogame(gameobj)
     
   if love.filesystem.exists(fn) then
     print(fn .. " already exists.")
-    local exe = "love "..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable)
+    local exe = "\""..binary.."\" "..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable)
     os.execute(exe)
   else
     print(fn .. " is being downloaded.")
@@ -70,6 +70,11 @@ function dogame(gameobj)
       end
     end
   end
+end
+
+function love.load(args)
+  binary = love.arg.getLow(args)
+  print(binary)
 end
 
 function love.update(dt)
