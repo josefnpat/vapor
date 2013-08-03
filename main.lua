@@ -1,0 +1,215 @@
+require("json")
+
+local http = require("socket.http")
+
+icons = {}
+icons.play = love.graphics.newImage("assets/icons/go-next.png")
+icons.view = love.graphics.newImage("assets/icons/applications-internet.png")
+icons.download = love.graphics.newImage("assets/icons/emblem-web.png")
+
+fonts = {}
+fonts.basic = love.graphics.newFont("assets/fonts/Oswald-Regular.ttf",14)
+fonts.title = love.graphics.newFont("assets/fonts/Oswald-Regular.ttf",28)
+
+colors = {}
+colors.selected = {0,255,0}
+colors.unselected = {191,191,191}
+colors.reset = {255,255,255}
+colors.bareven = {47,47,47}
+colors.barodd = {31,31,31}
+colors.overlaybar = {0,0,0,159}
+
+nogame = love.graphics.newImage("assets/nogame.png")
+overlay = love.graphics.newImage("assets/overlay.png")
+
+padding = 22
+offset = (love.graphics.getWidth()-padding*2) / (16/9) + padding -- 16:9
+
+selectindex = nil
+
+r,e = http.request("https://raw.github.com/josefnpat/vapor/master/games.json")
+if e == 200 then
+  print("Updating games.json")
+  love.filesystem.write("games.json",r)
+  data = json.decode(r)
+else
+  print("Unable to update games.json")
+  local raw,_ = love.filesystem.read("games.json")
+  data = json.decode(raw)
+end
+
+table.sort(data, function(a,b) return a.name < b.name end )
+
+love.graphics.setMode(love.graphics.getWidth(),padding*(#data.games+2)+offset,false,false,0)
+
+function imgname(gameobj)
+  return gameobj.id..".png"
+end
+
+images = {}
+
+function fname(gameobj,sourceindex)
+  return gameobj.id.."-"..sourceindex..".love"
+end
+
+function dogame(gameobj)
+  
+  local fn = fname(gameobj,gameobj.stable)
+    
+  if love.filesystem.exists(fn) then
+    print(fn .. " already exists.")
+    local exe = "love "..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable)
+    os.execute(exe)
+  else
+    print(fn .. " is being downloaded.")
+    r,e = http.request(gameobj.sources[gameobj.stable])
+    if e == 200 then
+      local success = love.filesystem.write(fn,r)
+      if success then
+        print(fn .. " downloaded successfully.")
+      end
+    end
+  end
+end
+
+function love.update(dt)
+  love.graphics.setCaption("Vapor")
+  local current = math.floor( ( love.mouse.getY() - offset ) / padding )
+  if current >= 1 and current <= #data.games then
+    selectindex = current
+  else
+    selectindex = nil
+  end
+  
+  if selectindex then  
+  
+    local imgn = imgname(data.games[selectindex])
+    if not love.filesystem.exists(imgn) then
+      r,e = http.request(data.games[selectindex].image)
+      if e == 200 then
+        local success = love.filesystem.write(imgn,r)
+        if success then
+          print(imgn .. " downloaded successfully.")
+        end
+      end
+    end
+    
+    if not images[selectindex] then
+      images[selectindex] = love.graphics.newImage(imgn)
+    end
+
+  end
+  
+  
+end
+
+function love.keypressed(key)
+  if key == "return" or key == " " then
+    if data.games[selectindex] then
+      dogame(data.games[selectindex])
+    end
+  elseif key == "up" then
+    selectindex = selectindex - 1
+    if selectindex < 1 then
+      selectindex = #data.games
+    end
+  elseif key == "down" then
+    selectindex = selectindex + 1
+    if selectindex > #data.games then
+      selectindex = 1
+    end
+  elseif key == "escape" then
+    love.event.quit()
+  end
+end
+
+function love.mousepressed(x,y,button)
+  local gameobj = data.games[selectindex]
+  if button == "l" then
+    if gameobj then
+      dogame(gameobj)
+    end
+  elseif button == "r" then
+    love.filesystem.remove(fname(gameobj,gameobj.stable))
+    love.filesystem.remove(imgname(gameobj))
+  end
+end
+
+function love.draw()
+
+  love.graphics.setColor(colors.reset)
+  if selectindex then
+    love.graphics.draw(images[selectindex],padding,padding)
+  else
+    love.graphics.draw(nogame,padding,padding)
+  end
+  love.graphics.draw(overlay,padding,padding)
+
+  love.graphics.setColor(colors.overlaybar)
+  love.graphics.rectangle(
+    "fill",
+    padding,
+    padding*2,
+    love.graphics.getWidth()-padding*2,
+    fonts.title:getHeight()+fonts.basic:getHeight())
+
+  local gameobj = data.games[selectindex]
+
+  love.graphics.setColor(colors.reset)
+  love.graphics.setFont(fonts.title)
+  if selectindex then
+    love.graphics.print(gameobj.name,padding*2,padding*2)
+  else
+    love.graphics.print("Vapor",padding*2,padding*2)  
+  end
+
+  love.graphics.setFont(fonts.basic)
+  local subline
+  if selectindex then
+    if love.filesystem.exists(fname(gameobj,gameobj.stable)) then
+      subline = "CLICK TO PLAY"
+    else
+      subline = "CLICK TO INSTALL"
+    end
+  else
+    subline = "LÖVE DISTRIBUTION CLIENT"
+  end
+  love.graphics.printf(
+    subline,
+    padding*2,
+    padding*2+fonts.title:getHeight(),
+    love.graphics.getWidth()-padding*4,"right")
+  
+  love.graphics.setFont(fonts.basic)
+
+  for gi,gv in pairs(data.games) do
+    local fn = fname(gv,gv.stable)
+    local icon
+    if love.filesystem.exists(fn) then
+      icon = icons.play
+    elseif love.filesystem.exists(imgname(gv)) then
+      icon = icons.view
+    else
+      icon = icons.download
+    end
+
+    if gi%2==0 then
+      love.graphics.setColor(colors.bareven)
+    else
+      love.graphics.setColor(colors.barodd)    
+    end
+    love.graphics.rectangle("fill",padding,padding*gi+offset,love.graphics.getWidth()-padding*2,padding)
+
+    love.graphics.setColor(colors.reset)
+    love.graphics.draw(icon,padding*1.5,padding*gi+offset)
+
+    if gi == selectindex then
+      love.graphics.setColor(colors.selected)
+    else
+      love.graphics.setColor(colors.unselected)
+    end
+    love.graphics.print(gv.name,padding*3,padding*gi+offset)
+    love.graphics.printf(gv.author,padding*3,padding*gi+offset,love.graphics.getWidth()-padding*4.5,"right")
+
+  end
+end
