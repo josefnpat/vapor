@@ -4,7 +4,7 @@
 
 ## Requirements
 
-* LÖVE 0.8.0 installed in a *nix command line.
+* LÖVE 0.8.0
 * A stable internet connection.
 
 ## How can I add my game?
