@@ -110,6 +110,17 @@
             "author": "Stabyourself.net",
             "engine": "love-0.8.0",
             "image": "http://50.116.63.25/public/vapor_hosted/mari0_1.6.png"
+        },
+        {
+            "id": "Ortho_Robot",
+            "name": "Ortho Robot",
+            "sources": {
+                "1375542764": "http://50.116.63.25/public/vapor_hosted/OrthoRobot_r1.zip"
+            },
+            "stable": "1375542764",
+            "author": "Stabyourself.net",
+            "engine": "love-0.8.0",
+            "image": "http://50.116.63.25/public/vapor_hosted/OrthoRobot_r1.png"
         }
     ]
 }
