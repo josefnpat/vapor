@@ -27,13 +27,13 @@ offset = (love.graphics.getWidth()-padding*2) / (16/9) + padding -- 16:9
 
 selectindex = nil
 
-r,e = http.request("https://raw.github.com/josefnpat/vapor/master/games.json")
+r,e = http.request("http://50.116.63.25/public/vapor/games.json")
 if e == 200 then
-  print("Updating games.json")
+  print("games.json successfully updated.")
   love.filesystem.write("games.json",r)
   data = json.decode(r)
 else
-  print("Unable to update games.json")
+  print("games.json failed to update.")
   local raw,_ = love.filesystem.read("games.json")
   data = json.decode(raw)
 end
