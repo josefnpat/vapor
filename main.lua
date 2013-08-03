@@ -108,16 +108,6 @@ function love.keypressed(key)
     if data.games[selectindex] then
       dogame(data.games[selectindex])
     end
-  elseif key == "up" then
-    selectindex = selectindex - 1
-    if selectindex < 1 then
-      selectindex = #data.games
-    end
-  elseif key == "down" then
-    selectindex = selectindex + 1
-    if selectindex > #data.games then
-      selectindex = 1
-    end
   elseif key == "escape" then
     love.event.quit()
   end
