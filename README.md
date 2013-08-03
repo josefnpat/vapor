@@ -1,5 +1,7 @@
 Vapor - LÖVE Distribution Client
 
+![Screenshot](screenshot.png)
+
 ## Requirements
 
 * LÖVE 0.8.0 installed in a *nix command line.
