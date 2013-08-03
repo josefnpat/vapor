@@ -39,4 +39,4 @@ Your game must
 
 _Yeah, what of it?_
 
-Feature Requests, Suggestions, Bugs, etc. go in the issue queue.
+Feature Requests, Suggestions, Bugs, etc. go in the [issue queue](https://github.com/josefnpat/vapor/issues).
