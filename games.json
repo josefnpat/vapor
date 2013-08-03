@@ -99,6 +99,17 @@
             "author": "josefnpat",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/3.png"
+        },
+        {
+            "id": "mari0",
+            "name": "Mari0",
+            "sources": {
+                "1375538536": "http://50.116.63.25/public/vapor_hosted/mari0_1.6.love"
+            },
+            "stable": "1375538536",
+            "author": "Stabyourself.net",
+            "engine": "love-0.8.0",
+            "image": "http://50.116.63.25/public/vapor_hosted/mari0_1.6.png"
         }
     ]
 }
