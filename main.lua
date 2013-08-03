@@ -77,6 +77,39 @@ function dogame(gameobj)
   end
 end
 
+-- Favoriting
+favorite_icon = love.graphics.newImage("assets/favorite.png")
+settings_file = "settings.lua"
+
+if love.filesystem.exists(settings_file) then 
+  require("settings")
+  for i,v in ipairs(data.games) do
+    if games ~= nil then
+      v.favorite = games[i].favorite
+    end
+  end
+end
+
+settings_object = love.filesystem.newFile( settings_file )
+settings_object:open("w")
+settings_object:write("games = {}\n")
+
+for i,v in ipairs(data.games) do
+  settings_object:write(string.format("games[%d] = {}\n", i))
+  settings_object:write(string.format("games[%d].name = '%s'\n", i, v.name))
+  if v.favorite ~= nil then
+    if v.favorite == true then
+      settings_object:write(string.format("games[%d].favorite = %s\n", i, "true"))
+    else
+      settings_object:write(string.format("games[%d].favorite = %s\n", i, "false"))
+    end
+  end
+end
+settings_object:close()
+
+package.loaded[settings_file] = nil
+require("settings")
+
 function love.load(args)
   love.graphics.setCaption("Vapor")
   binary = love.arg.getLow(args)
@@ -131,8 +164,15 @@ function love.mousepressed(x,y,button)
     end
   elseif button == "r" then
     if gameobj then
-      love.filesystem.remove(fname(gameobj,gameobj.stable))
-      love.filesystem.remove(imgname(gameobj))
+      --love.filesystem.remove(fname(gameobj,gameobj.stable))
+      --love.filesystem.remove(imgname(gameobj))
+      if games[selectindex].favorite == true then
+        games[selectindex].favorite = false
+        data.games[selectindex].favorite = false
+      else
+        games[selectindex].favorite = true 
+        data.games[selectindex].favorite = true
+      end
     end
   end
 end
@@ -204,6 +244,12 @@ function love.draw()
 
     love.graphics.setColor(colors.reset)
     love.graphics.draw(icon,padding*1.5,padding*gi+offset)
+    -- Draw Favorited Stuff
+    love.graphics.setColor(255,255,255)
+    love.graphics.rectangle("fill", padding-10, padding*gi+offset, 20, 20)
+    if games[gi].favorite == true then
+      love.graphics.draw(favorite_icon, padding-10, padding*gi+offset) -- Draws Favorited icon
+    end
 
     if gi == selectindex then
       love.graphics.setColor(colors.selected)
@@ -214,4 +260,24 @@ function love.draw()
     love.graphics.printf(gv.author,padding*3,padding*gi+offset,love.graphics.getWidth()-padding*4.5,"right")
 
   end
+end
+
+function love.quit()
+  -- Save Settings
+  settings_object = love.filesystem.newFile( settings_file )
+  settings_object:open("w")
+  settings_object:write("games = {}\n")
+
+  for i,v in ipairs(data.games) do
+    settings_object:write(string.format("games[%d] = {}\n", i))
+    settings_object:write(string.format("games[%d].name = '%s'\n", i, v.name))
+    if v.favorite ~= nil then
+      if v.favorite == true then
+        settings_object:write(string.format("games[%d].favorite = %s\n", i, "true"))
+      else
+        settings_object:write(string.format("games[%d].favorite = %s\n", i, "false"))
+      end
+    end
+  end
+  settings_object:close()
 end
