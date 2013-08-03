@@ -34,3 +34,9 @@ Your game must
 * be playable,
 * use LÖVE 0.8.0,
 * not use libraries not supplied by love.
+
+## Your client sucks
+
+_Yeah, what of it?_
+
+Feature Requests, Suggestions, Bugs, etc. go in the issue queue.
