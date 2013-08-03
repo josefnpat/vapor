@@ -121,6 +121,28 @@
             "author": "Stabyourself.net",
             "engine": "love-0.8.0",
             "image": "http://50.116.63.25/public/vapor_hosted/OrthoRobot_r1.png"
+        },
+        {
+            "id": "mrrescue",
+            "name": "Mr. Rescue",
+            "sources": {
+                "1375541666": "http://50.116.63.25/public/vapor_hosted/mrrescue-1.02b.love"
+            },
+            "stable": "1375541666",
+            "author": "TangramGames.dk",
+            "engine": "love-0.8.0",
+            "image": "http://tangramgames.dk/games/mrrescue/images/mrrescue_vapor.png"
+        },
+        {
+            "id": "sienna",
+            "name": "Sienna",
+            "sources": {
+                "1375541666": "http://50.116.63.25/public/vapor_hosted/sienna.love"
+            },
+            "stable": "1375541666",
+            "author": "TangramGames.dk",
+            "engine": "love-0.8.0",
+            "image": "http://tangramgames.dk/games/sienna/images/sienna_vapor.png"
         }
     ]
 }
