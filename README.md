@@ -9,7 +9,7 @@ Vapor - LÖVE Distribution Client
 
 ## How can I add my game?
 
-* Fork this repo.
+* Fork this repo. (make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information if you don't understand git && json.)
 * Extend the `games.json` with the following data;
     * id :      A unique id using only A-Z, a-z, underscores and dashes.
     * name :    The name of your game.
