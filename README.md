@@ -1,4 +1,4 @@
-Vapor - LÖVE Distribution Client
+#Vapor - LÖVE Distribution Client
 
 ![Screenshot](screenshot.png)
 
