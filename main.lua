@@ -73,12 +73,12 @@ function dogame(gameobj)
 end
 
 function love.load(args)
+  love.graphics.setCaption("Vapor")
   binary = love.arg.getLow(args)
   print(binary)
 end
 
 function love.update(dt)
-  love.graphics.setCaption("Vapor")
   local current = math.floor( ( love.mouse.getY() - offset ) / padding )
   if current >= 1 and current <= #data.games then
     selectindex = current
