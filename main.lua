@@ -77,6 +77,25 @@ function dogame(gameobj)
   end
 end
 
+-- Favorite Init
+favorite_icon = love.graphics.newImage("assets/icons/help-about.png")
+settings = {}
+settings.file = "settings.json"
+
+if love.filesystem.exists(settings.file) then -- If settings file exists, load it 
+  settings.txt = love.filesystem.read(settings.file)
+  settings.save = json.decode(settings.txt)
+else -- If not, create it
+  settings.save = {}
+  for i,v in ipairs(data.games) do
+    settings.save[v.id] = {}
+    settings.save[v.id].name = v.id
+    settings.save[v.id].favorite = false
+  end
+  local raw = json.encode(settings.save)
+  love.filesystem.write(settings.file, raw)
+end
+
 function love.load(args)
   love.graphics.setCaption("Vapor")
   binary = love.arg.getLow(args)
@@ -120,6 +139,10 @@ function love.keypressed(key)
     end
   elseif key == "escape" then
     love.event.quit()
+  elseif key == "delete" then
+    local gameobj = data.games[selectindex]
+    love.filesystem.remove(fname(gameobj,gameobj.stable))
+    love.filesystem.remove(imgname(gameobj))
   end
 end
 
@@ -131,8 +154,13 @@ function love.mousepressed(x,y,button)
     end
   elseif button == "r" then
     if gameobj then
-      love.filesystem.remove(fname(gameobj,gameobj.stable))
-      love.filesystem.remove(imgname(gameobj))
+      --love.filesystem.remove(fname(gameobj,gameobj.stable))
+      --love.filesystem.remove(imgname(gameobj))
+      if settings.save[gameobj.id].favorite == true then
+        settings.save[gameobj.id].favorite = false
+      else
+        settings.save[gameobj.id].favorite = true 
+      end
     end
   end
 end
@@ -204,6 +232,10 @@ function love.draw()
 
     love.graphics.setColor(colors.reset)
     love.graphics.draw(icon,padding*1.5,padding*gi+offset)
+    -- Draw Favorited Stuff
+    if settings.save[gv.id].favorite == true then
+      love.graphics.draw(favorite_icon, padding-10, padding*gi+offset) -- Draws Favorited icon
+    end
 
     if gi == selectindex then
       love.graphics.setColor(colors.selected)
@@ -214,4 +246,10 @@ function love.draw()
     love.graphics.printf(gv.author,padding*3,padding*gi+offset,love.graphics.getWidth()-padding*4.5,"right")
 
   end
+end
+
+function love.quit()
+  -- Write settings to settings.json
+  local raw = json.encode(settings.save)
+  love.filesystem.write(settings.file, raw)
 end
