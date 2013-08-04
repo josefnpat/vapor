@@ -19,6 +19,8 @@ colors.reset = {255,255,255}
 colors.bareven = {47,47,47}
 colors.barodd = {31,31,31}
 colors.overlaybar = {0,0,0,159}
+colors.active = {255,255,255}
+colors.inactive = {255,255,255,31}
 
 nogame = love.graphics.newImage("assets/nogame.png")
 overlay = love.graphics.newImage("assets/overlay.png")
@@ -222,10 +224,14 @@ function love.draw()
     end
     love.graphics.rectangle("fill",padding,padding*gi+offset,love.graphics.getWidth()-padding*2,padding)
 
-    love.graphics.setColor(colors.reset)
     if settings.data.games[gv.id].favorite then
-      love.graphics.draw(icons.favorite, padding, padding*gi+offset)
+      love.graphics.setColor(colors.active)
+    else
+      love.graphics.setColor(colors.inactive)
     end
+    love.graphics.draw(icons.favorite, padding, padding*gi+offset)
+    love.graphics.setColor(colors.reset)
+
     love.graphics.draw(icon,padding*2,padding*gi+offset)
 
     if gi == selectindex then
