@@ -1,4 +1,4 @@
-require("json")
+require("lib/json")
 
 local http = require("socket.http")
 
