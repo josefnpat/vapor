@@ -6,6 +6,7 @@ icons = {}
 icons.play = love.graphics.newImage("assets/icons/go-next.png")
 icons.view = love.graphics.newImage("assets/icons/applications-internet.png")
 icons.download = love.graphics.newImage("assets/icons/emblem-web.png")
+icons.favorite = love.graphics.newImage("assets/icons/help-about.png")
 
 fonts = {}
 fonts.basic = love.graphics.newFont("assets/fonts/Oswald-Regular.ttf",14)
@@ -21,6 +22,11 @@ colors.overlaybar = {0,0,0,159}
 
 nogame = love.graphics.newImage("assets/nogame.png")
 overlay = love.graphics.newImage("assets/overlay.png")
+
+images = {}
+
+settings = {}
+settings.file = "settings.json"
 
 padding = 22
 offset = (love.graphics.getWidth()-padding*2) / (16/9) + padding -- 16:9
@@ -40,13 +46,23 @@ end
 
 table.sort(data.games, function(a,b) return a.name < b.name end )
 
+if love.filesystem.exists(settings.file) then
+  local rawjson = love.filesystem.read(settings.file)
+  settings.data = json.decode(rawjson)
+else
+  settings.data = {}
+  settings.data.games = {}
+  for i,v in ipairs(data.games) do
+    settings.data.games[v.id] = {}
+    settings.data.games[v.id].favorite = false
+  end
+end
+
 love.graphics.setMode(love.graphics.getWidth(),padding*(#data.games+2)+offset,false,false,0)
 
 function imgname(gameobj)
   return gameobj.id..".png"
 end
-
-images = {}
 
 function fname(gameobj,sourceindex)
   return gameobj.id.."-"..sourceindex..".love"
@@ -77,29 +93,9 @@ function dogame(gameobj)
   end
 end
 
--- Favorite Init
-favorite_icon = love.graphics.newImage("assets/icons/help-about.png")
-settings = {}
-settings.file = "settings.json"
-
-if love.filesystem.exists(settings.file) then -- If settings file exists, load it 
-  settings.txt = love.filesystem.read(settings.file)
-  settings.save = json.decode(settings.txt)
-else -- If not, create it
-  settings.save = {}
-  for i,v in ipairs(data.games) do
-    settings.save[v.id] = {}
-    settings.save[v.id].name = v.id
-    settings.save[v.id].favorite = false
-  end
-  local raw = json.encode(settings.save)
-  love.filesystem.write(settings.file, raw)
-end
-
 function love.load(args)
   love.graphics.setCaption("Vapor")
   binary = love.arg.getLow(args)
-  print(binary)
 end
 
 function love.update(dt)
@@ -141,8 +137,10 @@ function love.keypressed(key)
     love.event.quit()
   elseif key == "delete" then
     local gameobj = data.games[selectindex]
-    love.filesystem.remove(fname(gameobj,gameobj.stable))
-    love.filesystem.remove(imgname(gameobj))
+    if gameobj then
+      love.filesystem.remove(fname(gameobj,gameobj.stable))
+      love.filesystem.remove(imgname(gameobj))
+    end
   end
 end
 
@@ -154,13 +152,7 @@ function love.mousepressed(x,y,button)
     end
   elseif button == "r" then
     if gameobj then
-      --love.filesystem.remove(fname(gameobj,gameobj.stable))
-      --love.filesystem.remove(imgname(gameobj))
-      if settings.save[gameobj.id].favorite == true then
-        settings.save[gameobj.id].favorite = false
-      else
-        settings.save[gameobj.id].favorite = true 
-      end
+      settings.data.games[gameobj.id].favorite = not settings.data.games[gameobj.id].favorite
     end
   end
 end
@@ -231,11 +223,10 @@ function love.draw()
     love.graphics.rectangle("fill",padding,padding*gi+offset,love.graphics.getWidth()-padding*2,padding)
 
     love.graphics.setColor(colors.reset)
-    love.graphics.draw(icon,padding*1.5,padding*gi+offset)
-    -- Draw Favorited Stuff
-    if settings.save[gv.id].favorite == true then
-      love.graphics.draw(favorite_icon, padding-10, padding*gi+offset) -- Draws Favorited icon
+    if settings.data.games[gv.id].favorite then
+      love.graphics.draw(icons.favorite, padding, padding*gi+offset)
     end
+    love.graphics.draw(icon,padding*2,padding*gi+offset)
 
     if gi == selectindex then
       love.graphics.setColor(colors.selected)
@@ -249,7 +240,6 @@ function love.draw()
 end
 
 function love.quit()
-  -- Write settings to settings.json
-  local raw = json.encode(settings.save)
+  local raw = json.encode(settings.data)
   love.filesystem.write(settings.file, raw)
 end
