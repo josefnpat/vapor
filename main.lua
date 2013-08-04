@@ -77,38 +77,24 @@ function dogame(gameobj)
   end
 end
 
--- Favoriting
-favorite_icon = love.graphics.newImage("assets/favorite.png")
-settings_file = "settings.lua"
+-- Favorite Init
+favorite_icon = love.graphics.newImage("assets/icons/help-about.png")
+settings = {}
+settings.file = "settings.json"
 
-if love.filesystem.exists(settings_file) then 
-  require("settings")
+if love.filesystem.exists(settings.file) then -- If settings file exists, load it 
+  settings.txt = love.filesystem.read(settings.file)
+  settings.save = json.decode(settings.txt)
+else -- If not, create it
+  settings.save = {}
   for i,v in ipairs(data.games) do
-    if games ~= nil then
-      v.favorite = games[i].favorite
-    end
+    settings.save[i] = {}
+    settings.save[i].name = v.id
+    settings.save[i].favorite = false
   end
+  local raw = json.encode(settings.save)
+  love.filesystem.write(settings.file, raw)
 end
-
-settings_object = love.filesystem.newFile( settings_file )
-settings_object:open("w")
-settings_object:write("games = {}\n")
-
-for i,v in ipairs(data.games) do
-  settings_object:write(string.format("games[%d] = {}\n", i))
-  settings_object:write(string.format("games[%d].name = '%s'\n", i, v.name))
-  if v.favorite ~= nil then
-    if v.favorite == true then
-      settings_object:write(string.format("games[%d].favorite = %s\n", i, "true"))
-    else
-      settings_object:write(string.format("games[%d].favorite = %s\n", i, "false"))
-    end
-  end
-end
-settings_object:close()
-
-package.loaded[settings_file] = nil
-require("settings")
 
 function love.load(args)
   love.graphics.setCaption("Vapor")
@@ -166,12 +152,10 @@ function love.mousepressed(x,y,button)
     if gameobj then
       --love.filesystem.remove(fname(gameobj,gameobj.stable))
       --love.filesystem.remove(imgname(gameobj))
-      if games[selectindex].favorite == true then
-        games[selectindex].favorite = false
-        data.games[selectindex].favorite = false
+      if settings.save[selectindex].favorite == true then
+        settings.save[selectindex].favorite = false
       else
-        games[selectindex].favorite = true 
-        data.games[selectindex].favorite = true
+        settings.save[selectindex].favorite = true 
       end
     end
   end
@@ -245,9 +229,7 @@ function love.draw()
     love.graphics.setColor(colors.reset)
     love.graphics.draw(icon,padding*1.5,padding*gi+offset)
     -- Draw Favorited Stuff
-    love.graphics.setColor(255,255,255)
-    love.graphics.rectangle("fill", padding-10, padding*gi+offset, 20, 20)
-    if games[gi].favorite == true then
+    if settings.save[gi].favorite == true then
       love.graphics.draw(favorite_icon, padding-10, padding*gi+offset) -- Draws Favorited icon
     end
 
@@ -263,21 +245,7 @@ function love.draw()
 end
 
 function love.quit()
-  -- Save Settings
-  settings_object = love.filesystem.newFile( settings_file )
-  settings_object:open("w")
-  settings_object:write("games = {}\n")
-
-  for i,v in ipairs(data.games) do
-    settings_object:write(string.format("games[%d] = {}\n", i))
-    settings_object:write(string.format("games[%d].name = '%s'\n", i, v.name))
-    if v.favorite ~= nil then
-      if v.favorite == true then
-        settings_object:write(string.format("games[%d].favorite = %s\n", i, "true"))
-      else
-        settings_object:write(string.format("games[%d].favorite = %s\n", i, "false"))
-      end
-    end
-  end
-  settings_object:close()
+  -- Write settings to settings.json
+  local raw = json.encode(settings.save)
+  love.filesystem.write(settings.file, raw)
 end
