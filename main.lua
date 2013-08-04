@@ -139,6 +139,10 @@ function love.keypressed(key)
     end
   elseif key == "escape" then
     love.event.quit()
+  elseif key == "delete" then
+    local gameobj = data.games[selectindex]
+    love.filesystem.remove(fname(gameobj,gameobj.stable))
+    love.filesystem.remove(imgname(gameobj))
   end
 end
 
