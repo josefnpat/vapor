@@ -9,10 +9,11 @@
 
 ## How can I add my game?
 
-**Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information from step two if you don't understand git && json.**
-
 * Fork [this repo](https://github.com/josefnpat/vapor).
 * Extend the `games.json` with the following data;
+
+    **Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information from this step if you don't can't use git and json.**
+
     * id :      A unique id using only A-Z, a-z, underscores and dashes.
     * name :    The name of your game.
     * sources : An array of links to your .love files with an index representing the current unix timestamp.
