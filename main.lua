@@ -88,9 +88,9 @@ if love.filesystem.exists(settings.file) then -- If settings file exists, load i
 else -- If not, create it
   settings.save = {}
   for i,v in ipairs(data.games) do
-    settings.save[i] = {}
-    settings.save[i].name = v.id
-    settings.save[i].favorite = false
+    settings.save[v.id] = {}
+    settings.save[v.id].name = v.id
+    settings.save[v.id].favorite = false
   end
   local raw = json.encode(settings.save)
   love.filesystem.write(settings.file, raw)
@@ -152,10 +152,10 @@ function love.mousepressed(x,y,button)
     if gameobj then
       --love.filesystem.remove(fname(gameobj,gameobj.stable))
       --love.filesystem.remove(imgname(gameobj))
-      if settings.save[selectindex].favorite == true then
-        settings.save[selectindex].favorite = false
+      if settings.save[gameobj.id].favorite == true then
+        settings.save[gameobj.id].favorite = false
       else
-        settings.save[selectindex].favorite = true 
+        settings.save[gameobj.id].favorite = true 
       end
     end
   end
@@ -229,7 +229,7 @@ function love.draw()
     love.graphics.setColor(colors.reset)
     love.graphics.draw(icon,padding*1.5,padding*gi+offset)
     -- Draw Favorited Stuff
-    if settings.save[gi].favorite == true then
+    if settings.save[gv.id].favorite == true then
       love.graphics.draw(favorite_icon, padding-10, padding*gi+offset) -- Draws Favorited icon
     end
 
