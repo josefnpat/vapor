@@ -9,7 +9,7 @@
 
 ## How can I add my game?
 
-** Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information if you don't understand git && json.**
+**Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information from step two if you don't understand git && json.**
 
 * Fork [this repo](https://github.com/josefnpat/vapor).
 * Extend the `games.json` with the following data;
