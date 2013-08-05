@@ -12,33 +12,37 @@ local function non_blocking_tcp()
   local sock = socket.tcp()
   sock:settimeout(0)
 
-  local function run_nonblock(func, ...)
-    while true do
-      local res = {
-        func(...)
-      }
-      if res[1] == nil and res[2] == "timeout" then
-        coroutine.yield("timeout", sock)
-      else
-        return unpack(res)
-      end
-    end
-  end
-
   return setmetatable({
     sock = sock,
 
-		-- don't allow timeout to be changed
+    -- don't allow timeout to be changed
     settimeout = function()
       return true
     end,
 
     send = function(self, ...)
-      return run_nonblock(self.sock.send, self.sock, ...)
+      while true do
+        local byte, err, partial = self.sock:send(...)
+        if err == "timeout" then
+          -- TODO: this might lock up when using i,j args
+          if partial and partial > 0 then
+            return partial
+          else
+            coroutine.yield("timeout", sock)
+          end
+        else
+          return byte, err, partial
+        end
+      end
     end,
 
     connect = function(self, ...)
-      return run_nonblock(self.sock.connect, self.sock, ...)
+      local status, err = self.sock:connect(...)
+      if err == "timeout" then
+        coroutine.yield("timeout", sock)
+        return 1
+      end
+      return status, err
     end,
 
     receive = function(self, ...)
