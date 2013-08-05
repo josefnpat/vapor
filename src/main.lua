@@ -118,7 +118,7 @@ function love.keypressed(key)
     end
   elseif key == "escape" then
     love.event.quit()
-  elseif key == "delete" then
+  elseif (key == "delete") or (key == "backspace") then
     local gameobj = remote.data.games[selectindex]
     if gameobj then
       love.filesystem.remove(fname(gameobj,gameobj.stable))
