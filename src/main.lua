@@ -15,27 +15,27 @@ end
 
 function dogame(gameobj)
   local fn = fname(gameobj,gameobj.stable)
-  if currently_downloading[fn] then
-    return
-  end
+  if not currently_downloading[fn] then
     
-  if love.filesystem.exists(fn) then
-    print(fn .. " already exists.")
-    local exe
-    if love._os == "Windows" then
-      exe = "start \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
-    else -- osx, linux, unknown, crazy
-      exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\""
+    if love.filesystem.exists(fn) then
+      print(fn .. " already exists.")
+      local exe
+      if love._os == "Windows" then
+        exe = "start \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
+      else -- osx, linux, unknown, crazy
+        exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\""
+      end
+      os.execute(exe)
+    else
+      print(fn .. " is being downloaded.")
+      local url = gameobj.sources[gameobj.stable]
+  
+      currently_downloading[fn] = true
+      downloader:request(url, async.love_filesystem_sink(fn), function()
+        currently_downloading[fn] = nil
+      end)
     end
-    os.execute(exe)
-  else
-    print(fn .. " is being downloaded.")
-    local url = gameobj.sources[gameobj.stable]
-
-    currently_downloading[fn] = true
-    downloader:request(url, async.love_filesystem_sink(fn), function()
-      currently_downloading[fn] = nil
-    end)
+  
   end
 end
 
@@ -50,6 +50,7 @@ function love.load(args)
   remote = require("core/remote")
 
   downloader = async.SocketQueue()
+  downloader.dt = 0
 
   remote.load()
   settings.load()
@@ -67,6 +68,7 @@ end
 
 function love.update(dt)
   downloader:update()
+  downloader.dt = downloader.dt + dt
 
   local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding )
   if current >= 1 and current <= #remote.data.games then
@@ -181,7 +183,9 @@ function love.draw()
   for gi,gv in pairs(remote.data.games) do
     local fn = fname(gv,gv.stable)
     local icon
-    if love.filesystem.exists(fn) then
+    if currently_downloading[fn] then
+      icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+    elseif love.filesystem.exists(fn) then
       icon = icons.play
     elseif love.filesystem.exists(imgname(gv)) then
       icon = icons.view
