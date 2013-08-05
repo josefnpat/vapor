@@ -155,11 +155,9 @@ local function love_filesystem_sink(fname, callback)
   return function(chunk, err)
     if chunk then
       if not file then
-        print("opening", fname)
         file = love.filesystem.newFile(fname)
         file:open("w")
       end
-      print("writing", #chunk, "bytes")
       return file:write(chunk)
     else
       file:close()

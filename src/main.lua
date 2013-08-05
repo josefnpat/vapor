@@ -85,7 +85,7 @@ function love.update(dt)
           images[current_index] = love.graphics.newImage(imgn)
         else
           -- download it!
-          print("Downloading:", imgn)
+          print("downloading " .. imgn)
           currently_downloading[imgn] = true
           downloader:request(remote.data.games[selectindex].image, async.love_filesystem_sink(imgn, function()
             currently_downloading[imgn] = nil
