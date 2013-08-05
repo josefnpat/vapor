@@ -116,6 +116,7 @@ function love.keypressed(key)
     if gameobj then
       love.filesystem.remove(fname(gameobj,gameobj.stable))
       love.filesystem.remove(imgname(gameobj))
+      images[selectindex] = nil
     end
   end
 end
