@@ -1,4 +1,6 @@
-local function draw()
+local draw = {}
+
+function draw.everything()
   love.graphics.setColor(colors.reset)
   if selectindex and images[selectindex] then
     love.graphics.draw(images[selectindex],settings.padding,settings.padding)
@@ -48,43 +50,46 @@ local function draw()
   love.graphics.setFont(fonts.basic)
 
   for gi,gv in pairs(remote.data.games) do
-    local fn = fname(gv,gv.stable)
-    local icon
-    if currently_downloading[fn] then
-      icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
-    elseif love.filesystem.exists(fn) then
-      icon = icons.play
-    elseif love.filesystem.exists(imgname(gv)) then
-      icon = icons.view
-    else
-      icon = icons.download
-    end
-
-    if gi%2==0 then
-      love.graphics.setColor(colors.bareven)
-    else
-      love.graphics.setColor(colors.barodd)    
-    end
-    love.graphics.rectangle("fill",settings.padding,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*2,settings.padding)
-
-    if settings.data.games[gv.id] and settings.data.games[gv.id].favorite then
-      love.graphics.setColor(colors.active)
-    else
-      love.graphics.setColor(colors.inactive)
-    end
-    love.graphics.draw(icons.favorite, settings.padding, settings.padding*gi+settings.offset)
-    love.graphics.setColor(colors.reset)
-
-    love.graphics.draw(icon,settings.padding*2,settings.padding*gi+settings.offset)
-
-    if gi == selectindex then
-      love.graphics.setColor(colors.selected)
-    else
-      love.graphics.setColor(colors.unselected)
-    end
-    love.graphics.print(gv.name,settings.padding*3,settings.padding*gi+settings.offset)
-    love.graphics.printf(gv.author,settings.padding*3,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*4.5,"right")
-
+    draw.row(gi, gv)
   end
 end
-return draw
+
+function draw.row(gi, gv)
+  local fn = fname(gv,gv.stable)
+  local icon
+  if currently_downloading[fn] then
+    icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+  elseif love.filesystem.exists(fn) then
+    icon = icons.play
+  elseif love.filesystem.exists(imgname(gv)) then
+    icon = icons.view
+  else
+    icon = icons.download
+  end
+
+  if gi%2==0 then
+    love.graphics.setColor(colors.bareven)
+  else
+    love.graphics.setColor(colors.barodd)    
+  end
+  love.graphics.rectangle("fill",settings.padding,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*2,settings.padding)
+
+  if settings.data.games[gv.id] and settings.data.games[gv.id].favorite then
+    love.graphics.setColor(colors.active)
+  else
+    love.graphics.setColor(colors.inactive)
+  end
+  love.graphics.draw(icons.favorite, settings.padding, settings.padding*gi+settings.offset)
+  love.graphics.setColor(colors.reset)
+
+  love.graphics.draw(icon,settings.padding*2,settings.padding*gi+settings.offset)
+
+  if gi == selectindex then
+    love.graphics.setColor(colors.selected)
+  else
+    love.graphics.setColor(colors.unselected)
+  end
+  love.graphics.print(gv.name,settings.padding*3,settings.padding*gi+settings.offset)
+  love.graphics.printf(gv.author,settings.padding*3,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*4.5,"right")
+end
+return draw.everything
