@@ -67,7 +67,7 @@ end
 
 local socket_queue_mt = {
   __index = {
-    request = function(self, url, sink)
+    request = function(self, url, sink, callback)
       local sock = non_blocking_tcp()
       local co = coroutine.create(function()
         http.request({
@@ -76,6 +76,9 @@ local socket_queue_mt = {
           create = non_blocking_tcp
         })
         self.coroutines[coroutine.running()] = nil
+        if callback then
+          return "callback", callback
+        end
       end)
       self.coroutines[co] = true
     end,
@@ -97,17 +100,22 @@ local socket_queue_mt = {
 
     update = function(self)
       for co in pairs(self.coroutines) do
-        local success, status, sock = coroutine.resume(co)
+        local success, status, param = coroutine.resume(co)
         if not success then
           if type(status) == "table" then
             status = unpack(status)
           end
           error("Failed to resume coroutine: " .. tostring(status) .. "\n" .. debug.traceback(co))
         end
+
         if status == "timeout" then
-          table.insert(self.sockets, sock)
-          self.sockets[sock] = co
+          table.insert(self.sockets, param)
+          self.sockets[param] = co
           self.coroutines[co] = nil
+        end
+
+        if status == "callback" then
+          param()
         end
       end
       if self.sockets[1] then
@@ -150,7 +158,7 @@ local function callback_sink(fn)
   end
 end
 
-local function love_filesystem_sink(fname, callback)
+local function love_filesystem_sink(fname)
   local file
   return function(chunk, err)
     if chunk then
@@ -161,9 +169,6 @@ local function love_filesystem_sink(fname, callback)
       return file:write(chunk)
     else
       file:close()
-      if callback then
-        return callback()
-      end
     end
   end
 end

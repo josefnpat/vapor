@@ -1,6 +1,8 @@
 require("lib/json")
 async = require("core/async") -- this needs to be required before "socket.http"
 
+http = require("socket.http")
+
 local currently_downloading = {}
 
 function imgname(gameobj)
@@ -31,9 +33,9 @@ function dogame(gameobj)
     local url = gameobj.sources[gameobj.stable]
 
     currently_downloading[fn] = true
-    downloader:request(url, async.love_filesystem_sink(fn, function()
+    downloader:request(url, async.love_filesystem_sink(fn), function()
       currently_downloading[fn] = nil
-    end))
+    end)
   end
 end
 
@@ -86,9 +88,9 @@ function love.update(dt)
           -- download it!
           print("downloading " .. imgn)
           currently_downloading[imgn] = true
-          downloader:request(remote.data.games[selectindex].image, async.love_filesystem_sink(imgn, function()
+          downloader:request(remote.data.games[selectindex].image, async.love_filesystem_sink(imgn), function()
             currently_downloading[imgn] = nil
-          end))
+          end)
         end
       end
     end
