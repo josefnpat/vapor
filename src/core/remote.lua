@@ -1,6 +1,7 @@
 remote = {}
 
 remote.uri = "http://50.116.63.25/public/vapor/games.json"
+remote.file = "games.json"
 
 -- @param force_local don't check remote server for new file
 function remote.load(force_local)
@@ -11,12 +12,12 @@ function remote.load(force_local)
   end
 
   if e == 200 then
-    print("games.json successfully updated.")
-    love.filesystem.write("games.json",r)
+    print(remote.file .. " successfully updated.")
+    love.filesystem.write(remote.file,r)
     remote.data = json.decode(r)
   else
-    print("games.json failed to update.")
-    local raw,_ = love.filesystem.read("games.json")
+    print(remote.file.." failed to update.")
+    local raw,_ = love.filesystem.read(remote.file)
     remote.data = json.decode(raw)
   end
 
