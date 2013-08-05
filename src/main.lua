@@ -1,7 +1,5 @@
 require("lib/json")
-async = require("core/async") -- this needs to be required before any "socket.http" requires
-
-http = require("socket.http")
+async = require("core/async") -- this needs to be required before "socket.http"
 
 local currently_downloading = {}
 
@@ -14,8 +12,10 @@ function fname(gameobj,sourceindex)
 end
 
 function dogame(gameobj)
-  
   local fn = fname(gameobj,gameobj.stable)
+  if currently_downloading[fn] then
+    return
+  end
     
   if love.filesystem.exists(fn) then
     print(fn .. " already exists.")
@@ -28,13 +28,12 @@ function dogame(gameobj)
     os.execute(exe)
   else
     print(fn .. " is being downloaded.")
-    r,e = http.request(gameobj.sources[gameobj.stable])
-    if e == 200 then
-      local success = love.filesystem.write(fn,r)
-      if success then
-        print(fn .. " downloaded successfully.")
-      end
-    end
+    local url = gameobj.sources[gameobj.stable]
+
+    currently_downloading[fn] = true
+    downloader:request(url, async.love_filesystem_sink(fn, function()
+      currently_downloading[fn] = nil
+    end))
   end
 end
 
@@ -158,7 +157,10 @@ function love.draw()
   love.graphics.setFont(fonts.basic)
   local subline
   if selectindex then
-    if love.filesystem.exists(fname(gameobj,gameobj.stable)) then
+    local game_filename = fname(gameobj,gameobj.stable)
+    if currently_downloading[game_filename] then
+      subline = "DOWNLOADING..."
+    elseif love.filesystem.exists(game_filename) then
       subline = "CLICK TO PLAY"
     else
       subline = "CLICK TO INSTALL"
