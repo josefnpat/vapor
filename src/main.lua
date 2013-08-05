@@ -43,6 +43,7 @@ function dogame(gameobj)
 end
 
 function love.load(args)
+
   love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
   binary = love.arg.getLow(args)
   
@@ -51,6 +52,12 @@ function love.load(args)
   colors = require("core/colors")
   settings = require("core/settings")
   remote = require("core/remote")
+
+  if args[2] == "clearcache" then
+    love.filesystem.remove(settings.file)
+    love.filesystem.remove(remote.file)
+    print("Cleared "..settings.file.." and "..remote.file)
+  end
 
   downloader = async.SocketQueue()
   downloader.dt = 0
