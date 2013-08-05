@@ -199,6 +199,28 @@
             "author": "leafo",
             "engine": "love-0.8.0",
             "image": "http://leafo.net/stuff/vapor/moondar.png"
+        },
+        {
+            "id": "fishifishi",
+            "name": "*swoosh* bubble-fishing!",
+            "sources": {
+                "1370805291": "http://you.mongle.me/love/fishifishi.love"
+            },
+            "stable": "1370805291",
+            "author": "ragzouken",
+            "engine": "love-0.8.0",
+            "image": "http://you.mongle.me/love/fishifishi.png"
+        },
+        {
+            "id": "soundscape",
+            "name": "soundscape",
+            "sources": {
+                "1367173139": "http://you.mongle.me/love/soundscape.love"
+            },
+            "stable": "1367173139",
+            "author": "ragzouken",
+            "engine": "love-0.8.0",
+            "image": "http://you.mongle.me/love/soundscape.png"
         }
     ]
 }
