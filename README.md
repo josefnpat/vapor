@@ -12,7 +12,7 @@
 * Fork [this repo](https://github.com/josefnpat/vapor).
 * Extend the `games.json` with the following data;
 
-    **Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information from this step if you can't use git and json.**
+    **Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information from this step if you can't use git or json.**
 
     * id :      A unique id using only A-Z, a-z, underscores and dashes.
     * name :    The name of your game.
@@ -33,12 +33,14 @@
 
 ## Game Criteria
 
-Your game must
+Your game must:
 * load and run,
 * be playable,
 * not start in fullscreen mode,
 * use LÖVE 0.8.0,
-* not use binary libraries not supplied by love (e.g. luasec).
+
+Your game must not:
+* use binary libraries not provided by love (e.g. luasec).
 
 ## Your client sucks
 
