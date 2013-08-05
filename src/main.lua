@@ -196,7 +196,7 @@ function love.draw()
     end
     love.graphics.rectangle("fill",settings.padding,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*2,settings.padding)
 
-    if settings.data.games[gv.id].favorite then
+    if settings.data.games[gv.id] and settings.data.games[gv.id].favorite then
       love.graphics.setColor(colors.active)
     else
       love.graphics.setColor(colors.inactive)
