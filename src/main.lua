@@ -1,3 +1,6 @@
+git,git_count = "missing git.lua",0
+pcall( function() return require("git") end );
+
 require("lib/json")
 async = require("core/async") -- this needs to be required before "socket.http"
 
@@ -40,7 +43,7 @@ function dogame(gameobj)
 end
 
 function love.load(args)
-  love.graphics.setCaption("Vapor")
+  love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
   binary = love.arg.getLow(args)
   
   icons = require("core/icons")
