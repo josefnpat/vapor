@@ -1,6 +1,9 @@
 require("lib/json")
+async = require("core/async") -- this needs to be required before any "socket.http" requires
 
 http = require("socket.http")
+
+local currently_downloading = {}
 
 function imgname(gameobj)
   return gameobj.id..".png"
@@ -45,6 +48,8 @@ function love.load(args)
   settings = require("core/settings")
   remote = require("core/remote")
 
+  downloader = async.SocketQueue()
+
   remote.load()
   settings.load()
 
@@ -60,6 +65,8 @@ function love.load(args)
 end
 
 function love.update(dt)
+  downloader:update()
+
   local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding )
   if current >= 1 and current <= #remote.data.games then
     selectindex = current
@@ -68,25 +75,27 @@ function love.update(dt)
   end
   
   if selectindex then  
-  
-    local imgn = imgname(remote.data.games[selectindex])
-    if not love.filesystem.exists(imgn) then
-      r,e = http.request(remote.data.games[selectindex].image)
-      if e == 200 then
-        local success = love.filesystem.write(imgn,r)
-        if success then
-          print(imgn .. " downloaded successfully.")
+    if not images[selectindex] then
+      local current_index = selectindex
+      local imgn = imgname(remote.data.games[selectindex])
+
+      if not currently_downloading[imgn] then
+        if love.filesystem.exists(imgn) then
+          -- load the image
+          images[current_index] = love.graphics.newImage(imgn)
+        else
+          -- download it!
+          print("Downloading:", imgn)
+          currently_downloading[imgn] = true
+          downloader:request(remote.data.games[selectindex].image, async.love_filesystem_sink(imgn, function()
+            currently_downloading[imgn] = nil
+          end))
         end
       end
     end
-    
-    if not images[selectindex] then
-      images[selectindex] = love.graphics.newImage(imgn)
-    end
-
   end
-  
-  
+
+
 end
 
 function love.keypressed(key)
@@ -121,7 +130,7 @@ end
 function love.draw()
 
   love.graphics.setColor(colors.reset)
-  if selectindex then
+  if selectindex and images[selectindex] then
     love.graphics.draw(images[selectindex],settings.padding,settings.padding)
   else
     love.graphics.draw(nogame,settings.padding,settings.padding)
