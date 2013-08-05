@@ -23,7 +23,7 @@ function dogame(gameobj)
       if love._os == "Windows" then
         exe = "start \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
       else -- osx, linux, unknown, crazy
-        exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\""
+        exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\" &"
       end
       os.execute(exe)
     else
