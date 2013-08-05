@@ -144,5 +144,61 @@
             "engine": "love-0.8.0",
             "image": "http://tangramgames.dk/games/sienna/images/sienna_vapor.png"
         }
+        {
+            "id": "volcanox",
+            "name": "Volcanox",
+
+            "sources": {
+                "1375684497": "http://leafo.net/volcanox/volcanox.love"
+            },
+            "stable": "1375684497",
+            "author": "leafo",
+            "engine": "love-0.8.0",
+            "image": "http://leafo.net/stuff/vapor/volcanox.png"
+        },
+        {
+            "id": "wulcan",
+            "name": "Wulcan",
+            "sources": {
+                "1375684497": "http://leafo.net/dump/wulcan.love"
+            },
+            "stable": "1375684497",
+            "author": "leafo",
+            "engine": "love-0.8.0",
+            "image": "http://leafo.net/stuff/vapor/wulcan.png"
+        },
+        {
+            "id": "exoslime",
+            "name": "ExoSlime",
+            "sources": {
+                "1375684497": "http://leafo.net/exoslime/exo-slime.love"
+            },
+            "stable": "1375684497",
+            "author": "leafo",
+            "engine": "love-0.8.0",
+            "image": "http://leafo.net/stuff/vapor/exoslime.png"
+        },
+        {
+            "id": "x-moon",
+            "name": "X-Moon",
+            "sources": {
+                "1375684497": "http://leafo.net/dump/xmoon.love"
+            },
+            "stable": "1375684497",
+            "author": "leafo",
+            "engine": "love-0.8.0",
+            "image": "http://leafo.net/stuff/vapor/xmoon.png"
+        },
+        {
+            "id": "moondar",
+            "name": "Moondar",
+            "sources": {
+                "1375684497": "http://leafo.net/dump/moondar.love"
+            },
+            "stable": "1375684497",
+            "author": "leafo",
+            "engine": "love-0.8.0",
+            "image": "http://leafo.net/stuff/vapor/moondar.png"
+        }
     ]
 }
