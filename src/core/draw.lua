@@ -1,8 +1,11 @@
 local draw = {}
 
 function draw.everything()
-  local gameobj = remote.data.games[selectindex]
+  love.graphics.push()
+  love.graphics.translate(settings.padding, settings.padding)
 
+  local gameobj = remote.data.games[selectindex]
+  
   -- Draw header
   draw.header(gameobj)
   -- Draw the subline
@@ -13,31 +16,33 @@ function draw.everything()
   for gi,gv in pairs(remote.data.games) do
     draw.row(gi, gv)
   end
+
+  love.graphics.pop()
 end
 
 function draw.header(gameobj)
   love.graphics.setColor(colors.reset)
   if selectindex and images[selectindex] then
-    love.graphics.draw(images[selectindex],settings.padding,settings.padding)
+    love.graphics.draw(images[selectindex],0,0)
   else
-    love.graphics.draw(nogame,settings.padding,settings.padding)
+    love.graphics.draw(nogame,0,0)
   end
-  love.graphics.draw(overlay,settings.padding,settings.padding)
+  love.graphics.draw(overlay,0,0)
 
   love.graphics.setColor(colors.overlaybar)
   love.graphics.rectangle(
     "fill",
+    0,
     settings.padding,
-    settings.padding*2,
     love.graphics.getWidth()-settings.padding*2,
     fonts.title:getHeight()+fonts.basic:getHeight())
 
   love.graphics.setColor(colors.reset)
   love.graphics.setFont(fonts.title)
   if selectindex then
-    love.graphics.print(gameobj.name,settings.padding*2,settings.padding*2)
+    love.graphics.print(gameobj.name,settings.padding,settings.padding)
   else
-    love.graphics.print("Vapor",settings.padding*2,settings.padding*2)  
+    love.graphics.print("Vapor",settings.padding,settings.padding)  
   end
 end
 
@@ -58,8 +63,8 @@ function draw.subline(gameobj)
   end
   love.graphics.printf(
     subline,
-    settings.padding*2,
-    settings.padding*2+fonts.title:getHeight(),
+    settings.padding,
+    settings.padding+fonts.title:getHeight(),
     love.graphics.getWidth()-settings.padding*4,
     "right"
   )
@@ -67,7 +72,7 @@ end
 
 function draw.row(gi, gv)  
   local fn = fname(gv,gv.stable)
-  local row_y = settings.padding*gi+settings.offset
+  local row_y = settings.padding*gi+settings.offset-settings.padding
   
   local icon
   if currently_downloading[fn] then
@@ -83,7 +88,7 @@ function draw.row(gi, gv)
   -- Draw row background
   love.graphics.setColor((gi%2==1) and colors.bareven or colors.barodd)
   love.graphics.rectangle("fill",
-    settings.padding,
+    0,
     row_y,
     love.graphics.getWidth()-settings.padding*2,
     settings.padding
@@ -96,16 +101,16 @@ function draw.row(gi, gv)
   
   -- Draw main icon
   love.graphics.setColor(colors.reset)
-  love.graphics.draw(icon,settings.padding*2, row_y)
+  love.graphics.draw(icon,settings.padding, row_y)
 
   -- Draw row text
   love.graphics.setColor((gi == selectindex) and colors.highlighted or colors.unhighlighted)
   love.graphics.print(gv.name,
-    settings.padding*3,
+    settings.padding*2,
     row_y
   )
   love.graphics.printf(gv.author,
-    settings.padding*3,
+    settings.padding*2,
     row_y,
     love.graphics.getWidth()-settings.padding*4.5,
     "right"
