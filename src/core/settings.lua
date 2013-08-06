@@ -11,6 +11,7 @@ function settings.load()
     settings.data = json.decode(rawjson)
     if (settings.data.appver ~= settings.appver) then
       settings.data = nil
+      print("App version does not match: clearing "..settings.file)
     end
   end
   if not settings.data then
