@@ -12,9 +12,32 @@ function draw.everything()
   draw.subline(gameobj)
 
   -- Draw all rows
+  local row_y = settings.offset
   love.graphics.setFont(fonts.basic)
   for gi,gv in pairs(remote.data.games) do
-    draw.row(gi, gv)
+    local data = {
+      bg = (gi%2==1) and colors.bareven or colors.barodd,
+      text = {
+        color = (gi == selectindex) and colors.highlighted or colors.unhighlighted,
+        name = gv.name
+      },
+      caption = gv.author,
+      favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
+    }
+
+    local fn = fname(gv,gv.stable)
+    if currently_downloading[fn] then
+      data.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+    elseif love.filesystem.exists(fn) then
+      data.icon = icons.play
+    elseif love.filesystem.exists(imgname(gv)) then
+      data.icon = icons.view
+    else
+      data.icon = icons.download
+    end
+
+    draw.row(data, row_y)
+    row_y = row_y + settings.padding
   end
 
   love.graphics.pop()
@@ -63,49 +86,43 @@ function draw.subline(gameobj)
   )
 end
 
-function draw.row(gi, gv)  
-  local fn = fname(gv,gv.stable)
-  local row_y = settings.padding*gi+settings.offset-settings.padding
-  
-  local icon
-  if currently_downloading[fn] then
-    icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
-  elseif love.filesystem.exists(fn) then
-    icon = icons.play
-  elseif love.filesystem.exists(imgname(gv)) then
-    icon = icons.view
-  else
-    icon = icons.download
-  end
+function draw.row(data, row_y)
+  local x = 0
 
   -- Draw row background
-  love.graphics.setColor((gi%2==1) and colors.bareven or colors.barodd)
+  love.graphics.setColor(data.bg)
   love.graphics.rectangle("fill",
-    0,
+    x,
     row_y,
     love.graphics.getWidth()-settings.padding*2,
     settings.padding
   )
 
   -- Draw favorite icon
-  local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
-  love.graphics.setColor(favorited and colors.active or colors.inactive)
-  love.graphics.draw(icons.favorite, 0, row_y)
+  if data.favorited ~= nil then
+    love.graphics.setColor(favorited and colors.active or colors.inactive)
+    love.graphics.draw(icons.favorite, 0, row_y)
+    x = x + settings.padding
+  end
   
-  -- Draw main icon
-  love.graphics.setColor(colors.reset)
-  love.graphics.draw(icon,settings.padding, row_y)
 
-  -- Draw "app" title
-  love.graphics.setColor((gi == selectindex) and colors.highlighted or colors.unhighlighted)
-  love.graphics.print(gv.name,
-    settings.padding*2,
+  -- Draw main icon
+  if data.icon then
+    love.graphics.setColor(colors.reset)
+    love.graphics.draw(data.icon,x, row_y)
+    x = x + settings.padding
+  end
+
+  -- Draw row title
+  love.graphics.setColor(data.text.color)
+  love.graphics.print(data.text.name,
+    x,
     row_y
   )
 
-  -- Draw author
-  love.graphics.printf(gv.author,
-    settings.padding*2,
+  -- Draw caption (apps: author, headers: #items)
+  love.graphics.printf(data.caption,
+    x,
     row_y,
     love.graphics.getWidth()-settings.padding*4.5,
     "right"
