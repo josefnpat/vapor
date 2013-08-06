@@ -3,7 +3,6 @@ local ltn12 = require("ltn12")
 
 require("lib.bslf.bit").lut()
 hashlib = require("lib/hash")
-sha1obj = hashlib.sha1()
 
 -- don't protect anything
 socket.protect = function(fn)
@@ -183,6 +182,7 @@ local function love_filesystem_sink(fname,download_hash)
         local data = love.filesystem.read(fname)
         local start = socket.gettime()
 
+        local sha1obj = hashlib.sha1()
         sha1obj:process(data)
         local hash = sha1obj:finish()
 
@@ -190,9 +190,9 @@ local function love_filesystem_sink(fname,download_hash)
         
         local sizemb,time = #data/(1024^2),stop-start
         local mbps = sizemb/time
-        
+
         print( round(mbps,4) .. " MB/s ("..round(sizemb,4).." MB in ".. round(time,4) .. " s)")
-                
+        
         love.filesystem.write(fname..".sha1",hash)
         print(fname .. " hashed.")
       end
