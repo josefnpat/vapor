@@ -1,7 +1,7 @@
 colors = {}
 
-colors.selected = {0,255,0}
-colors.unselected = {191,191,191}
+colors.highlighted = {0,255,0}
+colors.unhighlighted = {191,191,191}
 colors.reset = {255,255,255}
 colors.bareven = {47,47,47}
 colors.barodd = {31,31,31}

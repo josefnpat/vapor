@@ -56,12 +56,15 @@ function draw.subline(gameobj)
     subline,
     settings.padding*2,
     settings.padding*2+fonts.title:getHeight(),
-    love.graphics.getWidth()-settings.padding*4,"right"
+    love.graphics.getWidth()-settings.padding*4,
+    "right"
   )
 end
 
-function draw.row(gi, gv)
+function draw.row(gi, gv)  
   local fn = fname(gv,gv.stable)
+  local row_y = settings.padding*gi+settings.offset
+  
   local icon
   if currently_downloading[fn] then
     icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
@@ -77,7 +80,7 @@ function draw.row(gi, gv)
   love.graphics.setColor((gi%2==1) and colors.bareven or colors.barodd)
   love.graphics.rectangle("fill",
     settings.padding,
-    settings.padding*gi+settings.offset,
+    row_y,
     love.graphics.getWidth()-settings.padding*2,
     settings.padding
   )
@@ -85,21 +88,21 @@ function draw.row(gi, gv)
   -- Draw favorite icon
   local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
   love.graphics.setColor(favorited and colors.active or colors.inactive)
-  love.graphics.draw(icons.favorite, settings.padding, settings.padding*gi+settings.offset)
+  love.graphics.draw(icons.favorite, settings.padding, row_y)
   
   -- Draw main icon
   love.graphics.setColor(colors.reset)
-  love.graphics.draw(icon,settings.padding*2,settings.padding*gi+settings.offset)
+  love.graphics.draw(icon,settings.padding*2, row_y)
 
   -- Draw row text
-  love.graphics.setColor((gi == selectindex) and colors.selected or colors.unselected)
+  love.graphics.setColor((gi == selectindex) and colors.highlighted or colors.unhighlighted)
   love.graphics.print(gv.name,
     settings.padding*3,
-    settings.padding*gi+settings.offset)
+    row_y
   )
   love.graphics.printf(gv.author,
     settings.padding*3,
-    settings.padding*gi+settings.offset,
+    row_y,
     love.graphics.getWidth()-settings.padding*4.5,
     "right"
   )
