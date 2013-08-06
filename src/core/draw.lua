@@ -27,6 +27,17 @@ function draw.everything()
     love.graphics.print("Vapor",settings.padding*2,settings.padding*2)  
   end
 
+  -- Draw the subline
+  draw.subline(gameobj)
+
+  -- Draw all rows
+  love.graphics.setFont(fonts.basic)
+  for gi,gv in pairs(remote.data.games) do
+    draw.row(gi, gv)
+  end
+end
+
+function draw.subline(gameobj)
   love.graphics.setFont(fonts.basic)
   local subline
   if selectindex then
@@ -45,13 +56,8 @@ function draw.everything()
     subline,
     settings.padding*2,
     settings.padding*2+fonts.title:getHeight(),
-    love.graphics.getWidth()-settings.padding*4,"right")
-  
-  love.graphics.setFont(fonts.basic)
-
-  for gi,gv in pairs(remote.data.games) do
-    draw.row(gi, gv)
-  end
+    love.graphics.getWidth()-settings.padding*4,"right"
+  )
 end
 
 function draw.row(gi, gv)
