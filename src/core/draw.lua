@@ -67,25 +67,21 @@ function draw.row(gi, gv)
     icon = icons.download
   end
 
-  -- DRAW ROW BACKGROUND
-  love.graphics.setColor((gi%2==) and colors.bareven or colors.barodd)
+  -- Draw row background
+  love.graphics.setColor((gi%2==1) and colors.bareven or colors.barodd)
   love.graphics.rectangle("fill",settings.padding,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*2,settings.padding)
 
-  if settings.data.games[gv.id] and settings.data.games[gv.id].favorite then
-    love.graphics.setColor(colors.active)
-  else
-    love.graphics.setColor(colors.inactive)
-  end
+  -- Draw favorite icon
+  local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
+  love.graphics.setColor(favorited and colors.active or colors.inactive)
   love.graphics.draw(icons.favorite, settings.padding, settings.padding*gi+settings.offset)
+  
+  -- Draw main icon
   love.graphics.setColor(colors.reset)
-
   love.graphics.draw(icon,settings.padding*2,settings.padding*gi+settings.offset)
 
-  if gi == selectindex then
-    love.graphics.setColor(colors.selected)
-  else
-    love.graphics.setColor(colors.unselected)
-  end
+  -- Draw row text
+  love.graphics.setColor((gi == selectindex) and colors.selected or colors.unselected)
   love.graphics.print(gv.name,settings.padding*3,settings.padding*gi+settings.offset)
   love.graphics.printf(gv.author,settings.padding*3,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*4.5,"right")
 end
