@@ -22,11 +22,8 @@ end
 
 function draw.header(gameobj)
   love.graphics.setColor(colors.reset)
-  if selectindex and images[selectindex] then
-    love.graphics.draw(images[selectindex],0,0)
-  else
-    love.graphics.draw(nogame,0,0)
-  end
+  
+  love.graphics.draw(images[selectindex] or nogame,0,0)
   love.graphics.draw(overlay,0,0)
 
   love.graphics.setColor(colors.overlaybar)
