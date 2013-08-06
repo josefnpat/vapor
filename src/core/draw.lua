@@ -1,6 +1,21 @@
 local draw = {}
 
 function draw.everything()
+  local gameobj = remote.data.games[selectindex]
+
+  -- Draw header
+  draw.header(gameobj)
+  -- Draw the subline
+  draw.subline(gameobj)
+
+  -- Draw all rows
+  love.graphics.setFont(fonts.basic)
+  for gi,gv in pairs(remote.data.games) do
+    draw.row(gi, gv)
+  end
+end
+
+function draw.header(gameobj)
   love.graphics.setColor(colors.reset)
   if selectindex and images[selectindex] then
     love.graphics.draw(images[selectindex],settings.padding,settings.padding)
@@ -17,23 +32,12 @@ function draw.everything()
     love.graphics.getWidth()-settings.padding*2,
     fonts.title:getHeight()+fonts.basic:getHeight())
 
-  local gameobj = remote.data.games[selectindex]
-
   love.graphics.setColor(colors.reset)
   love.graphics.setFont(fonts.title)
   if selectindex then
     love.graphics.print(gameobj.name,settings.padding*2,settings.padding*2)
   else
     love.graphics.print("Vapor",settings.padding*2,settings.padding*2)  
-  end
-
-  -- Draw the subline
-  draw.subline(gameobj)
-
-  -- Draw all rows
-  love.graphics.setFont(fonts.basic)
-  for gi,gv in pairs(remote.data.games) do
-    draw.row(gi, gv)
   end
 end
 
