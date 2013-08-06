@@ -177,7 +177,14 @@ local function love_filesystem_sink(fname,download_hash)
       file:close()
       if download_hash then
         print(fname .. " is hashing.")
-        local hash = sha1(love.filesystem.read(fname))
+        socket = require "socket"
+        local data = love.filesystem.read(fname)
+        local start = socket.gettime()
+        local hash = sha1(data)
+        local stop = socket.gettime()
+        
+        print( (#data / ( 1024^2 ) ) /(stop-start).." MiB/s")
+        
         love.filesystem.write(fname..".sha1",hash)
         print(fname .. " hashed.")
       end
