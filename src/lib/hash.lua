@@ -91,7 +91,7 @@ elseif bit and bit.band then
 	lrotate = function(...) return bit.rol(...)%POW32 end
 else
 	-- Pure Lua bitwise functions part of https://bitbucket.org/Boolsheet/bslf.
-	local bit_lua = require("bslf.bit")
+	local bit_lua = require("lib.bslf.bit")
 
 	band = bit_lua.band
 	bor = bit_lua.bor
