@@ -28,7 +28,7 @@ function draw.everything()
     row_y = draw.row(data, row_y)
   end
 
-  for gi,gv in pairs(remote.data.games) do
+  for gi,gv in ipairs(remote.data.games) do
     local data = {
       bg = (gi%2==1) and colors.bareven or colors.barodd,
       text = {
