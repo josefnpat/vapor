@@ -23,8 +23,11 @@ function dogame(gameobj)
     
     if love.filesystem.exists(fn) then
       print(fn .. " exists.")
-
-      local hash = love.filesystem.read(fn..".sha1")
+      
+      local hash
+      if love.filesystem.exists(fn..".sha1") then
+        hash = love.filesystem.read(fn..".sha1")
+      end
       if gameobj.hashes[gameobj.stable] == hash then
         print(fn .. " hash validated.")
         local exe
@@ -39,6 +42,7 @@ function dogame(gameobj)
         if gameobj.invalid then
           gameobj.invalid = nil
           love.filesystem.remove(fn)
+          love.filesystem.remove(fn..".sha1")
         else
           gameobj.invalid = true
           print(fn .. " hash not validated.")
@@ -137,6 +141,7 @@ function love.keypressed(key)
     local gameobj = remote.data.games[selectindex]
     if gameobj then
       love.filesystem.remove(fname(gameobj,gameobj.stable))
+      love.filesystem.remove(fname(gameobj,gameobj.stable)..".sha1")
       love.filesystem.remove(imgname(gameobj))
       images[selectindex] = nil
     end
