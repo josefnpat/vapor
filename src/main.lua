@@ -144,6 +144,7 @@ function love.keypressed(key)
       love.filesystem.remove(fname(gameobj,gameobj.stable)..".sha1")
       love.filesystem.remove(imgname(gameobj))
       images[selectindex] = nil
+      gameobj.invalid = nil
     end
   end
 end
