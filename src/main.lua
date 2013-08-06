@@ -165,3 +165,8 @@ function love.quit()
   local raw = json.encode(settings.data)
   love.filesystem.write(settings.file, raw)
 end
+
+function round(num, idp)
+  local mult = 10^(idp or 0)
+  return math.floor(num * mult + 0.5) / mult
+end
