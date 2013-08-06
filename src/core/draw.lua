@@ -36,7 +36,7 @@ function draw.everything()
         name = gv.name
       },
       caption = gv.author,
-      favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
+      favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite or false
     }
 
     local fn = fname(gv,gv.stable)
@@ -100,9 +100,10 @@ function draw.subline(gameobj)
 end
 
 function draw.row(data, row_y)
-  local x = 0
+  local x
 
   -- Draw row background
+  x = 0
   love.graphics.setColor(data.bg)
   love.graphics.rectangle("fill",
     x,
@@ -115,18 +116,17 @@ function draw.row(data, row_y)
   if data.favorited ~= nil then
     love.graphics.setColor(data.favorited and colors.active or colors.inactive)
     love.graphics.draw(icons.favorite, 0, row_y)
-    x = x + settings.padding
   end
-  
 
   -- Draw main icon
+  x = settings.padding
   if data.icon then
     love.graphics.setColor(colors.reset)
     love.graphics.draw(data.icon,x, row_y)
-    x = x + settings.padding
   end
 
   -- Draw row title
+  x = settings.padding*2
   love.graphics.setColor(data.text.color)
   love.graphics.print(data.text.name,
     data.text.x or x,
@@ -137,7 +137,7 @@ function draw.row(data, row_y)
   love.graphics.printf(data.caption,
     x,
     row_y,
-    love.graphics.getWidth()-settings.padding*4.5 + (data.text.x and data.text.x*3.5 or 0),
+    love.graphics.getWidth()-settings.padding*4.5,
     "right"
   )
 
