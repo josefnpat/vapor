@@ -73,7 +73,7 @@ function love.load(args)
 
   selectindex = nil
 
-  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.rows+2)+settings.offset,false,false,0)
+  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.rows+3)+settings.offset,false,false,0)
   
 end
 
