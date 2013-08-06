@@ -67,11 +67,8 @@ function draw.row(gi, gv)
     icon = icons.download
   end
 
-  if gi%2==0 then
-    love.graphics.setColor(colors.bareven)
-  else
-    love.graphics.setColor(colors.barodd)    
-  end
+  -- DRAW ROW BACKGROUND
+  love.graphics.setColor((gi%2==) and colors.bareven or colors.barodd)
   love.graphics.rectangle("fill",settings.padding,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*2,settings.padding)
 
   if settings.data.games[gv.id] and settings.data.games[gv.id].favorite then
