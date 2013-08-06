@@ -18,7 +18,9 @@ function settings.load()
     settings.data = {}
     settings.data.appver = settings.appver
     settings.data.games = {}
-    for i,v in ipairs(remote.data.games) do
+  end
+  for i,v in ipairs(remote.data.games) do
+    if not settings.data.games[v.id] then
       settings.data.games[v.id] = {}
       settings.data.games[v.id].favorite = false
     end
