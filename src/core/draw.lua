@@ -4,7 +4,7 @@ function draw.everything()
   love.graphics.push()
   love.graphics.translate(settings.padding, settings.padding)
 
-  local gameobj = remote.data.games[selectindex]
+  local gameobj = remote.data.games[selectindex] or {name="Vapor"}
   
   -- Draw header
   draw.header(gameobj)
@@ -36,11 +36,7 @@ function draw.header(gameobj)
 
   love.graphics.setColor(colors.reset)
   love.graphics.setFont(fonts.title)
-  if selectindex then
-    love.graphics.print(gameobj.name,settings.padding,settings.padding)
-  else
-    love.graphics.print("Vapor",settings.padding,settings.padding)  
-  end
+  love.graphics.print(gameobj.name, settings.padding,settings.padding)  
 end
 
 function draw.subline(gameobj)
