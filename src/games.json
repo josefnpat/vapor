@@ -221,6 +221,17 @@
             "author": "ragzouken",
             "engine": "love-0.8.0",
             "image": "http://you.mongle.me/love/soundscape.png"
+        },
+        {
+            "id": "FOUR_schattenkind.net",
+            "name": "FOUR",
+            "sources": {
+                "1367504326": "http://sience.schattenkind.net/devmania/FOUR_schattenkind_net.love"
+            },
+            "stable": "1367504326",
+            "author": "schattenkind.net",
+            "engine": "love-0.8.0",
+            "image": "http://sience.schattenkind.net/devmania/FOUR_schattenkind.png"
         }
     ]
 }
