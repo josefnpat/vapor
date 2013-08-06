@@ -33,6 +33,7 @@ function dogame(gameobj)
         else -- osx, linux, unknown, crazy
         exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\" &"
         end
+        print(fn .. " starting.")
         os.execute(exe)
       else
         if gameobj.invalid then
