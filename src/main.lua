@@ -32,7 +32,7 @@ function dogame(gameobj)
         print(fn .. " hash validated.")
         local exe
         if love._os == "Windows" then
-        exe = "start \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
+        exe = "start \"\" \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
         else -- osx, linux, unknown, crazy
         exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\" &"
         end
