@@ -75,7 +75,12 @@ function draw.row(gi, gv)
 
   -- Draw row background
   love.graphics.setColor((gi%2==1) and colors.bareven or colors.barodd)
-  love.graphics.rectangle("fill",settings.padding,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*2,settings.padding)
+  love.graphics.rectangle("fill",
+    settings.padding,
+    settings.padding*gi+settings.offset,
+    love.graphics.getWidth()-settings.padding*2,
+    settings.padding
+  )
 
   -- Draw favorite icon
   local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
@@ -88,7 +93,16 @@ function draw.row(gi, gv)
 
   -- Draw row text
   love.graphics.setColor((gi == selectindex) and colors.selected or colors.unselected)
-  love.graphics.print(gv.name,settings.padding*3,settings.padding*gi+settings.offset)
-  love.graphics.printf(gv.author,settings.padding*3,settings.padding*gi+settings.offset,love.graphics.getWidth()-settings.padding*4.5,"right")
+  love.graphics.print(gv.name,
+    settings.padding*3,
+    settings.padding*gi+settings.offset)
+  )
+  love.graphics.printf(gv.author,
+    settings.padding*3,
+    settings.padding*gi+settings.offset,
+    love.graphics.getWidth()-settings.padding*4.5,
+    "right"
+  )
 end
+
 return draw.everything
