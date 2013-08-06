@@ -113,7 +113,7 @@ function draw.row(data, row_y)
 
   -- Draw favorite icon
   if data.favorited ~= nil then
-    love.graphics.setColor(favorited and colors.active or colors.inactive)
+    love.graphics.setColor(data.favorited and colors.active or colors.inactive)
     love.graphics.draw(icons.favorite, 0, row_y)
     x = x + settings.padding
   end
