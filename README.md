@@ -14,12 +14,15 @@
 
     **Make an [issue](https://github.com/josefnpat/vapor/issues) with all the following information from this step if you can't use git or json.**
 
+Please see [/src/games.json](/src/games.json) for an example of how this is done.
+
     * id :      A unique id using only A-Z, a-z, underscores and dashes.
     * name :    The name of your game.
     * sources : An array of links to your .love files with an index representing the current unix timestamp.
                 Please ensure that your game is hosted on an http server as opposed to https.
                 If you can, please host this on a server, as opposed to a shared website like dropbox.
                 Contact me if you would like me to host your .love file.
+    * hashes :  An array of SHA-1 hashes for your .love files with an index representing the current unix timestamp.
     * stable :  The timestamp of the current stable release index from your sources list.
                 If you only have one element in sources, this would be that elements index.
     * author :  Your name or handle.

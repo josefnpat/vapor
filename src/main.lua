@@ -17,24 +17,37 @@ function fname(gameobj,sourceindex)
 end
 
 function dogame(gameobj)
+
   local fn = fname(gameobj,gameobj.stable)
   if not currently_downloading[fn] then
     
     if love.filesystem.exists(fn) then
-      print(fn .. " already exists.")
-      local exe
-      if love._os == "Windows" then
+      print(fn .. " exists.")
+
+      local hash = love.filesystem.read(fn..".sha1")
+      if gameobj.hashes[gameobj.stable] == hash then
+        print(fn .. " hash validated.")
+        local exe
+        if love._os == "Windows" then
         exe = "start \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
-      else -- osx, linux, unknown, crazy
+        else -- osx, linux, unknown, crazy
         exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\" &"
+        end
+        os.execute(exe)
+      else
+        if gameobj.invalid then
+          gameobj.invalid = nil
+          love.filesystem.remove(fn)
+        else
+          gameobj.invalid = true
+          print(fn .. " hash not validated.")
+        end
       end
-      os.execute(exe)
     else
       print(fn .. " is being downloaded.")
       local url = gameobj.sources[gameobj.stable]
-  
       currently_downloading[fn] = true
-      downloader:request(url, async.love_filesystem_sink(fn), function()
+      downloader:request(url, async.love_filesystem_sink(fn,true), function()
         currently_downloading[fn] = nil
       end)
     end

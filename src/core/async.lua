@@ -1,6 +1,8 @@
 local socket = require("socket")
 local ltn12 = require("ltn12")
 
+require("lib/sha1")
+
 -- don't protect anything
 socket.protect = function(fn)
   return fn
@@ -162,7 +164,7 @@ local function callback_sink(fn)
   end
 end
 
-local function love_filesystem_sink(fname)
+local function love_filesystem_sink(fname,download_hash)
   local file
   return function(chunk, err)
     if chunk then
@@ -173,6 +175,12 @@ local function love_filesystem_sink(fname)
       return file:write(chunk)
     else
       file:close()
+      if download_hash then
+        print(fname .. " is hashing.")
+        local hash = sha1(love.filesystem.read(fname))
+        love.filesystem.write(fname..".sha1",hash)
+        print(fname .. " hashed.")
+      end
     end
   end
 end

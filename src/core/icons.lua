@@ -4,6 +4,7 @@ icons.play = love.graphics.newImage("assets/icons/go-next.png")
 icons.view = love.graphics.newImage("assets/icons/applications-internet.png")
 icons.download = love.graphics.newImage("assets/icons/emblem-web.png")
 icons.favorite = love.graphics.newImage("assets/icons/help-about.png")
+icons.delete = love.graphics.newImage("assets/icons/dialog-cancel.png")
 
 icons.downloading = {}
 icons.downloading[1] = love.graphics.newImage("assets/icons/network-idle.png")

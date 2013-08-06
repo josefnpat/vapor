@@ -7,6 +7,9 @@
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/AB_cc11f9e.love"
             },
+            "hashes": {
+                "1375504351": "a3ef8211a3d78ae0ecec67e57b16dbf244dbb021"
+            },
             "stable": "1375504351",
             "author": "josefnpat",
             "engine": "love-0.8.0",
@@ -17,6 +20,9 @@
             "name": "Doctor Cat: The Game",
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/DC_1128fac.love"
+            },
+            "hashes": {
+                "1375504351": "23e1deeb96700512edb76a913e19dda03c5f24b6"
             },
             "stable": "1375504351",
             "author": "josefnpat",
@@ -29,6 +35,9 @@
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/GP_631aaf8.love"
             },
+            "hashes": {
+                "1375504351": "86082e59b2c8ec1938daa0dca3630b5c881a34c4"
+            },
             "stable": "1375504351",
             "author": "josefnpat",
             "engine": "love-0.8.0",
@@ -39,6 +48,9 @@
             "name": "Pocket Strife",
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/PS_231b431.love"
+            },
+            "hashes": {
+                "1375504351": "b366e1bbbf18b7014924f8784c739aa4bd76402b"
             },
             "stable": "1375504351",
             "author": "josefnpat",
@@ -51,6 +63,9 @@
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/LD24_4828d41.love"
             },
+            "hashes": {
+                "1375504351": "5e37e513ed431f78718987b54475baf19b443f75"
+            },
             "stable": "1375504351",
             "author": "josefnpat",
             "engine": "love-0.8.0",
@@ -61,6 +76,9 @@
             "name": "Dun.Gen",
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/LD25_8040614.love"
+            },
+            "hashes": {
+                "1375504351": "170431060e2ae37fc3f5d927a8428fc1143e83d5"
             },
             "stable": "1375504351",
             "author": "josefnpat",
@@ -73,6 +91,9 @@
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/MP_d70fe1d.love"
             },
+            "hashes": {
+                "1375504351": "71782710ec6b52cce5a09c1b17b0450bdb877997"
+            },
             "stable": "1375504351",
             "author": "josefnpat",
             "engine": "love-0.8.0",
@@ -83,6 +104,9 @@
             "name": "Sis, Help Me!",
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/SHM_731bbe1.love"
+            },
+            "hashes": {
+                "1375504351": "8d1b6b3902fc71e7472a778a3ded267ba7dce64c"
             },
             "stable": "1375504351",
             "author": "josefnpat",
@@ -95,6 +119,9 @@
             "sources": {
                 "1375504351": "http://missingsentinelsoftware.com/system/files/MSJ2013_fb15f25.love"
             },
+            "hashes": {
+                "1375504351": "11d6ad028a49ff044df04c435c1fef4c52aa29b1"
+            },
             "stable": "1375504351",
             "author": "josefnpat",
             "engine": "love-0.8.0",
@@ -105,6 +132,9 @@
             "name": "Mari0",
             "sources": {
                 "1375538536": "http://50.116.63.25/public/vapor_hosted/mari0_1.6.love"
+            },
+            "hashes": {
+                "1375538536": "a43d780d789af373cabe04065530e8e4bc803933"
             },
             "stable": "1375538536",
             "author": "Stabyourself.net",
@@ -117,6 +147,9 @@
             "sources": {
                 "1375542764": "http://50.116.63.25/public/vapor_hosted/OrthoRobot_r1.zip"
             },
+            "hashes": {
+                "1375542764": "3e42a62cb98a4fb80625893d331926ba3af079dd"
+            },
             "stable": "1375542764",
             "author": "Stabyourself.net",
             "engine": "love-0.8.0",
@@ -128,6 +161,9 @@
             "sources": {
                 "1375541666": "http://50.116.63.25/public/vapor_hosted/mrrescue-1.02b.love"
             },
+            "hashes": {
+                "1375541666": "dc1ceb3ebdb7748ffebdafaafea4cabac4908655"
+            },
             "stable": "1375541666",
             "author": "TangramGames.dk",
             "engine": "love-0.8.0",
@@ -138,6 +174,9 @@
             "name": "Sienna",
             "sources": {
                 "1375541666": "http://50.116.63.25/public/vapor_hosted/sienna.love"
+            },
+            "hashes": {
+                "1375541666": "932a5d4db7c356ec8c216ff26c6a3824b3cec3a9"
             },
             "stable": "1375541666",
             "author": "TangramGames.dk",
@@ -151,6 +190,9 @@
             "sources": {
                 "1375684497": "http://leafo.net/volcanox/volcanox.love"
             },
+            "hashes": {
+                "1375684497": "017755dd5382d115a0a9ac7e8ab46e3220327a73"
+            },
             "stable": "1375684497",
             "author": "leafo",
             "engine": "love-0.8.0",
@@ -161,6 +203,9 @@
             "name": "Wulcan",
             "sources": {
                 "1375684497": "http://leafo.net/dump/wulcan.love"
+            },
+            "hashes": {
+                "1375684497": "fa775a890f5dde2a432687e57e7a3b92f74a2770"
             },
             "stable": "1375684497",
             "author": "leafo",
@@ -173,6 +218,9 @@
             "sources": {
                 "1375684497": "http://leafo.net/exoslime/exo-slime.love"
             },
+            "hashes": {
+                "1375684497": "b93f84a2719c15e563ecc9f6a9187c274e6098e9"
+            },
             "stable": "1375684497",
             "author": "leafo",
             "engine": "love-0.8.0",
@@ -183,6 +231,9 @@
             "name": "X-Moon",
             "sources": {
                 "1375684497": "http://leafo.net/dump/xmoon.love"
+            },
+            "hashes": {
+                "1375684497": "12afce6d99a3ce71894147ef4b66a91b9b34012f"
             },
             "stable": "1375684497",
             "author": "leafo",
@@ -195,6 +246,9 @@
             "sources": {
                 "1375684497": "http://leafo.net/dump/moondar.love"
             },
+            "hashes": {
+                "1375684497": "8bbda52b6ac429db27209477f2ba9ca18df70ac0"
+            },
             "stable": "1375684497",
             "author": "leafo",
             "engine": "love-0.8.0",
@@ -205,6 +259,9 @@
             "name": "*Swoosh* Bubble-Fishing!",
             "sources": {
                 "1370805291": "http://you.mongle.me/love/fishifishi.love"
+            },
+            "hashes": {
+                "1370805291": "59d9c25a80f55055b1b9a777abafecd3c6658a80"
             },
             "stable": "1370805291",
             "author": "ragzouken",
@@ -217,6 +274,9 @@
             "sources": {
                 "1367173139": "http://you.mongle.me/love/soundscape.love"
             },
+            "hashes": {
+                "1367173139": "f188c786de83d5ad314e18b91a3432f95b56edb7"
+            },
             "stable": "1367173139",
             "author": "ragzouken",
             "engine": "love-0.8.0",
@@ -228,6 +288,9 @@
             "sources": {
                 "1367504326": "http://sience.schattenkind.net/devmania/FOUR_schattenkind_net.love"
             },
+            "hashes": {
+                "1367504326": "eaba0ffc43b11a2fe649dc7bc100a50f11f52f49"
+            }
             "stable": "1367504326",
             "author": "schattenkind.net",
             "engine": "love-0.8.0",

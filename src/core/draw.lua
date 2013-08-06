@@ -42,6 +42,8 @@ function draw.everything()
     local fn = fname(gv,gv.stable)
     if currently_downloading[fn] then
       data.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+    elseif gv.invalid then
+      data.icon = icons.delete
     elseif love.filesystem.exists(fn) then
       data.icon = icons.play
     elseif love.filesystem.exists(imgname(gv)) then
