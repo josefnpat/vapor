@@ -97,18 +97,20 @@ function draw.row(gi, gv)
   -- Draw favorite icon
   local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite
   love.graphics.setColor(favorited and colors.active or colors.inactive)
-  love.graphics.draw(icons.favorite, settings.padding, row_y)
+  love.graphics.draw(icons.favorite, 0, row_y)
   
   -- Draw main icon
   love.graphics.setColor(colors.reset)
   love.graphics.draw(icon,settings.padding, row_y)
 
-  -- Draw row text
+  -- Draw "app" title
   love.graphics.setColor((gi == selectindex) and colors.highlighted or colors.unhighlighted)
   love.graphics.print(gv.name,
     settings.padding*2,
     row_y
   )
+
+  -- Draw author
   love.graphics.printf(gv.author,
     settings.padding*2,
     row_y,
