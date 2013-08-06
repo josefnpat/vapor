@@ -5,6 +5,7 @@ settings.padding = 22
 settings.offset = (love.graphics.getWidth()-settings.padding*2) / (16/9) + settings.padding -- 16:9
 
 function settings.load()
+  settings.rows = #remote.data.games + (settings.padding)
   if love.filesystem.exists(settings.file) then
     local rawjson = love.filesystem.read(settings.file)
     settings.data = json.decode(rawjson)

@@ -73,7 +73,7 @@ function love.load(args)
 
   selectindex = nil
 
-  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(#remote.data.games+2)+settings.offset,false,false,0)
+  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.rows+2)+settings.offset,false,false,0)
   
 end
 
@@ -81,7 +81,7 @@ function love.update(dt)
   downloader:update()
   downloader.dt = downloader.dt + dt
 
-  local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding )
+  local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding ) - 1
   if current >= 1 and current <= #remote.data.games then
     selectindex = current
   else

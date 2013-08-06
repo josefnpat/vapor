@@ -14,6 +14,20 @@ function draw.everything()
   -- Draw all rows
   local row_y = settings.offset
   love.graphics.setFont(fonts.basic)
+
+  do
+    local data = {
+      text = {
+        name = "Applications",
+        color = colors.unhighlighted,
+        x = settings.padding/2
+      },
+      caption = #remote.data.games .. " items",
+      bg = colors.barheader,
+    }
+    row_y = draw.row(data, row_y)
+  end
+
   for gi,gv in pairs(remote.data.games) do
     local data = {
       bg = (gi%2==1) and colors.bareven or colors.barodd,
@@ -36,8 +50,7 @@ function draw.everything()
       data.icon = icons.download
     end
 
-    draw.row(data, row_y)
-    row_y = row_y + settings.padding
+    row_y = draw.row(data, row_y)
   end
 
   love.graphics.pop()
@@ -116,7 +129,7 @@ function draw.row(data, row_y)
   -- Draw row title
   love.graphics.setColor(data.text.color)
   love.graphics.print(data.text.name,
-    x,
+    data.text.x or x,
     row_y
   )
 
@@ -124,9 +137,11 @@ function draw.row(data, row_y)
   love.graphics.printf(data.caption,
     x,
     row_y,
-    love.graphics.getWidth()-settings.padding*4.5,
+    love.graphics.getWidth()-settings.padding*4.5 + (data.text.x and data.text.x*3.5 or 0),
     "right"
   )
+
+  return row_y + settings.padding
 end
 
 return draw.everything
