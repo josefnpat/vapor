@@ -39,7 +39,7 @@ function draw.everything()
       subline = "CLICK TO INSTALL"
     end
   else
-    subline = "L…VE DISTRIBUTION CLIENT"
+    subline = "DISTRIBUTION CLIENT FOR LÖVE"
   end
   love.graphics.printf(
     subline,
