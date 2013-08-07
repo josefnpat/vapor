@@ -112,7 +112,10 @@ local socket_queue_mt = {
           if type(status) == "table" then
             status = unpack(status)
           end
-          error("Failed to resume coroutine: " .. tostring(status) .. "\n" .. debug.traceback(co))
+          error(("Failed to resume coroutine: %s\n%s"):format(
+            tostring(status),
+            debug.traceback(co)
+          ))
         end
 
         if status == "timeout" then
@@ -191,7 +194,11 @@ local function love_filesystem_sink(fname,download_hash)
         local sizemb,time = #data/(1024^2),stop-start
         local mbps = sizemb/time
 
-        print( round(mbps,4) .. " MB/s ("..round(sizemb,4).." MB in ".. round(time,4) .. " s)")
+        print(("%s MB/s (%s MB in  s)"):format(
+          round(mbps,4),
+          round(sizemb,4),
+          round(time,4)
+        ))
         
         love.filesystem.write(fname..".sha1",hash)
         print(fname .. " hashed.")
