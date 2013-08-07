@@ -1,10 +1,22 @@
 love.draw = require("events.draw")
 
+local function gui()
+  local list = loveframes.Create("list")
+  list:SetPos(settings.padding, settings.offset + settings.padding)
+  list:SetSize(love.graphics.getWidth()-settings.padding*2, settings.padding*15)
+  list:SetDisplayType("vertical")
+   
+  for i,v in ipairs(remote.data.games) do
+      local panel = loveframes.Create("panel")
+      list:AddItem(panel)
+  end
+end
+
 function love.update(dt)
   downloader:update()
   downloader.dt = downloader.dt + dt
 
-  local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding ) - 1
+  --[[local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding ) - 1
   if current >= 1 and current <= #remote.data.games then
     selectindex = current
   else
@@ -30,7 +42,7 @@ function love.update(dt)
         end
       end
     end
-  end
+  end]]
 
   loveframes.update(dt)
 end
@@ -82,3 +94,5 @@ function love.quit()
   local raw = json.encode(settings.data)
   love.filesystem.write(settings.file, raw)
 end
+
+return gui

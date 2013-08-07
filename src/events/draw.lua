@@ -13,7 +13,7 @@ function draw.everything()
   -- Draw the subline
   draw.subline(gameobj)
 
-  -- Draw all rows
+  --[[ Draw all rows
   local row_y = settings.offset
   love.graphics.setFont(fonts.basic)
 
@@ -55,7 +55,7 @@ function draw.everything()
     end
 
     row_y = draw.row(data, row_y)
-  end
+  end]]
 
   love.graphics.pop()
 end

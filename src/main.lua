@@ -82,8 +82,8 @@ function love.load(args)
   colors = require("core/colors")
   settings = require("core/settings")
   remote = require("core/remote")
-
-  require("events")
+  display = require("events")
+  
   require("vendor.frames")
 
   if args[2] == "clearcache" then
@@ -97,6 +97,7 @@ function love.load(args)
 
   remote.load()
   settings.load()
+  display()
 
   nogame = love.graphics.newImage("assets/nogame.png")
   overlay = love.graphics.newImage("assets/overlay.png")
@@ -105,6 +106,6 @@ function love.load(args)
 
   selectindex = nil
 
-  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.rows+3)+settings.offset,false,false,0)
+  love.graphics.setMode(love.graphics.getWidth(),(settings.padding*17)+settings.offset,false,false,0)
   
 end
