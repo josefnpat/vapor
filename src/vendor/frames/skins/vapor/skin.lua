@@ -7,13 +7,13 @@
 local skin = {}
 
 -- skin info (you always need this in a skin)
-skin.name = "Orange"
-skin.author = "Nikolai Resokav"
+skin.name = "vapor"
+skin.author = "Vapor"
 skin.version = "1.0"
 
 local smallfont = love.graphics.newFont(10)
 local imagebuttonfont = love.graphics.newFont(15)
-local bordercolor = {143, 143, 143, 255}
+local bordercolor = {64, 64, 64, 255}
 
 -- controls 
 skin.controls = {}
@@ -512,7 +512,7 @@ function skin.DrawScrollBar(object)
 		local image = skin.images["button-down.png"]
 		local imageheight = image:getHeight()
 		local scaley = height/imageheight
-		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.setColor(200, 200, 200, 200)
 		love.graphics.draw(image, x, y, 0, width, scaley)
 		love.graphics.setColor(bordercolor)
 		skin.OutlinedRectangle(x, y, width, height)
@@ -520,7 +520,7 @@ function skin.DrawScrollBar(object)
 		local image = skin.images["button-hover.png"]
 		local imageheight = image:getHeight()
 		local scaley = height/imageheight
-		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.setColor(200, 200, 200, 200)
 		love.graphics.draw(image, x, y, 0, width, scaley)
 		love.graphics.setColor(bordercolor)
 		skin.OutlinedRectangle(x, y, width, height)
@@ -528,7 +528,7 @@ function skin.DrawScrollBar(object)
 		local image = skin.images["button-nohover.png"]
 		local imageheight = image:getHeight()
 		local scaley = height/imageheight
-		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.setColor(200, 200, 200, 200)
 		love.graphics.draw(image, x, y, 0, width, scaley)
 		love.graphics.setColor(bordercolor)
 		skin.OutlinedRectangle(x, y, width, height)
@@ -1021,7 +1021,7 @@ function skin.DrawScrollButton(object)
 		local image = skin.images["button-down.png"]
 		local imageheight = image:getHeight()
 		local scaley = height/imageheight
-		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.setColor(222, 222, 222, 222)
 		love.graphics.draw(image, x, y, 0, width, scaley)
 		-- button border
 		love.graphics.setColor(bordercolor)
@@ -1032,7 +1032,7 @@ function skin.DrawScrollButton(object)
 		local image = skin.images["button-hover.png"]
 		local imageheight = image:getHeight()
 		local scaley = height/imageheight
-		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.setColor(222, 222, 222, 222)
 		love.graphics.draw(image, x, y, 0, width, scaley)
 		-- button border
 		love.graphics.setColor(bordercolor)
@@ -1042,7 +1042,7 @@ function skin.DrawScrollButton(object)
 		local image = skin.images["button-nohover.png"]
 		local imageheight = image:getHeight()
 		local scaley = height/imageheight
-		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.setColor(222, 222, 222, 222)
 		love.graphics.draw(image, x, y, 0, width, scaley)
 		-- button border
 		love.graphics.setColor(bordercolor)
@@ -1055,9 +1055,9 @@ function skin.DrawScrollButton(object)
 		local imageheight = image:getHeight()
 		image:setFilter("nearest", "nearest")
 		if hover then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(100, 100, 100, 100)
 		else
-			love.graphics.setColor(255, 255, 255, 150)
+			love.graphics.setColor(100, 100, 100, 150)
 		end
 		love.graphics.draw(image, x + width/2 - imagewidth/2, y + height/2 - imageheight/2)
 	elseif scrolltype == "down" then
@@ -1066,9 +1066,9 @@ function skin.DrawScrollButton(object)
 		local imageheight = image:getHeight()
 		image:setFilter("nearest", "nearest")
 		if hover then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(100, 100, 100, 100)
 		else
-			love.graphics.setColor(255, 255, 255, 150)
+			love.graphics.setColor(100, 100, 100, 150)
 		end
 		love.graphics.draw(image, x + width/2 - imagewidth/2, y + height/2 - imageheight/2)
 	elseif scrolltype == "left" then
@@ -1077,9 +1077,9 @@ function skin.DrawScrollButton(object)
 		local imageheight = image:getHeight()
 		image:setFilter("nearest", "nearest")
 		if hover then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(100, 100, 100, 100)
 		else
-			love.graphics.setColor(255, 255, 255, 150)
+			love.graphics.setColor(100, 100, 100, 150)
 		end
 		love.graphics.draw(image, x + width/2 - imagewidth/2, y + height/2 - imageheight/2)
 	elseif scrolltype == "right" then
@@ -1088,9 +1088,9 @@ function skin.DrawScrollButton(object)
 		local imageheight = image:getHeight()
 		image:setFilter("nearest", "nearest")
 		if hover then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(100, 100, 100, 100)
 		else
-			love.graphics.setColor(255, 255, 255, 150)
+			love.graphics.setColor(100, 100, 100, 150)
 		end
 		love.graphics.draw(image, x + width/2 - imagewidth/2, y + height/2 - imageheight/2)
 	end
