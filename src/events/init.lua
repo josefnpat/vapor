@@ -6,8 +6,10 @@ local function gui()
   list:SetSize(love.graphics.getWidth()-settings.padding*2, settings.padding*15)
   list:SetDisplayType("vertical")
    
-  for i,v in ipairs(remote.data.games) do
+  for gi,gv in ipairs(remote.data.games) do
       local panel = loveframes.Create("panel")
+      panel.bgcolor = (gi%2==1) and colors.bareven or colors.barodd
+      panel:SetHeight(settings.padding)
       list:AddItem(panel)
   end
 end

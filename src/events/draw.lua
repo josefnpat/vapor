@@ -72,7 +72,8 @@ function draw.header(gameobj)
     0,
     settings.padding,
     love.graphics.getWidth()-settings.padding*2,
-    fonts.title:getHeight()+fonts.basic:getHeight())
+    fonts.title:getHeight()+fonts.basic:getHeight()
+  )
 
   love.graphics.setColor(colors.reset)
   love.graphics.setFont(fonts.title)
