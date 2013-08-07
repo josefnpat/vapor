@@ -16,6 +16,20 @@ function fname(gameobj,sourceindex)
   return gameobj.id.."-"..sourceindex..".love"
 end
 
+local function execgame(binarypath, gamepath)
+  local execstr
+  if love._os == "Windows" then
+    local fstr = [[start "" "%s" "%APPDATA%/LOVE/vapor-data/%s"]]
+    execstr = fstr:format(binarypath, gamepath)
+  else
+    -- OS X, Linux
+    local fstr = [["%s" "%s/%s"]]
+    execstr = fstr:format(binarypath, love.filesystem.getSaveDirectory(), gamepath)
+  end
+  print(gamepath.." starting.")
+  return os.execute(execstr)
+end
+
 function dogame(gameobj)
 
   local fn = fname(gameobj,gameobj.stable)
@@ -30,14 +44,7 @@ function dogame(gameobj)
       end
       if gameobj.hashes[gameobj.stable] == hash then
         print(fn .. " hash validated.")
-        local exe
-        if love._os == "Windows" then
-        exe = "start \"\" \""..binary.."\" \"".."%appdata%/LOVE/vapor-data".."/"..fname(gameobj,gameobj.stable).."\""
-        else -- osx, linux, unknown, crazy
-        exe = "\""..binary.."\" \""..love.filesystem.getSaveDirectory( ).."/"..fname(gameobj,gameobj.stable).."\" &"
-        end
-        print(fn .. " starting.")
-        os.execute(exe)
+        local status = execgame(binary, fn)
       else
         if gameobj.invalid then
           gameobj.invalid = nil
