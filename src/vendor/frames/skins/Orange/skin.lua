@@ -603,16 +603,7 @@ end
 	- func: DrawList(object)
 	- desc: used to draw over the object and its children
 --]]---------------------------------------------------------
-function skin.DrawOverList(object)
-
-	local x = object:GetX()
-	local y = object:GetY()
-	local width = object:GetWidth()
-	local height = object:GetHeight()
-	
-	love.graphics.setColor(bordercolor)
-	skin.OutlinedRectangle(x, y, width, height)
-	
+function skin.DrawOverList()
 end
 
 --[[---------------------------------------------------------
