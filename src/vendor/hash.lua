@@ -56,7 +56,7 @@ local sin = math.sin
 local abs = math.abs
 
 -- utils.lua part of https://bitbucket.org/Boolsheet/bslf.
-local utils = require("lib.bslf.utils")
+local utils = require("vendor.bslf.utils")
 local intstr = utils.intstr
 local bswap = utils.bswap32
 
@@ -91,7 +91,7 @@ elseif bit and bit.band then
 	lrotate = function(...) return bit.rol(...)%POW32 end
 else
 	-- Pure Lua bitwise functions part of https://bitbucket.org/Boolsheet/bslf.
-	local bit_lua = require("lib.bslf.bit")
+	local bit_lua = require("vendor.bslf.bit")
 
 	band = bit_lua.band
 	bor = bit_lua.bor

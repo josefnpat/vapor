@@ -1,8 +1,8 @@
 local socket = require("socket")
 local ltn12 = require("ltn12")
 
-require("lib.bslf.bit").lut()
-hashlib = require("lib/hash")
+require("vendor.bslf.bit").lut()
+hashlib = require("vendor/hash")
 
 -- don't protect anything
 socket.protect = function(fn)

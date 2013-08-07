@@ -1,7 +1,7 @@
 git,git_count = "missing git.lua",0
 pcall(require, "git");
 
-require("lib/json")
+require("vendor/json")
 async = require("core/async") -- this needs to be required before "socket.http"
 
 http = require("socket.http")
