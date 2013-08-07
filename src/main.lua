@@ -78,6 +78,7 @@ function love.load(args)
   settings = require("core/settings")
   remote = require("core/remote")
   love.draw = require("core/draw")
+  require("vendor.frames")
 
   if args[2] == "clearcache" then
     love.filesystem.remove(settings.file)
@@ -134,7 +135,7 @@ function love.update(dt)
     end
   end
 
-
+  loveframes.update(dt)
 end
 
 function love.keypressed(key)
@@ -154,6 +155,11 @@ function love.keypressed(key)
       gameobj.invalid = nil
     end
   end
+  loveframes.keypressed(key)
+end
+
+function love.keyreleased(key)
+  loveframes.keyreleased(key) 
 end
 
 function love.mousepressed(x,y,button)
@@ -167,6 +173,12 @@ function love.mousepressed(x,y,button)
       settings.data.games[gameobj.id].favorite = not settings.data.games[gameobj.id].favorite
     end
   end
+
+  loveframes.mousepressed(x, y, button)
+end
+
+function love.mousereleased(x, y, button)
+  loveframes.mousereleased(x, y, button)
 end
 
 function love.quit()

@@ -1,6 +1,8 @@
 local draw = {}
 
 function draw.everything()
+  loveframes.draw()
+
   love.graphics.push()
   love.graphics.translate(settings.padding, settings.padding)
 
