@@ -395,7 +395,7 @@ function skin.DrawImageButton(object)
 	
 	if down then
 		if image then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(object.color or {255,255,255,255})
 			love.graphics.draw(image, x + 1, y + 1)
 		end
 		love.graphics.setFont(font)
@@ -405,7 +405,7 @@ function skin.DrawImageButton(object)
 		love.graphics.print(text, x + width/2 - twidth/2 + 1, y + height - theight - 6 + 1)
 	elseif hover then
 		if image then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(object.color or {255,255,255,255})
 			love.graphics.draw(image, x, y)
 		end
 		love.graphics.setFont(font)
@@ -415,7 +415,7 @@ function skin.DrawImageButton(object)
 		love.graphics.print(text, x + width/2 - twidth/2, y + height - theight - 6)
 	else
 		if image then
-			love.graphics.setColor(255, 255, 255, 255)
+			love.graphics.setColor(object.color or {255,255,255,255})
 			love.graphics.draw(image, x, y)
 		end
 		love.graphics.setFont(font)
