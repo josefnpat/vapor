@@ -36,7 +36,7 @@ end
 --]]---------------------------------------------------------
 function loveframes.util.BoundingBox(x1, x2, y1, y2, w1, w2, h1, h2)
 
-	if x1 > x2 + w2 - 1 or y1 > y2 + h2 - 1 or x2 > x1 + w1 - 1 or y2 > y1 + h1 - 1 then
+	if x1 > x2 + w2  or y1 > y2 + h2  or x2 > x1 + w1  or y2 > y1 + h1  then
 		return false
 	else
 		return true

@@ -94,7 +94,7 @@ end
 
 function love.update(dt)
   loveframes.update(dt)
-  
+
   downloader:update()
   downloader.dt = downloader.dt + dt
 
