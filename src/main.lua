@@ -84,7 +84,7 @@ function love.load(args)
   remote = require("core/remote")
   display = require("events")
   
-  require("vendor.loveframes")
+  require("vendor.frames")
 
   if args[2] == "clearcache" then
     love.filesystem.remove(settings.file)
