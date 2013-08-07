@@ -30,7 +30,7 @@ loveframes.hoverobject = false
 loveframes.modalobject = false
 loveframes.inputobject = false
 loveframes.hover = false
-loveframes.basicfont = love.graphics.newFont(12)
+loveframes.basicfont = fonts.basic
 loveframes.basicfontsmall = love.graphics.newFont(10)
 loveframes.objects = {}
 

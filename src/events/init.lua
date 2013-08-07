@@ -7,63 +7,82 @@ local function gui()
   list:SetDisplayType("vertical")
    
   for gi,gv in ipairs(remote.data.games) do
-      local panel = loveframes.Create("panel")
-      panel.bgcolor = (gi%2==1) and colors.bareven or colors.barodd
-      panel:SetHeight(settings.padding)
-      panel.Update = function()
-        if panel.hover then
-          selectindex = gi
-        elseif selectindex == gi then
-          selectindex = nil
-        end
+    local hovered
+    local function hovercheck(me)
+      if me.hover then
+        selectindex = gi
+        hovered = true
       end
-      
-      -- Favorited icon
-      local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite or false
-      local imagebutton = loveframes.Create("imagebutton", panel)
-      imagebutton:SetSize(22, 22)
-      imagebutton.color = favorited and colors.active or colors.inactive
-      imagebutton:SetPos(0, 0)
-      imagebutton:SetText("")
-      imagebutton:SetImage(icons.favorite)
-      imagebutton.OnClick = function(object)
-          local favorited = settings.data.games[gv.id].favorite
-          settings.data.games[gv.id].favorite = not favorited
-          print(("Application '%s' %sfavorited"):format( gv.name, (not favorited) and "" or "un"))
-      end
-      imagebutton.Update = function()
-        local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite or false
-        imagebutton.color = favorited and colors.active or colors.inactive
-      end
+    end
 
-      -- Main icon
-      local imagebutton = loveframes.Create("imagebutton", panel)
-      local function getMainIcon()
-        local fn, icon = fname(gv,gv.stable)
-        if currently_downloading[fn] then
-          icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
-        elseif gv.invalid then
-          icon = icons.delete
-        elseif love.filesystem.exists(fn) then
-          icon = icons.play
-        elseif love.filesystem.exists(imgname(gv)) then
-          icon = icons.view
-        else
-          icon = icons.download
-        end
-        return icon
+    local row = loveframes.Create("panel")
+    row.bgcolor = (gi%2==1) and colors.bareven or colors.barodd
+    row:SetHeight(settings.padding)
+    row.Update = function()
+      hovercheck(row)
+    end
+    
+    -- Favorited icon
+    local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite or false
+    local favbtn = loveframes.Create("imagebutton", row)
+    favbtn:SetSize(22, 22)
+    favbtn.color = favorited and colors.active or colors.inactive
+    favbtn:SetPos(0, 0)
+    favbtn:SetText("")
+    favbtn:SetImage(icons.favorite)
+    favbtn.OnClick = function(object)
+        local favorited = settings.data.games[gv.id].favorite
+        settings.data.games[gv.id].favorite = not favorited
+        print(("Application '%s' %sfavorited"):format( gv.name, (not favorited) and "" or "un"))
+    end
+    favbtn.Update = function()
+      local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite or false
+      favbtn.color = favorited and colors.active or colors.inactive
+      hovercheck(favbtn)
+    end
+
+    -- Main icon
+    local mainbtn = loveframes.Create("imagebutton", row)
+    local function getMainIcon()
+      local fn, icon = fname(gv,gv.stable)
+      if currently_downloading[fn] then
+        icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+      elseif gv.invalid then
+        icon = icons.delete
+      elseif love.filesystem.exists(fn) then
+        icon = icons.play
+      elseif love.filesystem.exists(imgname(gv)) then
+        icon = icons.view
+      else
+        icon = icons.download
       end
-      imagebutton:SetSize(22, 22)
-      imagebutton:SetPos(settings.padding, 0)
-      imagebutton:SetText("")
-      imagebutton:SetImage(getMainIcon())
-      imagebutton.Update = function()
-        imagebutton:SetImage(getMainIcon())
-      end
-      imagebutton.OnClick = function()
-        dogame(gv)
-      end
-      list:AddItem(panel)
+      return icon
+    end
+    mainbtn:SetSize(22, 22)
+    mainbtn:SetPos(settings.padding, 0)
+    mainbtn:SetText("")
+    mainbtn:SetImage(getMainIcon())
+    mainbtn.Update = function()
+      mainbtn:SetImage(getMainIcon())
+      hovercheck(mainbtn)
+    end
+    mainbtn.OnClick = function()
+      dogame(gv)
+    end
+
+    local text = loveframes.Create("text", row)
+    text:SetPos(settings.padding*2, 0)
+    text:SetMaxWidth(love.graphics.getWidth()-settings.padding*3.5)
+    text:SetText(gv.name)
+    text.Update = function()
+      hovercheck(text)
+    end
+
+    if (not hovered) and (selectindex == gi) then
+      selectindex = nil
+    end
+
+    list:AddItem(row)
   end
 end
 

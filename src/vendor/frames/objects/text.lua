@@ -27,7 +27,7 @@ function newobject:initialize()
 	self.shadowyoffset = 1
 	self.formattedtext = {}
 	self.original = {}
-	self.defaultcolor = {0, 0, 0, 255}
+	self.defaultcolor = {255, 255, 255, 255}
 	self.shadowcolor = {0, 0, 0, 255}
 	self.ignorenewlines = false
 	self.shadow = false
