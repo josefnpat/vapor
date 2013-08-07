@@ -1,6 +1,5 @@
 love.draw = require("events.draw")
 
-local gdata = {}
 local function gui()
   local list = loveframes.Create("list")
   list:SetPos(settings.padding, settings.offset + settings.padding)
@@ -8,17 +7,10 @@ local function gui()
   list:SetDisplayType("vertical")
    
   for gi,gv in ipairs(remote.data.games) do
-    local data = {}
-
     local function hovercheck(me)
       if me.hover then
         selectindex = gi
-        data.hovered = true
       end
-    end
-
-    data.update = function()
-      data.hovered = false
     end
 
     local row = loveframes.Create("panel")
@@ -84,26 +76,18 @@ local function gui()
 
     text.Update = function()
       hovercheck(text)
-      text.defaultcolor = data.hovered and colors.highlighted or colors.unhighlighted
+      text.defaultcolor = (selectindex == gi) and colors.highlighted or colors.unhighlighted
     end
 
     list:AddItem(row)
-    gdata[gi] = data
   end
 end
 
 function love.update(dt)
+  selectindex = nil
   loveframes.update(dt)
-
   downloader:update()
   downloader.dt = downloader.dt + dt
-
-  for gi,gv in ipairs(remote.data.games) do
-    if (not gdata[gi].hovered) and (selectindex == gi) then
-      selectindex = nil
-    end
-    gdata[gi].update()
-  end
 
   if selectindex then  
     if not images[selectindex] then
