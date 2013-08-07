@@ -19,7 +19,7 @@ end
 local function execgame(binarypath, gamepath)
   local execstr
   if love._os == "Windows" then
-    local fstr = [[start "" "%s" "%APPDATA%/LOVE/vapor-data/%s"]]
+    local fstr = [[start "" "%s" "%%APPDATA%%/LOVE/vapor-data/%s"]]
     execstr = fstr:format(binarypath, gamepath)
   else
     -- OS X, Linux
