@@ -10,6 +10,18 @@ local function gui()
       local panel = loveframes.Create("panel")
       panel.bgcolor = (gi%2==1) and colors.bareven or colors.barodd
       panel:SetHeight(settings.padding)
+      
+      -- Favorited icon
+      local favorited = settings.data.games[gv.id] and settings.data.games[gv.id].favorite or false
+      local imagebutton = loveframes.Create("imagebutton", panel)
+      imagebutton:SetSize(22, 22)
+      imagebutton:SetPos(0, 0)
+      imagebutton:SetText("")
+      imagebutton:SetImage(icons.favorite)
+      imagebutton.OnClick = function(object)
+          print("Entrant (un)favorited")
+      end
+
       list:AddItem(panel)
   end
 end
