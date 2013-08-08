@@ -1,6 +1,8 @@
 local draw = {}
 
 function draw.everything()
+  loveframes.draw()
+
   love.graphics.push()
   love.graphics.translate(settings.padding, settings.padding)
 
@@ -11,7 +13,7 @@ function draw.everything()
   -- Draw the subline
   draw.subline(gameobj)
 
-  -- Draw all rows
+  --[[ Draw all rows
   local row_y = settings.offset
   love.graphics.setFont(fonts.basic)
 
@@ -53,7 +55,7 @@ function draw.everything()
     end
 
     row_y = draw.row(data, row_y)
-  end
+  end]]
 
   love.graphics.pop()
 end
@@ -70,7 +72,8 @@ function draw.header(gameobj)
     0,
     settings.padding,
     love.graphics.getWidth()-settings.padding*2,
-    fonts.title:getHeight()+fonts.basic:getHeight())
+    fonts.title:getHeight()+fonts.basic:getHeight()
+  )
 
   love.graphics.setColor(colors.reset)
   love.graphics.setFont(fonts.title)
@@ -102,13 +105,10 @@ function draw.subline(gameobj)
 end
 
 function draw.row(data, row_y)
-  local x
-
   -- Draw row background
-  x = 0
   love.graphics.setColor(data.bg)
   love.graphics.rectangle("fill",
-    x,
+    0,
     row_y,
     love.graphics.getWidth()-settings.padding*2,
     settings.padding
@@ -121,19 +121,16 @@ function draw.row(data, row_y)
   end
 
   -- Draw main icon
-  x = settings.padding
+  local x = settings.padding
   if data.icon then
     love.graphics.setColor(colors.reset)
-    love.graphics.draw(data.icon,x, row_y)
+    love.graphics.draw(data.icon, x, row_y)
   end
 
   -- Draw row title
-  x = settings.padding*2
+  x = x*2
   love.graphics.setColor(data.text.color)
-  love.graphics.print(data.text.name,
-    data.text.x or x,
-    row_y
-  )
+  love.graphics.print(data.text.name, data.text.x or x, row_y)
 
   -- Draw caption (apps: author, headers: #items)
   love.graphics.printf(data.caption,
