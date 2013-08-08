@@ -16,7 +16,7 @@
 
 Please see [/src/games.json](/src/games.json) for an example of how this is done.
 
-    * id :      A unique id using only A-Z, a-z, underscores and dashes.
+      * id :      A unique id using only A-Z, a-z, underscores and dashes.
     * name :    The name of your game.
     * sources : An array of links to your .love files with an index representing the current unix timestamp.
                 Please ensure that your game is hosted on an http server as opposed to https.
@@ -26,7 +26,7 @@ Please see [/src/games.json](/src/games.json) for an example of how this is done
                 Contact me if you would like me to host your .love file.
     * hashes :  An array of SHA-1 hashes for your .love files with an index representing the current unix timestamp.
                 This means that if you change your .love file on your server, it will no longer be valid, and you will
-                have to make a new entry in the sources and hashes arrays.
+                have to make a new entry in the sources and hashes arrays. [1]
     * stable :  The timestamp of the current stable release index from your sources list.
                 If you only have one element in sources, this would be that elements index.
     * author :  Your name or handle.
@@ -54,3 +54,5 @@ Your game must not:
 _Yeah, what of it?_
 
 Feature Requests, Suggestions, Bugs, etc. go in the [issue queue](https://github.com/josefnpat/vapor/issues).
+
+[1] How to on [windows](http://support.microsoft.com/kb/889768), [OS X](http://ss64.com/osx/shasum.html) or [linux](http://en.wikipedia.org/wiki/Sha1sum)
