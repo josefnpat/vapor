@@ -1,5 +1,5 @@
 love.draw = require("events.draw")
-
+local collapsed, collapse
 local function gui()
   local list = loveframes.Create("list")
   list:SetPos(settings.padding, settings.offset + settings.padding)
@@ -7,17 +7,20 @@ local function gui()
   list:SetDisplayType("vertical")
    
   for gi,gv in ipairs(remote.data.games) do
-    local function hovercheck(me)
+    local function hovercheck(me, collapsed)
       if me.hover then
         selectindex = gi
+        collapse = collapsed and gi or false
       end
     end
 
     local row = loveframes.Create("panel")
     row.bgcolor = (gi%2==1) and colors.bareven or colors.barodd
     row:SetHeight(settings.padding)
+    row.OnClick = CollapseRow
     row.Update = function()
-      hovercheck(row)
+      row:SetHeight((collapsed==gi) and (settings.padding*5) or settings.padding)
+      hovercheck(row, true)
     end
     
     -- Favorited icon
@@ -73,15 +76,14 @@ local function gui()
     text:SetMaxWidth(love.graphics.getWidth()-settings.padding*3.5)
     text.defaultcolor = colors.highlighted
     text:SetText(colors.unhighlighted, gv.name)
-
+    text.OnClick = CollapseRow
     text.Update = function()
-      hovercheck(text)
+      hovercheck(text, true)
       if (selectindex == gi) then
         text:SetText(gv.name)
       else
         text:SetText{colors.unhighlighted, gv.name}
       end
-      if selectindex==gi then print("color:",text.defaultcolor==colors.highlighted) end
     end
 
     list:AddItem(row)
@@ -142,6 +144,10 @@ end
 
 function love.mousepressed(x,y,button)
   loveframes.mousepressed(x, y, button)
+  if (button == "l") and (collapse == selectindex) then
+    collapsed = (collapsed==selectindex) and false or selectindex
+    print("Toggled collapsed to", collapsed)
+  end
 end
 
 function love.mousereleased(x, y, button)
