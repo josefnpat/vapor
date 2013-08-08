@@ -146,7 +146,7 @@ function love.keypressed(key)
     love.event.quit()
   elseif (key == "delete") or (key == "backspace") then
     local gameobj = remote.data.games[selectindex]
-    if gameobj then
+    if gameobj and not currently_downloading[fname(gameobj,gameobj.stable)] then
       love.filesystem.remove(fname(gameobj,gameobj.stable))
       love.filesystem.remove(fname(gameobj,gameobj.stable)..".sha1")
       love.filesystem.remove(imgname(gameobj))
