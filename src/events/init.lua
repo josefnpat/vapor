@@ -79,7 +79,7 @@ local function gui()
     text.OnClick = CollapseRow
     text.Update = function()
       hovercheck(text, true)
-      if (selectindex == gi) then
+      if (selectindex == gi) or (collapsed==gi) then
         text:SetText(gv.name)
       else
         text:SetText{colors.unhighlighted, gv.name}
