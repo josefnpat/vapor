@@ -21,6 +21,8 @@ Please see [/src/games.json](/src/games.json) for an example of how this is done
     * sources : An array of links to your .love files with an index representing the current unix timestamp.
                 Please ensure that your game is hosted on an http server as opposed to https.
                 If you can, please host this on a server, as opposed to a shared website like dropbox.
+                @jpikl has found out that you can link to bitbucket http addresses as well! The trick is to use the
+                cdn.bitbucket.org subdomain. See the `src/games.json` for an example.
                 Contact me if you would like me to host your .love file.
     * hashes :  An array of SHA-1 hashes for your .love files with an index representing the current unix timestamp.
                 This means that if you change your .love file on your server, it will no longer be valid, and you will
