@@ -7,10 +7,10 @@ local function gui()
   list:SetDisplayType("vertical")
    
   for gi,gv in ipairs(remote.data.games) do
-    local function hovercheck(me, collapsed)
+    local function hovercheck(me, v)
       if me.hover then
         selectindex = gi
-        collapse = collapsed and gi or false
+        collapse = v and gi or collapse
       end
     end
 
@@ -145,7 +145,7 @@ end
 function love.mousepressed(x,y,button)
   loveframes.mousepressed(x, y, button)
   if (button == "l") and (collapse == selectindex) then
-    collapsed = (collapsed==selectindex) and false or selectindex
+    collapsed = (collapsed ~= selectindex) and selectindex or nil
     print("Toggled collapsed to", collapsed)
   end
 end
