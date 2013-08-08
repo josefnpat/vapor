@@ -295,6 +295,20 @@
             "author": "schattenkind.net",
             "engine": "love-0.8.0",
             "image": "http://sience.schattenkind.net/devmania/FOUR_schattenkind.png"
+        },
+        {
+            "id": "tower-quest",
+            "name": "Tower Quest",
+            "sources": {
+                "1375985561": "http://cdn.bitbucket.org/jpikl/tower-quest/downloads/tower-quest-0.10-alpha.love"
+            },
+            "hashes": {
+                "1375985561": "1a5c5880ec0a8b6161b1d0171221b1bf965e9501"
+            }
+            "stable": "1375985561",
+            "author": "jonyzz",
+            "engine": "love-0.8.0",
+            "image": "http://dl.dropboxusercontent.com/u/13167516/tq.png"
         }
     ]
 }
