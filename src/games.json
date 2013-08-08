@@ -290,7 +290,7 @@
             },
             "hashes": {
                 "1367504326": "eaba0ffc43b11a2fe649dc7bc100a50f11f52f49"
-            }
+            },
             "stable": "1367504326",
             "author": "schattenkind.net",
             "engine": "love-0.8.0",
@@ -304,7 +304,7 @@
             },
             "hashes": {
                 "1375985561": "1a5c5880ec0a8b6161b1d0171221b1bf965e9501"
-            }
+            },
             "stable": "1375985561",
             "author": "jonyzz",
             "engine": "love-0.8.0",
