@@ -71,12 +71,17 @@ local function gui()
     local text = loveframes.Create("text", row)
     text:SetPos(settings.padding*2, 0)
     text:SetMaxWidth(love.graphics.getWidth()-settings.padding*3.5)
-    text:SetText(gv.name)
-    text.defaultcolor = colors.unhighlighted
+    text.defaultcolor = colors.highlighted
+    text:SetText(colors.unhighlighted, gv.name)
 
     text.Update = function()
       hovercheck(text)
-      text.defaultcolor = (selectindex == gi) and colors.highlighted or colors.unhighlighted
+      if (selectindex == gi) then
+        text:SetText(gv.name)
+      else
+        text:SetText{colors.unhighlighted, gv.name}
+      end
+      if selectindex==gi then print("color:",text.defaultcolor==colors.highlighted) end
     end
 
     list:AddItem(row)
@@ -89,7 +94,7 @@ function love.update(dt)
   downloader:update()
   downloader.dt = downloader.dt + dt
 
-  if selectindex then  
+  if selectindex then
     if not images[selectindex] then
       local current_index = selectindex
       local imgn = imgname(remote.data.games[selectindex])
