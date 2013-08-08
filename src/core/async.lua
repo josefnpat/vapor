@@ -194,7 +194,7 @@ local function love_filesystem_sink(fname,download_hash)
         local sizemb,time = #data/(1024^2),stop-start
         local mbps = sizemb/time
 
-        print(("%s MB/s (%s MB in  s)"):format(
+        print(("%s MB/s (%s MB in %s s)"):format(
           round(mbps,4),
           round(sizemb,4),
           round(time,4)
