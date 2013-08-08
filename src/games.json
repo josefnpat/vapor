@@ -309,6 +309,20 @@
             "author": "jonyzz",
             "engine": "love-0.8.0",
             "image": "http://dl.dropboxusercontent.com/u/13167516/tq.png"
+        },
+        {
+	          "id": "metanet-hunter",
+	          "name": "Metanet Hunter",
+	          "sources": {
+		          "1376002497": "http://cdn.bitbucket.org/NightKawata/metanet-hunter/downloads/Metanet%20Hunter.love"
+	          },
+	          "hashes": {
+		          "1376002497": "c35004fa041d706bbaef1770d8c833592bb82f03"
+	          },
+	          "stable": "1376002497",
+	          "author": "NightKawata",
+	          "engine": "love-0.8.0",
+	          "image": "http://i.imgur.com/M4Wkce6.png"
         }
     ]
 }
