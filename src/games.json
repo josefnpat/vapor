@@ -323,6 +323,20 @@
 	          "author": "NightKawata",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/M4Wkce6.png"
+        },
+        {
+	          "id": "roguefleet",
+	          "name": "Rogue Fleet",
+	          "sources": {
+		          "1376024769": "http://www.martianarctic.com/games/roguefleet/roguefleet.php"
+	          },
+	          "hashes": {
+		          "1376024769": "9d9f780ee5e06ebf3542c617a70949e7a9bb38bb"
+	          },
+	          "stable": "1376024769",
+	          "author": "Martian Arctic Games",
+	          "engine": "love-0.8.0",
+	          "image": "http://i.imgur.com/48nCUhZ.png"
         }
     ]
 }
