@@ -5,6 +5,7 @@ require("lib/json")
 async = require("core/async") -- this needs to be required before "socket.http"
 
 require('lib/loveframes')
+loveframes.config["ACTIVESKIN"] = "gray"
 
 http = require("socket.http")
 
