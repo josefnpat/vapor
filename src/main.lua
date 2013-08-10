@@ -89,6 +89,7 @@ function favoritegame(index)
     settings.data.games[gameobj.id].favorite = 
       not settings.data.games[gameobj.id].favorite
   end
+  ui.list.favorites = ui.update_list(ui.list.favorites,ui.conditions.favorites)
 end
 
 function love.load(args)

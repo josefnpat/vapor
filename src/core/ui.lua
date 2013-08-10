@@ -14,6 +14,10 @@ ui.buttonwidth = 210
 ui.gameselect_w = (settings.gameshow)*settings.padding
 ui.gameselect_h = (settings.gameshow+1)*settings.padding
 
+ui.conditions = {}
+ui.conditions.all = function(g) return true end
+ui.conditions.favorites = function(g) return settings.data.games[g.id].favorite end
+
 function ui.create_list(condition)
   local list = loveframes.Create("columnlist")
 
@@ -25,18 +29,22 @@ function ui.create_list(condition)
     end
   end
 
-  local count = 0
+  list:AddColumn("Application")
+  
+  return ui.update_list(list,condition)
+  
+end
+
+function ui.update_list(list,condition)
+  list:Clear()
+
   for gi,gv in pairs(remote.data.games) do
     if condition(gv) then
       list:AddRow(gv.name)
-      count = count + 1
     end
   end
   
-  list:AddColumn("Application ("..count..")")
-  
-  return list
-  
+  return list  
 end
 
 function ui.update_button(gameobj)
@@ -82,12 +90,13 @@ function ui.load()
 
   tabs:SetSize(ui.gameselect_w,ui.gameselect_h)
 
-  ui.list_all = ui.create_list(function(g) return true end)
-  tabs:AddTab("All",ui.list_all,"All games")
+  ui.list = {}
 
-  --This list isn't updated, so what's the point in showing it?
-  --ui.list_favorites = ui.create_list(function(g) return settings.data.games[g.id].favorite end)
-  --tabs:AddTab("Favorites",ui.list_favorites,"Your favorite games")
+  ui.list.all = ui.create_list(ui.conditions.all)
+  tabs:AddTab("All",ui.list.all,"All games")
+
+  ui.list.favorites = ui.create_list(ui.conditions.favorites)
+  tabs:AddTab("Favorites",ui.list.favorites,"Your favorite games")
   
 end
 
