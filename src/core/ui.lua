@@ -105,9 +105,10 @@ function ui.update(dt)
     end
   end
   
-  local nearestindex = round(ui.headerindex)
-  for index = nearestindex-2,nearestindex+2 do
-    ui.updatecovers(index)
+  if selectindex then
+    for index = selectindex-1,selectindex+1 do
+      ui.updatecovers(index)
+    end
   end
   
   ui.update_button()
