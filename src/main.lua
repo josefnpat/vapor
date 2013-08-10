@@ -44,6 +44,8 @@ function dogame(gameobj)
       end
       if gameobj.hashes[gameobj.stable] == hash then
         print(fn .. " hash validated.")
+        selectindex = nil
+        ui.headerindex = 0
         local status = execgame(binary, fn)
       else
         if gameobj.invalid then
@@ -77,7 +79,7 @@ function love.load(args)
   colors = require("core/colors")
   settings = require("core/settings")
   remote = require("core/remote")
-  love.draw = require("core/draw")
+  ui = require("core/ui")
 
   if args[2] == "clearcache" then
     love.filesystem.remove(settings.file)
@@ -91,54 +93,45 @@ function love.load(args)
   remote.load()
   settings.load()
 
-  nogame = love.graphics.newImage("assets/nogame.png")
-  overlay = love.graphics.newImage("assets/overlay.png")
-
-  images = {}
-
   selectindex = nil
 
-  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.rows+3)+settings.offset,false,false,0)
+  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,false,false,0)
   
 end
 
 function love.update(dt)
   downloader:update()
   downloader.dt = downloader.dt + dt
-
-  local current = math.floor( ( love.mouse.getY() - settings.offset ) / settings.padding ) - 1
-  if current >= 1 and current <= #remote.data.games then
-    selectindex = current
-  else
-    selectindex = nil
-  end
   
-  if selectindex then  
-    if not images[selectindex] then
-      local current_index = selectindex
-      local imgn = imgname(remote.data.games[selectindex])
+  ui.update(dt)
+  
+end
 
-      if not currently_downloading[imgn] then
-        if love.filesystem.exists(imgn) then
-          -- load the image
-          images[current_index] = love.graphics.newImage(imgn)
-        else
-          -- download it!
-          print("downloading " .. imgn)
-          currently_downloading[imgn] = true
-          downloader:request(remote.data.games[selectindex].image, async.love_filesystem_sink(imgn), function()
-            currently_downloading[imgn] = nil
-          end)
-        end
-      end
-    end
-  end
-
-
+function love.draw()
+  ui.header(gameobj)
 end
 
 function love.keypressed(key)
-  if key == "return" or key == " " then
+
+  if key == "right" or key == "down" then
+    if selectindex then
+      selectindex = selectindex + 1
+      if selectindex > #remote.data.games then
+        selectindex = 1
+      end    
+    else
+      selectindex = 1
+    end
+  elseif key == "left" or key == "up" then
+    if selectindex then
+      selectindex = selectindex - 1
+      if selectindex < 1 then
+        selectindex = #remote.data.games
+      end
+    else
+      selectindex = #remote.data.games
+    end
+  elseif key == "return" or key == " " then
     if remote.data.games[selectindex] then
       dogame(remote.data.games[selectindex])
     end
@@ -150,7 +143,7 @@ function love.keypressed(key)
       love.filesystem.remove(fname(gameobj,gameobj.stable))
       love.filesystem.remove(fname(gameobj,gameobj.stable)..".sha1")
       love.filesystem.remove(imgname(gameobj))
-      images[selectindex] = nil
+      ui.images[selectindex] = nil
       gameobj.invalid = nil
     end
   end

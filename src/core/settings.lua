@@ -2,7 +2,8 @@ settings = {}
 settings.appver = 1
 settings.file = "settings.json"
 settings.padding = 22
-settings.offset = (love.graphics.getWidth()-settings.padding*2) / (16/9) + settings.padding -- 16:9
+settings.gameshow = 10 -- THIS IS JEOPARDY!
+settings.heading = {w = 436,h = 245}
 
 function settings.load()
   settings.rows = #remote.data.games
