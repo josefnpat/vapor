@@ -72,6 +72,17 @@ function dogame(gameobj)
   end
 end
 
+function deletegame(index)
+  local gameobj = remote.data.games[index]
+  if gameobj and not currently_downloading[fname(gameobj,gameobj.stable)] then
+    love.filesystem.remove(fname(gameobj,gameobj.stable))
+    love.filesystem.remove(fname(gameobj,gameobj.stable)..".sha1")
+    love.filesystem.remove(imgname(gameobj))
+    ui.images[index] = nil
+    gameobj.invalid = nil
+  end
+end
+
 function love.load(args)
 
   love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
@@ -129,14 +140,7 @@ function love.keypressed(key, unicode)
   elseif key == "escape" then
     love.event.quit()
   elseif (key == "delete") or (key == "backspace") then
-    local gameobj = remote.data.games[selectindex]
-    if gameobj and not currently_downloading[fname(gameobj,gameobj.stable)] then
-      love.filesystem.remove(fname(gameobj,gameobj.stable))
-      love.filesystem.remove(fname(gameobj,gameobj.stable)..".sha1")
-      love.filesystem.remove(imgname(gameobj))
-      ui.images[selectindex] = nil
-      gameobj.invalid = nil
-    end
+    deletegame(selectindex)
   end
   
   loveframes.keypressed(key, unicode)  
