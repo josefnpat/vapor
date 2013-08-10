@@ -83,6 +83,14 @@ function deletegame(index)
   end
 end
 
+function favoritegame(index)
+  local gameobj = remote.data.games[index]
+  if gameobj then
+    settings.data.games[gameobj.id].favorite = 
+      not settings.data.games[gameobj.id].favorite
+  end
+end
+
 function love.load(args)
 
   love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
@@ -141,6 +149,8 @@ function love.keypressed(key, unicode)
     love.event.quit()
   elseif (key == "delete") or (key == "backspace") then
     deletegame(selectindex)
+  elseif key == "f" then
+    favoritegame(selectindex)
   end
   
   loveframes.keypressed(key, unicode)  
