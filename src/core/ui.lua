@@ -9,8 +9,90 @@ ui.headerindex = selectindex or 0
 
 ui.snap = 0.01
 ui.changespeed = 10
+ui.buttonwidth = 210
+
+ui.gameselect_w = (settings.gameshow)*settings.padding
+ui.gameselect_h = (settings.gameshow+1)*settings.padding
+
+function ui.create_list(condition)
+  local list = loveframes.Create("columnlist")
+
+  list.OnRowSelected = function(parent, row, data)
+    for gi,gv in pairs(remote.data.games) do
+      if data[1] == gv.name then
+        selectindex = gi
+      end
+    end
+  end
+
+  local count = 0
+  for gi,gv in pairs(remote.data.games) do
+    if condition(gv) then
+      list:AddRow(gv.name)
+      count = count + 1
+    end
+  end
+  
+  list:AddColumn("Application ("..count..")")
+  
+  return list
+  
+end
+
+function ui.update_button(gameobj)
+
+  local gameobj = remote.data.games[selectindex]
+  if gameobj then
+    local fn = fname(gameobj,gameobj.stable)
+    if currently_downloading[fn] then
+      ui.mainbutton:SetText("Downloading ...")
+      ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+    elseif gameobj.invalid then
+      ui.mainbutton:SetText("Error")
+      ui.mainbutton.icon = icons.delete
+    elseif love.filesystem.exists(fn) then
+      ui.mainbutton:SetText("Play")
+      ui.mainbutton.icon = icons.play
+    else
+      ui.mainbutton:SetText("Download")
+      ui.mainbutton.icon = icons.view
+    end
+  else
+    ui.mainbutton.icon = icons.download
+  end
+end
+
+function ui.load()
+
+  -- Button
+  ui.mainbutton = loveframes.Create("button")
+  ui.mainbutton:SetSize(100, 22)
+  ui.mainbutton:SetPos(ui.gameselect_w+settings.padding*3, settings.heading.h+settings.padding*3)
+  ui.mainbutton:SetText("Download")
+  ui.mainbutton.OnClick = function(object)
+    if remote.data.games[selectindex] then
+      dogame(remote.data.games[selectindex])
+    end
+  end
+
+  -- tabs
+
+  local tabs = loveframes.Create("tabs")
+  tabs:SetPos(settings.padding, settings.heading.h+settings.padding)
+
+  tabs:SetSize(ui.gameselect_w,ui.gameselect_h)
+
+  ui.list_all = ui.create_list(function(g) return true end)
+  tabs:AddTab("All",ui.list_all,"All games")
+
+  --This list isn't updated, so what's the point in showing it?
+  --ui.list_favorites = ui.create_list(function(g) return settings.data.games[g.id].favorite end)
+  --tabs:AddTab("Favorites",ui.list_favorites,"Your favorite games")
+  
+end
 
 function ui.update(dt)
+
   if selectindex then
     if ui.headerindex < selectindex + ui.snap and ui.headerindex > selectindex - ui.snap then
       ui.headerindex = selectindex
@@ -28,6 +110,8 @@ function ui.update(dt)
     ui.updatecovers(index)
   end
   
+  ui.update_button()
+  
 end
 
 function ui.header()
@@ -36,11 +120,12 @@ function ui.header()
   local percentoffset = ui.headerindex%1*2
 
   local xoff = (love.graphics.getWidth()-settings.heading.w*(1+percentoffset))/2
-  local yoff = settings.padding
+  local yoff = 0
   
   local vapor = {name="Vapor"}
   
   for preload = -2,2 do
+    love.graphics.setColor(255,255,255,255-191*math.abs(preload))
     local preload_gameobj = remote.data.games[centerindex+preload]
     if preload_gameobj then
       ui.cover(preload_gameobj,xoff+settings.heading.w*preload,yoff,centerindex+preload)
@@ -48,48 +133,36 @@ function ui.header()
       ui.cover(vapor,xoff+settings.heading.w*preload,yoff)
     end
   end
+
+  love.graphics.setColor(colors.reset)
   
 end
 
-function ui.cover(gameobj,xoff,yoff,index)
-  love.graphics.setColor(colors.reset)
+function ui.info()
 
-  love.graphics.draw(ui.images[index] or ui.nogame,xoff,0)
-  love.graphics.draw(ui.overlay,xoff,0)
-
-  love.graphics.setColor(colors.overlaybar)
-  love.graphics.rectangle(
-    "fill",
-    xoff,
-    settings.padding,
-    settings.heading.w,
-    fonts.title:getHeight()+fonts.basic:getHeight())
-
-  love.graphics.setColor(colors.reset)
+  local x = ui.gameselect_w + settings.padding*2
+  local y = settings.heading.h + settings.padding
+  local w = love.graphics.getWidth()-x-settings.padding
+  local h = love.graphics.getHeight()-y-settings.padding*3
+  --love.graphics.rectangle("line",x,y,w,h)
+  local gameobj = remote.data.games[selectindex]
   love.graphics.setFont(fonts.title)
-  love.graphics.print(gameobj.name,xoff+settings.padding,settings.padding)
-
+  love.graphics.print(gameobj and gameobj.name or "Vapor",x,y)
   love.graphics.setFont(fonts.basic)
-  local subline
-  if index then
-    local game_filename = fname(gameobj,gameobj.stable)
-    if currently_downloading[game_filename] then
-      subline = "DOWNLOADING..."
-    elseif love.filesystem.exists(game_filename) then
-      subline = "CLICK TO PLAY"
-    else
-      subline = "CLICK TO INSTALL"
+  love.graphics.printf(gameobj and gameobj.description or "No description available.",x,y+settings.padding*3,w,"left")
+  
+  if gameobj then
+    love.graphics.draw(ui.mainbutton.icon,ui.gameselect_w+settings.padding*2, settings.heading.h+settings.padding*3)
+    love.graphics.printf(gameobj.author,x,y+h,w,"right")
+    if gameobj.link then
+      love.graphics.printf(gameobj.author,x,y+h+settings.padding,w,"right")
     end
-  else
-    subline = "DISTRIBUTION CLIENT FOR LÖVE"
   end
-  love.graphics.printf(
-    subline,
-    xoff,
-    settings.padding+fonts.title:getHeight(),
-    settings.heading.w-settings.padding,
-    "right"
-  )
+end
+
+function ui.cover(gameobj,xoff,yoff,index)
+  love.graphics.draw(ui.images[index] or ui.nogame,xoff,yoff)
+  love.graphics.draw(ui.overlay,xoff,yoff)
 end
 
 function ui.updatecovers(index)

@@ -1,0 +1,13 @@
+diff --git a/objects/columnlist.lua b/objects/columnlist.lua
+index 7dfcabd..83c6b80 100644
+--- a/objects/columnlist.lua
++++ b/objects/columnlist.lua
+@@ -262,6 +262,8 @@ end
+ --]]---------------------------------------------------------
+ function newobject:AddRow(...)
+ 
++  local arg = {...}
++
+ 	local internals = self.internals
+ 	local list = internals[1]
+ 	

@@ -4,6 +4,8 @@ pcall(require, "git");
 require("lib/json")
 async = require("core/async") -- this needs to be required before "socket.http"
 
+require('lib/loveframes')
+
 http = require("socket.http")
 
 currently_downloading = {}
@@ -92,6 +94,7 @@ function love.load(args)
 
   remote.load()
   settings.load()
+  ui.load()
 
   selectindex = nil
 
@@ -100,38 +103,25 @@ function love.load(args)
 end
 
 function love.update(dt)
+
   downloader:update()
   downloader.dt = downloader.dt + dt
   
   ui.update(dt)
+  loveframes.update(dt)
   
 end
 
 function love.draw()
-  ui.header(gameobj)
+
+  ui.header()
+  ui.info()
+  loveframes.draw()
+  
 end
 
-function love.keypressed(key)
-
-  if key == "right" or key == "down" then
-    if selectindex then
-      selectindex = selectindex + 1
-      if selectindex > #remote.data.games then
-        selectindex = 1
-      end    
-    else
-      selectindex = 1
-    end
-  elseif key == "left" or key == "up" then
-    if selectindex then
-      selectindex = selectindex - 1
-      if selectindex < 1 then
-        selectindex = #remote.data.games
-      end
-    else
-      selectindex = #remote.data.games
-    end
-  elseif key == "return" or key == " " then
+function love.keypressed(key, unicode)  
+  if key == "return" or key == " " then
     if remote.data.games[selectindex] then
       dogame(remote.data.games[selectindex])
     end
@@ -147,19 +137,20 @@ function love.keypressed(key)
       gameobj.invalid = nil
     end
   end
+  
+  loveframes.keypressed(key, unicode)  
+end
+
+function love.keyreleased(key)
+  loveframes.keyreleased(key)
 end
 
 function love.mousepressed(x,y,button)
-  local gameobj = remote.data.games[selectindex]
-  if button == "l" then
-    if gameobj then
-      dogame(gameobj)
-    end
-  elseif button == "r" then
-    if gameobj then
-      settings.data.games[gameobj.id].favorite = not settings.data.games[gameobj.id].favorite
-    end
-  end
+  loveframes.mousepressed(x,y,button)
+end
+
+function love.mousereleased(x,y,button)
+  loveframes.mousereleased(x,y,button)
 end
 
 function love.quit()

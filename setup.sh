@@ -1,18 +1,8 @@
 #!/bin/sh
 
-# Download binaries, and unpack
-
-cd dev/build_data
-VERSION=0.8.0
-
-# windows 32 bit
-wget -t 2 -c https://bitbucket.org/rude/love/downloads/love-$VERSION\-win-x86.zip
-unzip love-$VERSION\-win-x86.zip
-
-# windows 64 bit
-wget -t 2 -c https://bitbucket.org/rude/love/downloads/love-$VERSION\-win-x64.zip
-unzip love-$VERSION\-win-x64.zip
-
-# os x universal
-wget -t 2 -c https://bitbucket.org/rude/love/downloads/love-$VERSION\-macosx-ub.zip
-unzip love-$VERSION\-macosx-ub.zip
+LOC=src/lib/loveframes
+git clone --depth 1 https://github.com/NikolaiResokav/LoveFrames.git $LOC
+cd $LOC
+git checkout 6947e97cc56d1b1f0a6defe769562f965720bdba
+cd -
+patch -p1 $LOC/objects/columnlist.lua < dev/loveframes.patch
