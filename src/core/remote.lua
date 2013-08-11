@@ -21,7 +21,7 @@ function remote.load(force_local)
     remote.data = json.decode(raw)
   end
 
-  table.sort(remote.data.games, function(a,b) return a.name < b.name end )
+  table.sort(remote.data.games, function(a,b) return a.name:lower() < b.name:lower() end )
 
 end
 
