@@ -337,6 +337,21 @@
 	          "author": "Martian Arctic Games",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/48nCUhZ.png"
+        },
+        {
+	          "id": "trAInsported",
+	          "name": "trAInsported",
+	          "sources": {
+		          "1376243783": "http://trainsportedgame.no-ip.org/downloadCount.php?Down=download/trAInsported4.love"
+	          },
+	          "hashes": {
+		          "1376243783": "d3329140303dac12f40b08a7063479a553eb39f2"
+	          },
+	          "stable": "1376243783",
+	          "author": "Germanunkol",
+	          "description": "Write an artificial intelligence which controls your trains. Make sure your trains transport more passengers than anyone elses trains in live, online battles.",
+	          "engine": "love-0.8.0",
+	          "image": "http://trainsportedgame.no-ip.org/download/Vaporimage.png"
         }
     ]
 }
