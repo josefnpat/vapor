@@ -352,6 +352,21 @@
 	          "description": "Write an artificial intelligence which controls your trains. Make sure your trains transport more passengers than anyone elses trains in live, online battles.",
 	          "engine": "love-0.8.0",
 	          "image": "http://trainsportedgame.no-ip.org/download/Vaporimage.png"
+        },
+        {
+	          "id": "Idiot_Puzzles",
+	          "name": "Idiot: Puzzles",
+	          "sources": {
+		          "1376349797": "http://50.116.63.25/public/vapor_hosted/Idiot%20Puzzles.love"
+	          },
+	          "hashes": {
+		          "1376349797": "15e57a68b993c240fc82ccbc43b11e6cb8b0ad1b"
+	          },
+	          "stable": "1376349797",
+	          "author": "Power9.0",
+	          "description": "Our hero Idiot is trapped in a dungeon, forced to create art against his will. He must escape from the dungeon at all costs to escape this fate. Use space to pick up crates and flip levers.",
+	          "engine": "love-0.8.0",
+	          "image": "http://i.imgur.com/oxfQTgy.png"
         }
     ]
 }
