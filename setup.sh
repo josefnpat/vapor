@@ -3,8 +3,7 @@
 LOC=src/lib/loveframes
 git clone --depth 1 https://github.com/NikolaiResokav/LoveFrames.git $LOC
 cd $LOC
-git checkout 6947e97cc56d1b1f0a6defe769562f965720bdba
+git checkout a095495209baa385145a7eb8a730a9ae163ac6d1 # 0.9.6.1 Alpha
 cd -
-patch -p1 $LOC/objects/columnlist.lua < dev/loveframes.patch
 
 git clone --depth 1 https://github.com/UnekPL/loveframes-gray-theme.git $LOC/skins/gray
