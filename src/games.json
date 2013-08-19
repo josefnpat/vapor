@@ -12,6 +12,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "This game was the first game I made in love. This game was built on a previous codebase and uses lots of assets I found on the internet.",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/screenshot.png"
         },
@@ -26,6 +28,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "A game about a cat who is also a doctor. All art and assets taken from Doctor Cat, a fabulous webcomic!",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/Screenshot%20from%202013-06-26%2017%3A47%3A31.png"
         },
@@ -40,6 +44,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "YOU ARE GIGA PUDDI! Using the up, left and right keys, control Gigi Puddi! Every twelve seconds, Gigi Puddi eats a good hunk of himself. Better get those donuts, fast! Get extra points by running right! If you get 100 donuts, you win the game!",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/0.png"
         },
@@ -54,6 +60,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "Build your economy, and destroy the enemy AI in this isometric game.",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/p1.png"
         },
@@ -68,6 +76,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "The year is 2045, and the singularity is here. Machines have evolved, and they're gunning for us. Ray Kurzweil predicted it, but he didn't imagine that it would start an armageddon between man and machine. Our three heroes, Kurtz, Tuxxer and Charlie, set off in a daring do or die adventure to destroy the central computer which runs all of the AI.",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/t2.png"
         },
@@ -82,6 +92,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "You Are the Villain. You're not a good guy. You've never been a good guy. Some would even call you a villain. But being a villain is pretty damn lonely and no one deserves to be alone right? Of course you can't just take any companion. She has to be of a bloodline to give status to your evil lineage. So, you decided that the local princess would make the best consort for you.",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/d3.png"
         },
@@ -96,6 +108,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "Survive as a pirate captain for 30 days! By pressing the corresponding number on your keyboard, decide the fate of your ship and crew! The objective is to hoard as much treasure as you can eat!",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/2_0.png"
         },
@@ -110,6 +124,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "You wake up in your room, and your brother is missing! Horrible voices tell you to collect his remains, from the depths of your closet, which has turned into a horrible nightmare. You need to find him, before you wake up, You wouldn't want to leave him in such a horrible state, would you?",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/s3.png"
         },
@@ -124,6 +140,8 @@
             },
             "stable": "1375504351",
             "author": "josefnpat",
+            "website": "http://missingsentinelsoftware.com",
+            "description": "Crush your enemies! XAPALUS is a multiplayer, RTS offensive tower defense game. Build your economy and crush your enemies!",
             "engine": "love-0.8.0",
             "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/3.png"
         },
@@ -137,7 +155,8 @@
                 "1375538536": "a43d780d789af373cabe04065530e8e4bc803933"
             },
             "stable": "1375538536",
-            "author": "Stabyourself.net",
+            "author": "Maurice",
+            "website": "http://stabyourself.net",
             "engine": "love-0.8.0",
             "image": "http://50.116.63.25/public/vapor_hosted/mari0_1.6.png"
         },
@@ -151,7 +170,8 @@
                 "1375542764": "3e42a62cb98a4fb80625893d331926ba3af079dd"
             },
             "stable": "1375542764",
-            "author": "Stabyourself.net",
+            "author": "Maurice",
+            "website": "http://stabyourself.net",
             "engine": "love-0.8.0",
             "image": "http://50.116.63.25/public/vapor_hosted/OrthoRobot_r1.png"
         },
@@ -165,7 +185,8 @@
                 "1375541666": "dc1ceb3ebdb7748ffebdafaafea4cabac4908655"
             },
             "stable": "1375541666",
-            "author": "TangramGames.dk",
+            "author": "Simon Larsen & Lukas Hansen",
+            "website": "http://tangramGames.dk",
             "engine": "love-0.8.0",
             "image": "http://tangramgames.dk/games/mrrescue/images/mrrescue_vapor.png"
         },
@@ -179,7 +200,8 @@
                 "1375541666": "932a5d4db7c356ec8c216ff26c6a3824b3cec3a9"
             },
             "stable": "1375541666",
-            "author": "TangramGames.dk",
+            "author": "Simon Larsen & Lukas Hansen",
+            "website": "http://tangramGames.dk",
             "engine": "love-0.8.0",
             "image": "http://tangramgames.dk/games/sienna/images/sienna_vapor.png"
         },
@@ -195,6 +217,7 @@
             },
             "stable": "1375684497",
             "author": "leafo",
+	          "website": "http://leafo.net",
             "engine": "love-0.8.0",
             "image": "http://leafo.net/stuff/vapor/volcanox.png"
         },
@@ -209,6 +232,7 @@
             },
             "stable": "1375684497",
             "author": "leafo",
+	          "website": "http://leafo.net",
             "engine": "love-0.8.0",
             "image": "http://leafo.net/stuff/vapor/wulcan.png"
         },
@@ -223,6 +247,7 @@
             },
             "stable": "1375684497",
             "author": "leafo",
+	          "website": "http://leafo.net",
             "engine": "love-0.8.0",
             "image": "http://leafo.net/stuff/vapor/exoslime.png"
         },
@@ -237,6 +262,7 @@
             },
             "stable": "1375684497",
             "author": "leafo",
+	          "website": "http://leafo.net",
             "engine": "love-0.8.0",
             "image": "http://leafo.net/stuff/vapor/xmoon.png"
         },
@@ -251,6 +277,7 @@
             },
             "stable": "1375684497",
             "author": "leafo",
+	          "website": "http://leafo.net",
             "engine": "love-0.8.0",
             "image": "http://leafo.net/stuff/vapor/moondar.png"
         },
@@ -292,7 +319,8 @@
                 "1367504326": "eaba0ffc43b11a2fe649dc7bc100a50f11f52f49"
             },
             "stable": "1367504326",
-            "author": "schattenkind.net",
+            "author": "SiENcE",
+	          "website": "http://schattenkind.net",
             "engine": "love-0.8.0",
             "image": "http://sience.schattenkind.net/devmania/FOUR_schattenkind.png"
         },
@@ -335,6 +363,7 @@
 	          },
 	          "stable": "1376024769",
 	          "author": "Martian Arctic Games",
+	          "website": "http://www.martianarctic.com",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/48nCUhZ.png"
         },
@@ -349,6 +378,7 @@
 	          },
 	          "stable": "1376243783",
 	          "author": "Germanunkol",
+	          "website": "http://trainsportedgame.no-ip.org",
 	          "description": "Write an artificial intelligence which controls your trains. Make sure your trains transport more passengers than anyone elses trains in live, online battles.",
 	          "engine": "love-0.8.0",
 	          "image": "http://trainsportedgame.no-ip.org/download/Vaporimage.png"
@@ -364,7 +394,6 @@
 	          },
 	          "stable": "1376349797",
 	          "author": "Power9.0",
-	          "website": "http://google.com",
 	          "description": "Our hero Idiot is trapped in a dungeon, forced to create art against his will. He must escape from the dungeon at all costs to escape this fate. Use space to pick up crates and flip levers.",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/oxfQTgy.png"
