@@ -47,8 +47,6 @@ function dogame(gameobj)
       end
       if gameobj.hashes[gameobj.stable] == hash then
         print(fn .. " hash validated.")
-        selectindex = nil
-        ui.headerindex = 0
         local status = execgame(binary, fn)
       else
         if gameobj.invalid then
@@ -92,6 +90,13 @@ function favoritegame(index)
   ui.list.favorites = ui.update_list(ui.list.favorites,ui.conditions.favorites)
 end
 
+function visitwebsitegame(index)
+  local gameobj = remote.data.games[index]
+  if gameobj and gameobj.website then
+    openURL(gameobj.website)
+  end
+end
+
 function love.load(args)
 
   love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
@@ -113,13 +118,14 @@ function love.load(args)
   downloader = async.SocketQueue()
   downloader.dt = 0
 
+  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,false,false,0)
+
   remote.load()
   settings.load()
   ui.load()
 
   selectindex = nil
 
-  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,false,false,0)
   
 end
 
@@ -177,4 +183,14 @@ end
 function round(num, idp)
   local mult = 10^(idp or 0)
   return math.floor(num * mult + 0.5) / mult
+end
+
+function openURL(url)
+  if love._os == 'OS X' then
+    os.execute('open "' .. url .. '" &')
+  elseif love._os == 'Windows' then
+    os.execute('start "' .. url .. '"')
+  elseif love._os == 'Linux' then
+    os.execute('xdg-open "' .. url .. '" &')
+  end
 end

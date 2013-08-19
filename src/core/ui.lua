@@ -16,7 +16,9 @@ ui.gameselect_h = (settings.gameshow+1)*settings.padding
 
 ui.conditions = {}
 ui.conditions.all = function(g) return true end
-ui.conditions.favorites = function(g) return settings.data.games[g.id].favorite end
+ui.conditions.favorites = function(g)
+  return settings.data.games[g.id].favorite
+end
 
 function ui.create_list(condition)
   local list = loveframes.Create("columnlist")
@@ -47,7 +49,7 @@ function ui.update_list(list,condition)
   return list  
 end
 
-function ui.update_button(gameobj)
+function ui.update_buttons()
 
   local gameobj = remote.data.games[selectindex]
   if gameobj then
@@ -65,6 +67,19 @@ function ui.update_button(gameobj)
       ui.mainbutton:SetText("Download")
       ui.mainbutton.icon = icons.view
     end
+
+    if ui.conditions.favorites(gameobj) then
+      ui.buttons.favorite:SetImage(icons.favorite)
+    else
+      ui.buttons.favorite:SetImage(icons.favorite_off)
+    end
+
+    if gameobj.website then
+      ui.buttons.visitwebsite:SetImage(icons.website)
+    else
+      ui.buttons.visitwebsite:SetImage(icons.website_off)
+    end
+
   else
     ui.mainbutton.icon = icons.download
   end
@@ -98,6 +113,45 @@ function ui.load()
   ui.list.favorites = ui.create_list(ui.conditions.favorites)
   tabs:AddTab("Favorites",ui.list.favorites,"Your favorite games")
   
+  ui.buttons = {}
+  
+  local x = ui.gameselect_w+settings.padding*2
+  local y = love.graphics.getHeight()-settings.padding*2
+  
+  ui.buttons.favorite = loveframes.Create("imagebutton")
+  ui.buttons.favorite:SetImage(icons.favorite)
+  ui.buttons.favorite:SizeToImage()
+  ui.buttons.favorite:SetText("")
+  ui.buttons.favorite:SetPos(x,y)
+  ui.buttons.favorite.OnClick = function(object)
+    favoritegame(selectindex)
+    ui.update_buttons()
+  end
+  
+  x = x + settings.padding
+  
+  ui.buttons.delete = loveframes.Create("imagebutton")
+  ui.buttons.delete:SetImage(icons.delete)
+  ui.buttons.delete:SizeToImage()
+  ui.buttons.delete:SetText("")
+  ui.buttons.delete:SetPos(x,y)
+  ui.buttons.delete.OnClick = function(object)
+    deletegame(selectindex)
+  end
+
+  x = x + settings.padding
+
+  ui.buttons.visitwebsite = loveframes.Create("imagebutton")
+  ui.buttons.visitwebsite:SetImage(icons.website)
+  ui.buttons.visitwebsite:SizeToImage()
+  ui.buttons.visitwebsite:SetText("")
+  ui.buttons.visitwebsite:SetPos(x,y)
+  ui.buttons.visitwebsite.OnClick = function(object)
+    visitwebsitegame(selectindex)
+    ui.update_buttons()
+  end
+
+  
 end
 
 function ui.update(dt)
@@ -120,7 +174,7 @@ function ui.update(dt)
     end
   end
   
-  ui.update_button()
+  ui.update_buttons()
   
 end
 

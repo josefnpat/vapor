@@ -364,6 +364,7 @@
 	          },
 	          "stable": "1376349797",
 	          "author": "Power9.0",
+	          "website": "http://google.com",
 	          "description": "Our hero Idiot is trapped in a dungeon, forced to create art against his will. He must escape from the dungeon at all costs to escape this fate. Use space to pick up crates and flip levers.",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/oxfQTgy.png"
