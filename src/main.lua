@@ -124,8 +124,7 @@ function love.load(args)
   settings.load()
   ui.load()
 
-  selectindex = nil
-
+  selectindex = 1
   
 end
 
