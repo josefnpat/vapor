@@ -217,7 +217,7 @@ function ui.info()
   
   if gameobj then
     love.graphics.draw(ui.mainbutton.icon,ui.gameselect_w+settings.padding*2, settings.heading.h+settings.padding*3)
-    love.graphics.printf(gameobj.author,x,y+h,w,"right")
+    love.graphics.printf(gameobj.author,x,y+h+settings.padding,w,"right")
     if gameobj.link then
       love.graphics.printf(gameobj.author,x,y+h+settings.padding,w,"right")
     end
