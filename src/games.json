@@ -397,6 +397,21 @@
 	          "description": "Our hero Idiot is trapped in a dungeon, forced to create art against his will. He must escape from the dungeon at all costs to escape this fate. Use space to pick up crates and flip levers.",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/oxfQTgy.png"
+        },
+        {
+	          "id": "lovehotel",
+	          "name": "Love Hotel",
+	          "sources": {
+		          "1377229283": "http://3sillyhats.com/lovehotel/lovehotel-vapor.love"
+	          },
+	          "hashes": {
+		          "1377229283": "3d9f56d143976ee239513213aa6ff59d5647feb1"
+	          },
+	          "stable": "1377229283",
+	          "author": "3 Silly Hats",
+	          "description": "It's all about frisky business in Love Hotel! Build and manage a sexy hotel for lovestruck couples, making the most of a skimpy budget and showing your guests a great time.",
+	          "engine": "love-0.8.0",
+	          "image": "http://3sillyhats.com/lovehotel/lovehotel-vapor.png"
         }
     ]
 }
