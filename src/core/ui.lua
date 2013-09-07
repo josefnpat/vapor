@@ -57,15 +57,19 @@ function ui.update_buttons()
     if currently_downloading[fn] then
       ui.mainbutton:SetText("Downloading ...")
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
+      ui.mainbutton_tooltip:SetText("Your game is downloading.")
     elseif gameobj.invalid then
       ui.mainbutton:SetText("Error")
       ui.mainbutton.icon = icons.delete
+      ui.mainbutton_tooltip:SetText("There has been an error. Click to delete this game.")
     elseif love.filesystem.exists(fn) then
       ui.mainbutton:SetText("Play")
       ui.mainbutton.icon = icons.play
+      ui.mainbutton_tooltip:SetText("This game is ready to play.")
     else
       ui.mainbutton:SetText("Download")
       ui.mainbutton.icon = icons.view
+      ui.mainbutton_tooltip:SetText("Download this game now.")
     end
 
     if ui.conditions.favorites(gameobj) then
@@ -98,6 +102,10 @@ function ui.load()
     end
   end
 
+  ui.mainbutton_tooltip = loveframes.Create("tooltip")
+  ui.mainbutton_tooltip:SetObject(ui.mainbutton)
+  ui.mainbutton_tooltip:SetPadding(4)
+
   -- tabs
 
   local tabs = loveframes.Create("tabs")
@@ -128,6 +136,11 @@ function ui.load()
     ui.update_buttons()
   end
   
+  local favorite_tooltip = loveframes.Create("tooltip")
+  favorite_tooltip:SetObject(ui.buttons.favorite)
+  favorite_tooltip:SetPadding(4)
+  favorite_tooltip:SetText("Mark this game as a favorite.")
+  
   x = x + settings.padding
   
   ui.buttons.delete = loveframes.Create("imagebutton")
@@ -138,6 +151,11 @@ function ui.load()
   ui.buttons.delete.OnClick = function(object)
     deletegame(selectindex)
   end
+
+  local delete_tooltip = loveframes.Create("tooltip")
+  delete_tooltip:SetObject(ui.buttons.delete)
+  delete_tooltip:SetPadding(4)
+  delete_tooltip:SetText("Delete this game.")
 
   x = x + settings.padding
 
@@ -150,6 +168,11 @@ function ui.load()
     visitwebsitegame(selectindex)
     ui.update_buttons()
   end
+  
+  local visitwebsite_tooltip = loveframes.Create("tooltip")
+  visitwebsite_tooltip:SetObject(ui.buttons.visitwebsite)
+  visitwebsite_tooltip:SetPadding(4)
+  visitwebsite_tooltip:SetText("Visit the author's website.")
 
   
 end
