@@ -444,6 +444,21 @@
 	          "website": "http://projecthawkthorne.com/",
 	          "description": "Journey to the Center of Hawkthorne\nThis 2d platformer is based on Community's Digital Estate Planning episode. It's built using the LÖVE game engine. Please report any issues or bugs you have with the game!",
 	          "image": "http://i.imgur.com/iaUwHfX.png"
+        },
+        {
+	          "id": "WarpRun",
+	          "name": "WarpRun",
+	          "sources": {
+		          "1378583346": "http://50.116.63.25/public/vapor_hosted/WarpRun.love"
+	          },
+	          "hashes": {
+		          "1378583346": "b66f3c8d9b55400ec8a53598f77af7c5906d9717"
+	          },
+	          "stable": "1378583346",
+	          "author": "AaronWizard",
+	          "website": "http://love2d.org/forums/viewtopic.php?f=5&t=9352",
+	          "description": "Warp Run is an arcade shooter.  Foes will pursue you at every turn as you traverse the maze for the elusive exit.",
+	          "image": "http://i.imgur.com/EHhtlJj.png"
         }
     ]
 }
