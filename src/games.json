@@ -459,6 +459,21 @@
 	          "website": "http://love2d.org/forums/viewtopic.php?f=5&t=9352",
 	          "description": "Warp Run is an arcade shooter.  Foes will pursue you at every turn as you traverse the maze for the elusive exit.",
 	          "image": "http://i.imgur.com/EHhtlJj.png"
+        },
+        {
+	          "id": "snayke_demo",
+	          "name": "Snayke (Demo)",
+	          "sources": {
+		          "1378587486": "http://snayke.net/downloads/snayke_demo.love"
+	          },
+	          "hashes": {
+		          "1378587486": "7f4d1ad57be56d5b05e1a83137d19c853c28a187"
+	          },
+	          "stable": "1378587486",
+	          "author": "Alex Szpakowski",
+	          "website": "http://snayke.net",
+	          "description": "Snayke is an action-puzzle computer game inspired by the classic arcade title Snake. Take control of a snakelike creature to navigate around obstacles and collect food in over 100 levels!",
+	          "image": "http://i.imgur.com/IoXnuRx.png"
         }
     ]
 }
