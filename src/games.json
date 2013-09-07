@@ -413,6 +413,22 @@
 	          "description": "It's all about frisky business in Love Hotel! Build and manage a sexy hotel for lovestruck couples, making the most of a skimpy budget and showing your guests a great time.",
 	          "engine": "love-0.8.0",
 	          "image": "http://3sillyhats.com/lovehotel/lovehotel-vapor.png"
+        },
+        {
+	          "id": "Ouroboros",
+	          "name": "Ouroboros",
+	          "sources": {
+		          "1378580727": "http://www.brightidea.eu/games/ouroborosjump_love_0.8.love"
+	          },
+	          "hashes": {
+		          "1378580727": "2c8d55b1b49b933f511bf2617924ee7bbd02e9fb"
+	          },
+	          "stable": "1378580727",
+	          "author": "Bright Idea",
+	          "website": "http://www.brightidea.eu/",
+	          "description": " Adventures of Sir Wayne Finley\nThis game was developed during the Global Game Jam 2012 at the Munich site. It is a Jump’n'Run, but it modified the original target. Instead of running through small levels, the player runs through a single level endlessly. The game does not refresh destroyed platforms, so the game gets more difficult with each run. Enemies and coins are refreshed.",
+	          "engine": "love-0.8.0",
+	          "image": "http://i.imgur.com/B9UuEJs.png"
         }
     ]
 }
