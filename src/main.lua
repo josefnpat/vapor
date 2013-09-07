@@ -64,6 +64,7 @@ function dogame(gameobj)
       currently_downloading[fn] = true
       downloader:request(url, async.love_filesystem_sink(fn,true), function()
         currently_downloading[fn] = nil
+        ui.download_change = true
       end)
     end
   
@@ -78,6 +79,7 @@ function deletegame(index)
     love.filesystem.remove(imgname(gameobj))
     ui.images[index] = nil
     gameobj.invalid = nil
+    ui.download_change = true
   end
 end
 

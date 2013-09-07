@@ -19,6 +19,9 @@ ui.conditions.all = function(g) return true end
 ui.conditions.favorites = function(g)
   return settings.data.games[g.id].favorite
 end
+ui.conditions.downloaded = function(g)
+  return love.filesystem.exists(fname(g,g.stable)..".sha1")
+end
 
 function ui.create_list(condition)
   local list = loveframes.Create("columnlist")
@@ -120,6 +123,9 @@ function ui.load()
 
   ui.list.favorites = ui.create_list(ui.conditions.favorites)
   tabs:AddTab("Favorites",ui.list.favorites,"Your favorite games")
+
+  ui.list.downloaded = ui.create_list(ui.conditions.downloaded)
+  tabs:AddTab("Downloaded",ui.list.downloaded,"Downloaded games.")
   
   ui.buttons = {}
   
@@ -173,7 +179,6 @@ function ui.load()
   visitwebsite_tooltip:SetObject(ui.buttons.visitwebsite)
   visitwebsite_tooltip:SetPadding(4)
   visitwebsite_tooltip:SetText("Visit the author's website.")
-
   
 end
 
@@ -198,7 +203,12 @@ function ui.update(dt)
   end
   
   ui.update_buttons()
-  
+
+  if ui.download_change then
+    ui.download_change = nil
+    ui.list.downloaded = ui.update_list(ui.list.downloaded,ui.conditions.downloaded)
+  end
+
 end
 
 function ui.header()
