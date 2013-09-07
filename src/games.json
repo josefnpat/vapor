@@ -426,9 +426,24 @@
 	          "stable": "1378580727",
 	          "author": "Bright Idea",
 	          "website": "http://www.brightidea.eu/",
-	          "description": " Adventures of Sir Wayne Finley\nThis game was developed during the Global Game Jam 2012 at the Munich site. It is a Jump’n'Run, but it modified the original target. Instead of running through small levels, the player runs through a single level endlessly. The game does not refresh destroyed platforms, so the game gets more difficult with each run. Enemies and coins are refreshed.",
+	          "description": "Adventures of Sir Wayne Finley\nThis game was developed during the Global Game Jam 2012 at the Munich site. It is a Jump’n'Run, but it modified the original target. Instead of running through small levels, the player runs through a single level endlessly. The game does not refresh destroyed platforms, so the game gets more difficult with each run. Enemies and coins are refreshed.",
 	          "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/B9UuEJs.png"
+        },
+        {
+	          "id": "hawkthorne-beta",
+	          "name": "Hawkthorne (Beta)",
+	          "sources": {
+		          "1378582061": "http://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne.love"
+	          },
+	          "hashes": {
+		          "1378582061": "1e85a399e03e2f52dbbea7b2e53cdac8c9e8f853"
+	          },
+	          "stable": "1378582061",
+	          "author": "Project Hawkthorne",
+	          "website": "http://projecthawkthorne.com/",
+	          "description": "Journey to the Center of Hawkthorne\nThis 2d platformer is based on Community's Digital Estate Planning episode. It's built using the LÖVE game engine. Please report any issues or bugs you have with the game!",
+	          "image": "http://i.imgur.com/iaUwHfX.png"
         }
     ]
 }
