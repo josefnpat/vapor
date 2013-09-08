@@ -115,6 +115,8 @@ function love.load(args)
     love.filesystem.remove(settings.file)
     love.filesystem.remove(remote.file)
     print("Cleared "..settings.file.." and "..remote.file)
+  elseif args[2] == "force_local" then
+    force_local = true
   end
 
   downloader = async.SocketQueue()
@@ -122,7 +124,7 @@ function love.load(args)
 
   love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,false,false,0)
 
-  remote.load()
+  remote.load(force_local)
   settings.load()
   ui.load()
 
