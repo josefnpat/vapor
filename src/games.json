@@ -474,6 +474,21 @@
 	          "website": "http://snayke.net",
 	          "description": "Snayke is an action-puzzle computer game inspired by the classic arcade title Snake. Take control of a snakelike creature to navigate around obstacles and collect food in over 100 levels!",
 	          "image": "http://i.imgur.com/IoXnuRx.png"
+        },
+        {
+	          "id": "childofwinter",
+	          "name": "Child of Winter",
+	          "sources": {
+		          "1378673073": "http://turtlesort.com/childofwinter/Child_of_Winter.love"
+	          },
+	          "hashes": {
+		          "1378673073": "843b84151afea20e4dc57f6d22259e11216e45b3"
+	          },
+	          "stable": "1378673073",
+	          "author": "Turtlesort",
+	          "website": "http://turtlesort.com/",
+	          "description": "A small puzzle-adventure game where you take on the role of a curious child who manages to get himself lost in an underground cavern. The game revolves around navigational puzzles where you must maneuver through underground caves and icy terrain.",
+	          "image": "http://i.imgur.com/6L9zNeD.png"
         }
     ]
 }
