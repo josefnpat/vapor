@@ -489,6 +489,21 @@
 	          "website": "http://turtlesort.com/",
 	          "description": "A small puzzle-adventure game where you take on the role of a curious child who manages to get himself lost in an underground cavern. The game revolves around navigational puzzles where you must maneuver through underground caves and icy terrain.",
 	          "image": "http://i.imgur.com/6L9zNeD.png"
+        },
+        {
+	          "id": "Defense_of_Your_Craft",
+	          "name": "Defense of Your Craft",
+	          "sources": {
+		          "1378675303": "http://missingsentinelsoftware.com/system/files/DOYC_803b496.love"
+	          },
+	          "hashes": {
+		          "1378675303": "4d40c3bf1e34d7803ee654f50ac282e00ceb99a2"
+	          },
+	          "stable": "1378675303",
+	          "author": "josefnpat",
+	          "website": "http://missingsentinelsoftware.com/",
+	          "description": "Build for 10 seconds and then fight off the attackers with your friends!\nDefend your space station in this free-form tower defense game with up to five players! Use the money you accumulate to build more defenses, but be quick; you only have 10 seconds until the next wave!",
+	          "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/4.png"
         }
     ]
 }
