@@ -474,6 +474,54 @@
 	          "website": "http://snayke.net",
 	          "description": "Snayke is an action-puzzle computer game inspired by the classic arcade title Snake. Take control of a snakelike creature to navigate around obstacles and collect food in over 100 levels!",
 	          "image": "http://i.imgur.com/IoXnuRx.png"
+        },
+        {
+	          "id": "Matt-And-Chris",
+	          "name": "Matt and Chris",
+	          "sources": {
+		          "1378655821": "http://cjohnson.id.au/vapor/Matt-And-Chris/mattAndChris.love"
+	          },
+	          "hashes": {
+		          "1378655821": "b1cb06fd36c9b4074935abb6f46befa4"
+	          },
+	          "stable": "1378655821",
+	          "author": "Chris Johnson",
+	          "website": "http://cjohnson.id.au",
+	          "description": "In Matt and Chris you have to work with the other player to survive. Each player is a square, one red and one blue. They must avoid the circles of the opposite color and run into the circles of the same color.",
+		  "engine": "love-0.8.0",
+	          "image": "http://cjohnson.id.au/vapor/Matt-And-Chris/screenshot.png"
+        },
+        {
+	          "id": "Left-Right-Pong",
+	          "name": "Left Right Pong",
+	          "sources": {
+		          "1378655821": "http://cjohnson.id.au/vapor/Left-Right-Pong/leftRightPong.love"
+	          },
+	          "hashes": {
+		          "1378655821": "fdbc9ad886f68083840575a5ab783dce"
+	          },
+	          "stable": "1378655821",
+	          "author": "Chris Johnson",
+	          "website": "http://cjohnson.id.au",
+	          "description": "Left Right Pong is a variant of Pong in which you can only move horizontally instead of vertically.",
+		  "engine": "love-0.8.0",
+	          "image": "http://cjohnson.id.au/vapor/Left-Right-Pong/screenshot.png"
+        },
+	{
+	          "id": "You-Want-The-Money",
+	          "name": "You Want The Money?",
+	          "sources": {
+		          "1378655821": "http://cjohnson.id.au/vapor/You-Want-The-Money/YouWantTheMoney.love"
+	          },
+	          "hashes": {
+		          "1378655821": "8c237d39c516465806ed07ce276e6108"
+	          },
+	          "stable": "1378655821",
+	          "author": "Chris Johnson",
+	          "website": "http://cjohnson.id.au",
+	          "description": "You Want the Money is a multiplayer game in which business men scramble over a note that falls from the sky",
+		  "engine": "love-0.8.0",
+	          "image": "http://cjohnson.id.au/vapor/You-Want-The-Money/screenshot.png"
         }
     ]
 }
