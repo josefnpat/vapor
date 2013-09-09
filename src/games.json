@@ -504,6 +504,22 @@
 	          "website": "http://missingsentinelsoftware.com/",
 	          "description": "Build for 10 seconds and then fight off the attackers with your friends!\nDefend your space station in this free-form tower defense game with up to five players! Use the money you accumulate to build more defenses, but be quick; you only have 10 seconds until the next wave!",
 	          "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/4.png"
+        },
+        {
+            "id": "iyfct",
+            "name": "In Your Face City Trains",
+            "sources": {
+                "1378764269": "http://50.116.63.25/public/vapor_hosted/iyfct-1.01.love"
+            },
+            "hashes": {
+                "1378764269": "edc45bedaefda6ef4e2f5f614d72670c00ca56c3"
+            },
+            "stable": "1378764269",
+            "author": "Simon Larsen & Lukas Hansen",
+            "website": "http://tangramGames.dk",
+            "description": "IYFCT is a simple but fun one-button-game similar to Canabalt.\nThe goal of the game is to survive as long as you can. Jump over trains with closed doors and try (as much as possible) to run through trains with open doors to avoid birds and tunnels. Some open trains will give you coffee. When your coffee-meter is full, you have one extra life.",
+            "engine": "love-0.8.0",
+            "image": "http://i.imgur.com/KeZnBef.png"
         }
     ]
 }
