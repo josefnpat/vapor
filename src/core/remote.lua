@@ -5,25 +5,24 @@ remote.file = "games.json"
 
 -- @param force_local don't check remote server for new file
 function remote.load(force_local)
-
-  if force_local then
-    print("Forcing local update.")
-    local raw,_ = love.filesystem.read(remote.file)
-    remote.data = json.decode(raw)
-
-  else
-
-    local success,r,e = pcall(http.request,remote.uri)
+  
+  local success, r, e
+  
+  if not force_local then
+    success,r,e = pcall(http.request,remote.uri)
     if success and e == 200 then
       print(remote.file .. " successfully updated.")
       love.filesystem.write(remote.file,r)
       remote.data = json.decode(r)
     else
-      print(remote.file.." failed to update.")
-      local raw,_ = love.filesystem.read(remote.file)
-      remote.data = json.decode(raw)
+      print(remote.file.." failed to update")
     end
-
+  end
+  
+  if force_local or not success then
+    print('Updated from local '..remote.file)
+    local raw,_ = love.filesystem.read(remote.file)
+    remote.data = json.decode(raw)
   end
 
   table.sort(remote.data.games, function(a,b) return a.name:lower() < b.name:lower() end )
