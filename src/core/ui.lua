@@ -34,8 +34,6 @@ function ui.create_list(condition)
     end
   end
 
-  list:AddColumn("Application")
-  
   return ui.update_list(list,condition)
   
 end
