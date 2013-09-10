@@ -520,6 +520,20 @@
             "description": "IYFCT is a simple but fun one-button-game similar to Canabalt.\nThe goal of the game is to survive as long as you can. Jump over trains with closed doors and try (as much as possible) to run through trains with open doors to avoid birds and tunnels. Some open trains will give you coffee. When your coffee-meter is full, you have one extra life.",
             "engine": "love-0.8.0",
             "image": "http://i.imgur.com/KeZnBef.png"
+        },
+        {
+            "id": "monkeyseemonkeydo",
+            "name": "Monkey See Monkey Do",
+            "sources": {
+                "1378771280": "http://50.116.63.25/public/vapor_hosted/monkeyseemonkeydo.love"
+            },
+            "hashes": {
+                "1378771280": "6052a8945ac1616a99862ee375ec2b38ca020e11"
+            },
+            "stable": "1378771280",
+            "author": "Wrinkliez",
+            "engine": "love-0.8.0",
+            "image": "http://i.imgur.com/3fLUbfE.png"
         }
     ]
 }
