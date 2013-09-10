@@ -515,8 +515,8 @@
                 "1378764269": "edc45bedaefda6ef4e2f5f614d72670c00ca56c3"
             },
             "stable": "1378764269",
-            "author": "Simon Larsen & Lukas Hansen",
-            "website": "http://tangramGames.dk",
+            "author": "Simon Larsen",
+            "website": "http://simonlarsen.github.io/",
             "description": "IYFCT is a simple but fun one-button-game similar to Canabalt.\nThe goal of the game is to survive as long as you can. Jump over trains with closed doors and try (as much as possible) to run through trains with open doors to avoid birds and tunnels. Some open trains will give you coffee. When your coffee-meter is full, you have one extra life.",
             "engine": "love-0.8.0",
             "image": "http://i.imgur.com/KeZnBef.png"
