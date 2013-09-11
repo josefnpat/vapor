@@ -479,12 +479,12 @@
 	          "id": "Matt-And-Chris",
 	          "name": "Matt and Chris",
 	          "sources": {
-		          "1378655821": "http://cjohnson.id.au/vapor/Matt-And-Chris/mattAndChris.love"
+		          "1378837015": "http://cjohnson.id.au/vapor/Matt-And-Chris/MattAndChris.love"
 	          },
 	          "hashes": {
-		          "1378655821": "b1cb06fd36c9b4074935abb6f46befa4"
+		          "1378837015": "27218bc185b22b1ce174ae0825e3694edef2c9ba"
 	          },
-	          "stable": "1378655821",
+	          "stable": "1378837015",
 	          "author": "Chris Johnson",
 	          "website": "http://cjohnson.id.au",
 	          "description": "In Matt and Chris you have to work with the other player to survive. Each player is a square, one red and one blue. They must avoid the circles of the opposite color and run into the circles of the same color.",
@@ -498,7 +498,7 @@
 		          "1378655821": "http://cjohnson.id.au/vapor/Left-Right-Pong/leftRightPong.love"
 	          },
 	          "hashes": {
-		          "1378655821": "fdbc9ad886f68083840575a5ab783dce"
+		          "1378655821": "c466c03691289c6cdbc36bd1d65df519be002f61"
 	          },
 	          "stable": "1378655821",
 	          "author": "Chris Johnson",
@@ -511,12 +511,12 @@
 	          "id": "You-Want-The-Money",
 	          "name": "You Want The Money?",
 	          "sources": {
-		          "1378655821": "http://cjohnson.id.au/vapor/You-Want-The-Money/YouWantTheMoney.love"
+		          "1378837015": "http://cjohnson.id.au/vapor/You-Want-The-Money/YouWantTheMoney.love"
 	          },
 	          "hashes": {
-		          "1378655821": "8c237d39c516465806ed07ce276e6108"
+		          "1378837015": "18f1e6a4f361cd155762772971bcc1847a103791"
 	          },
-	          "stable": "1378655821",
+	          "stable": "1378837015",
 	          "author": "Chris Johnson",
 	          "website": "http://cjohnson.id.au",
 	          "description": "You Want the Money is a multiplayer game in which business men scramble over a note that falls from the sky",
