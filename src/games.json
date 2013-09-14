@@ -506,6 +506,22 @@
 	          "image": "http://missingsentinelsoftware.com/sites/default/files/styles/vapor/public/4.png"
         },
         {
+            "id": "sixpack_desertloot",
+            "name": "Desert Loot",
+            "sources": {
+                "1378675303": "http://gloryfish.s3.amazonaws.com/games/desertloot/desertloot.love"
+            },
+            "hashes": {
+                "1378675303": "bff953c20485331129da3b68becfd83cf6425d5c"
+            },
+            "stable": "1378675303",
+            "author": "Jay Roberts and Paul Bredenberg",
+            "website": "http://sixpackofseagulls.com",
+            "description": "A man walks along the desert carrying a heavy burden. The sun beats down. Where is going? Where is he coming from? He seems to be collecting a lot of stuff.",
+            "engine": "love-0.8.0",
+            "image": "http://gloryfish.s3.amazonaws.com/games/desertloot/gameplay-cropped.png"
+        },
+        {
             "id": "iyfct",
             "name": "In Your Face City Trains",
             "sources": {
