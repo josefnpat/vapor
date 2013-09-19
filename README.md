@@ -50,7 +50,7 @@ Your game must:
 * use LÖVE 0.8.0,
 
 Your game must not:
-* use binary libraries not provided by love (e.g. luasec).
+* use compiled Lua libraries not provided by love (e.g. luasec, enet, lsqlite3, LuaFileSystem).
 
 ## Your client sucks
 
