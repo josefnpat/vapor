@@ -4,7 +4,7 @@ pcall(require, "git");
 require("lib/json/json")
 async = require("core/async") -- this needs to be required before "socket.http"
 
-require('lib/loveframes')
+require('lib/lf')
 loveframes.config["ACTIVESKIN"] = "Gray"
 
 http = require("socket.http")
