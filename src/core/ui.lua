@@ -20,7 +20,7 @@ ui.conditions.favorites = function(g)
   return settings.data.games[g.id].favorite
 end
 ui.conditions.downloaded = function(g)
-  return love.filesystem.exists(fname(g,g.stable)..".sha1")
+  return love.filesystem.exists(vapor.fname(g,g.stable)..".sha1")
 end
 
 function ui.create_list(condition)
@@ -54,7 +54,7 @@ function ui.update_buttons()
 
   local gameobj = remote.data.games[selectindex]
   if gameobj then
-    local fn = fname(gameobj,gameobj.stable)
+    local fn = vapor.fname(gameobj,gameobj.stable)
     if currently_downloading[fn] then
       ui.mainbutton:SetText("Downloading ...")
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
@@ -99,7 +99,7 @@ function ui.load()
   ui.mainbutton:SetText("Download")
   ui.mainbutton.OnClick = function(object)
     if remote.data.games[selectindex] then
-      dogame(remote.data.games[selectindex])
+      vapor.dogame(remote.data.games[selectindex])
     end
   end
 
@@ -136,7 +136,7 @@ function ui.load()
   ui.buttons.favorite:SetText("")
   ui.buttons.favorite:SetPos(x,y)
   ui.buttons.favorite.OnClick = function(object)
-    favoritegame(selectindex)
+    vapor.favoritegame(selectindex)
     ui.update_buttons()
   end
   
@@ -153,7 +153,7 @@ function ui.load()
   ui.buttons.delete:SetText("")
   ui.buttons.delete:SetPos(x,y)
   ui.buttons.delete.OnClick = function(object)
-    deletegame(selectindex)
+    vapor.deletegame(selectindex)
   end
 
   local delete_tooltip = loveframes.Create("tooltip")
@@ -169,7 +169,7 @@ function ui.load()
   ui.buttons.visitwebsite:SetText("")
   ui.buttons.visitwebsite:SetPos(x,y)
   ui.buttons.visitwebsite.OnClick = function(object)
-    visitwebsitegame(selectindex)
+    vapor.visitwebsitegame(selectindex)
     ui.update_buttons()
   end
   
@@ -262,7 +262,7 @@ end
 
 function ui.updatecovers(index)
   if not ui.images[index] and remote.data.games[index] then
-    local imgn = imgname(remote.data.games[index])
+    local imgn = vapor.imgname(remote.data.games[index])
 
     if not currently_downloading[imgn] then
       if love.filesystem.exists(imgn) then
