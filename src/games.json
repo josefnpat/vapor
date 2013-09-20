@@ -564,7 +564,7 @@
 	          "author": "Chris Johnson",
 	          "website": "http://cjohnson.id.au",
 	          "description": "In Matt and Chris you have to work with the other player to survive. Each player is a square, one red and one blue. They must avoid the circles of the opposite color and run into the circles of the same color.",
-		  "engine": "love-0.8.0",
+		        "engine": "love-0.8.0",
 	          "image": "http://cjohnson.id.au/vapor/Matt-And-Chris/screenshot.png"
         },
         {
@@ -580,7 +580,7 @@
 	          "author": "Chris Johnson",
 	          "website": "http://cjohnson.id.au",
 	          "description": "Left Right Pong is a variant of Pong in which you can only move horizontally instead of vertically.",
-		  "engine": "love-0.8.0",
+		        "engine": "love-0.8.0",
 	          "image": "http://cjohnson.id.au/vapor/Left-Right-Pong/screenshot.png"
         },
 	      {
@@ -596,7 +596,7 @@
 	          "author": "Chris Johnson",
 	          "website": "http://cjohnson.id.au",
 	          "description": "You Want the Money is a multiplayer game in which business men scramble over a note that falls from the sky",
-		  "engine": "love-0.8.0",
+		        "engine": "love-0.8.0",
 	          "image": "http://cjohnson.id.au/vapor/You-Want-The-Money/screenshot.png"
         },
 	      {
@@ -612,7 +612,7 @@
 	          "author": "BlackBulletIV",
 	          "website": "http://nova-fusion.com",
 	          "description": "Triad is mix of top-down shooting, puzzle, and strategy. You control three unique soldiers, playing them each one by one for 10 seconds. Each soldier overlaps in time with the previously played soldiers. Use their abilities in combination to eliminate all hostile defence turrets.",
-		  "engine": "love-0.8.0",
+		        "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/1EsmayL.png"
         },
         {
@@ -630,6 +630,23 @@
 	          "website": "http://leafo.net",
             "engine": "love-0.8.0",
             "image": "http://i.imgur.com/uDWqoyL.png"
+        },
+        {
+            "id": "the_binding_of_crate_box",
+            "name": "The Binding of Crate Box",
+
+            "sources": {
+                "1379718108": "http://notmagi.me/downloads/The%20Binding%20of%20Crate%20Box.love"
+            },
+            "hashes": {
+                "1379718108": "2503234118460115dcb0c4e9f5ea2a0572f2d0de"
+            },
+            "stable": "1379718108",
+            "author": "adnzzzzZ",
+	          "website": "http://notmagi.me",
+	          "description":"The Binding of Isaac + The Super Crate Box, woo! Are you a bad enough dude to kill all the bad dudes?",
+            "engine": "love-0.8.0",
+            "image": "http://i.imgur.com/u35YRgM.png"
         }
     ]
 }
