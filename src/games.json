@@ -614,6 +614,22 @@
 	          "description": "Triad is mix of top-down shooting, puzzle, and strategy. You control three unique soldiers, playing them each one by one for 10 seconds. Each soldier overlaps in time with the previously played soldiers. Use their abilities in combination to eliminate all hostile defence turrets.",
 		  "engine": "love-0.8.0",
 	          "image": "http://i.imgur.com/1EsmayL.png"
+        },
+        {
+            "id": "feed_my_boyfriend",
+            "name": "Feed My Boyfriend",
+
+            "sources": {
+                "1379699264": "http://leafo.net/dump/feed_my_boyfriend.love"
+            },
+            "hashes": {
+                "1379699264": "c4a1e17edd4ec65cbbd976a1b30950713325239f"
+            },
+            "stable": "1379699264",
+            "author": "leafo",
+	          "website": "http://leafo.net",
+            "engine": "love-0.8.0",
+            "image": "http://i.imgur.com/uDWqoyL.png"
         }
     ]
 }
