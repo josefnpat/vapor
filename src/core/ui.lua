@@ -51,7 +51,6 @@ function ui.update_list(list,condition)
 end
 
 function ui.update_buttons()
-
   local gameobj = remote.data.games[selectindex]
   if gameobj then
     local fn = vapor.fname(gameobj,gameobj.stable)
@@ -178,6 +177,8 @@ function ui.load()
   visitwebsite_tooltip:SetPadding(4)
   visitwebsite_tooltip:SetText("Visit the author's website.")
   
+  ui.update_buttons()
+
 end
 
 function ui.update(dt)
