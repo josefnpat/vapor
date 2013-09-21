@@ -9,15 +9,12 @@ loveframes.config["ACTIVESKIN"] = "Gray"
 
 http = require("socket.http")
 
-currently_downloading = {}
-
-vapor = require 'core/vapor'
-
 function love.load(args)
 
   love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
   binary = love.arg.getLow(args)
   
+  vapor = require 'core/vapor'
   icons = require("core/icons")
   fonts = require("core/fonts")
   colors = require("core/colors")

@@ -55,7 +55,7 @@ function ui.update_buttons()
   local gameobj = remote.data.games[selectindex]
   if gameobj then
     local fn = vapor.fname(gameobj,gameobj.stable)
-    if currently_downloading[fn] then
+    if vapor.currently_downloading[fn] then
       ui.mainbutton:SetText("Downloading ...")
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText("Your game is downloading.")
@@ -264,16 +264,16 @@ function ui.updatecovers(index)
   if not ui.images[index] and remote.data.games[index] then
     local imgn = vapor.imgname(remote.data.games[index])
 
-    if not currently_downloading[imgn] then
+    if not vapor.currently_downloading[imgn] then
       if love.filesystem.exists(imgn) then
         -- load the image
         ui.images[index] = love.graphics.newImage(imgn)
       else
         -- download it!
         print("downloading " .. imgn)
-        currently_downloading[imgn] = true
+        vapor.currently_downloading[imgn] = true
         downloader:request(remote.data.games[index].image, async.love_filesystem_sink(imgn), function()
-          currently_downloading[imgn] = nil
+          vapor.currently_downloading[imgn] = nil
         end)
       end
     end

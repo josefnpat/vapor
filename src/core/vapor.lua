@@ -1,5 +1,7 @@
 local vapor = {}
 
+vapor.currently_downloading = {}
+
 function vapor.imgname(gameobj)
   return gameobj.id..".png"
 end
@@ -25,7 +27,7 @@ end
 function vapor.dogame(gameobj)
 
   local fn = vapor.fname(gameobj,gameobj.stable)
-  if not currently_downloading[fn] then
+  if not vapor.currently_downloading[fn] then
     
     if love.filesystem.exists(fn) then
       print(fn .. " exists.")
@@ -50,9 +52,9 @@ function vapor.dogame(gameobj)
     else
       print(fn .. " is being downloaded.")
       local url = gameobj.sources[gameobj.stable]
-      currently_downloading[fn] = true
+      vapor.currently_downloading[fn] = true
       downloader:request(url, async.love_filesystem_sink(fn,true), function()
-        currently_downloading[fn] = nil
+        vapor.currently_downloading[fn] = nil
         ui.download_change = true
       end)
     end
@@ -62,7 +64,7 @@ end
 
 function vapor.deletegame(index)
   local gameobj = remote.data.games[index]
-  if gameobj and not currently_downloading[vapor.fname(gameobj,gameobj.stable)] then
+  if gameobj and not vapor.currently_downloading[vapor.fname(gameobj,gameobj.stable)] then
     love.filesystem.remove(vapor.fname(gameobj,gameobj.stable))
     love.filesystem.remove(vapor.fname(gameobj,gameobj.stable)..".sha1")
     love.filesystem.remove(vapor.imgname(gameobj))
