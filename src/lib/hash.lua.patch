@@ -1,0 +1,8 @@
+60c60
+< local utils = require("bslf.utils")
+---
+> local utils = require("lib.bslf.utils")
+95c95
+< 	local bit_lua = require("bslf.bit")
+---
+> 	local bit_lua = require("lib.bslf.bit")
