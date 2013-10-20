@@ -328,15 +328,17 @@
             "id": "tower-quest",
             "name": "Tower Quest",
             "sources": {
-                "1375985561": "http://cdn.bitbucket.org/jpikl/tower-quest/downloads/tower-quest-0.10-alpha.love"
+                "1382304405": "http://cdn.bitbucket.org/jpikl/tower-quest/downloads/tower-quest-0.10.love"
             },
             "hashes": {
-                "1375985561": "1a5c5880ec0a8b6161b1d0171221b1bf965e9501"
+                "1382304405": "5673448d36151e8f2f76802899dfdeaf950873d5"
             },
-            "stable": "1375985561",
+            "stable": "1382304405",
             "author": "jonyzz",
+            "website": "https://bitbucket.org/jpikl/tower-quest",
+            "description": "Tower Quest is a retro-themed puzzle game. Your goal is to collect diamonds in each level while moving other objects and avoiding enemies.",
             "engine": "love-0.8.0",
-            "image": "http://i.imgur.com/09ywa6h.png"
+            "image": "http://i.imgur.com/HoXQRDt.png"
         },
         {
 	          "id": "metanet-hunter",
