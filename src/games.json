@@ -649,6 +649,24 @@
 	          "description":"The Binding of Isaac + The Super Crate Box, woo! Are you a bad enough dude to kill all the bad dudes?",
             "engine": "love-0.8.0",
             "image": "http://i.imgur.com/u35YRgM.png"
+        },
+        {
+            "id": "snaik",
+            "name": "Snaik",
+            
+            "sources": {
+                "1382456565": "http://dev.novaember.com/files/snaik-0.1.love"
+            },
+            "hashes": {
+                "1382456565": "53608b79592dc0feeb38f31927d1ae0f58b1f7a6"
+            },
+            
+            "stable": "1382456565",
+            "author": "Darkwater",
+            "website": "http://novaember.com",
+            "description": "A Multiplayer Snake clone.",
+            "engine": "love-0.8.0",
+            "image": "http://dev.novaember.com/s/snaik-0.1.png"
         }
     ]
 }
