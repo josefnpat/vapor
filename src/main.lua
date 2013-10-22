@@ -25,7 +25,7 @@ function openURL(url)
   if love._os == 'OS X' then
     os.execute('open "' .. url .. '" &')
   elseif love._os == 'Windows' then
-    os.execute('start "' .. url .. '"')
+    os.execute('start ' .. url )
   elseif love._os == 'Linux' then
     os.execute('xdg-open "' .. url .. '" &')
   end
