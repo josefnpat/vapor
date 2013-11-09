@@ -700,7 +700,7 @@
             "stable": "1384022665",
             "author": "Sheepolution",
             "website": "http://danielhaazen.com/",
-            "description": "HOX is a turn-based tactical game. Its origin was the idea for a board game. The number of steps you can take is based on the opponent's square anti-clockwise from you. So if Green stands on 2, then Red can do 2 steps. Everytime you move, you leave a colored square behind. You can't land on these, but you can move over them. If it's your turn but you can't move to anywhere, you're dead. If only 1 players is alive, he wins the game.",
+            "description": "HOX is a turn-based tactical game. The number of steps you can take is based on the opponent's square anti-clockwise from you. So if Green stands on 2, then Red can do 2 steps. Everytime you move, you leave a colored square behind. You can't land on these, but you can move over them. If it's your turn but you can't move to anywhere, you're dead.",
             "engine": "love-0.8.0",
             "image": "http://i.imgur.com/Mk9D7yr.png"
         }
