@@ -14,7 +14,12 @@ end
 function love.quit()
   local raw = json.encode(settings.data)
   love.filesystem.write(settings.file, raw)
-  love.event.quit()
+end
+
+function love.keypressed(key)
+  if key == "f4" and love.keyboard.isDown("lalt","ralt") then
+    love.event.quit()
+  end
 end
 
 function openURL(url)
