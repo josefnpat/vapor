@@ -82,6 +82,12 @@ function ui.update_buttons()
       ui.buttons.favorite:SetImage(icons.favorite_off)
     end
 
+    if ui.conditions.downloaded(gameobj) then
+      ui.buttons.delete:SetImage(icons.delete)
+    else
+      ui.buttons.delete:SetImage(icons.delete_off)
+    end
+
     if gameobj.website then
       ui.buttons.visitwebsite:SetImage(icons.website)
     else
