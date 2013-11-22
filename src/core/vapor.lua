@@ -17,7 +17,7 @@ function vapor.execgame(binarypath, gamepath)
     execstr = fstr:format(binarypath, gamepath)
   else
     -- OS X, Linux
-    local fstr = [["%s" "%s/%s"]]
+    local fstr = [["%s" "%s/%s" &]]
     execstr = fstr:format(binarypath, love.filesystem.getSaveDirectory(), gamepath)
   end
   print(gamepath.." starting.")
