@@ -14,6 +14,7 @@ end
 function love.quit()
   local raw = json.encode(settings.data)
   love.filesystem.write(settings.file, raw)
+  love.event.quit()
 end
 
 function openURL(url)
