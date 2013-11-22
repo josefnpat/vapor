@@ -9,6 +9,8 @@ function state_vapor.update(self,dt)
 
   downloader:update()
   downloader.dt = downloader.dt + dt
+  hasher:update()
+  hasher.dt = hasher.dt + dt
   
   ui.update(dt)
   loveframes.update(dt)

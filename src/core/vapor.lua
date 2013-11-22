@@ -1,6 +1,7 @@
 local vapor = {}
 
 vapor.currently_downloading = {}
+vapor.currently_hashing = {}
 
 function vapor.imgname(gameobj)
   return gameobj.id..".png"
@@ -27,7 +28,7 @@ end
 function vapor.dogame(gameobj)
 
   local fn = vapor.fname(gameobj,gameobj.stable)
-  if not vapor.currently_downloading[fn] then
+  if not vapor.currently_downloading[fn] and not vapor.currently_hashing[fn] then
     
     if love.filesystem.exists(fn) then
       print(fn .. " exists.")
@@ -82,8 +83,6 @@ function vapor.favoritegame(index)
   end
   ui.list.favorites = ui.update_list(ui.list.favorites,ui.conditions.favorites)
 end
-
-
 
 function vapor.visitwebsitegame(index)
   local gameobj = remote.data.games[index]

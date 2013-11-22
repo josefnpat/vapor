@@ -58,6 +58,10 @@ function ui.update_buttons()
       ui.mainbutton:SetText("Downloading ...")
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText("Your game is downloading.")
+    elseif vapor.currently_hashing[fn] then
+      ui.mainbutton:SetText("Hashing ...")
+      ui.mainbutton.icon = icons.hash[math.floor(hasher.dt*10)%4+1]
+      ui.mainbutton_tooltip:SetText("Your game is hashing.")
     elseif gameobj.invalid then
       ui.mainbutton:SetText("Error")
       ui.mainbutton.icon = icons.delete

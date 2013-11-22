@@ -1,9 +1,6 @@
 local socket = require("socket")
 local ltn12 = require("ltn12")
 
-require("lib.bslf.bit").lut()
-hashlib = require("lib/hash")
-
 -- don't protect anything
 socket.protect = function(fn)
   return fn
@@ -168,7 +165,7 @@ local function callback_sink(fn)
   end
 end
 
-local function love_filesystem_sink(fname,download_hash)
+local function love_filesystem_sink(fname,hash_download)
   local file
   return function(chunk, err)
     if chunk then
@@ -179,29 +176,12 @@ local function love_filesystem_sink(fname,download_hash)
       return file:write(chunk)
     else
       file:close()
-      if download_hash then
-        print(fname .. " is hashing.")
-        socket = require "socket"
-        local data = love.filesystem.read(fname)
-        local start = socket.gettime()
-
-        local sha1obj = hashlib.sha1()
-        sha1obj:process(data)
-        local hash = sha1obj:finish()
-
-        local stop = socket.gettime()
-        
-        local sizemb,time = #data/(1024^2),stop-start
-        local mbps = sizemb/time
-
-        print(("%s MB/s (%s MB in %s s)"):format(
-          round(mbps,4),
-          round(sizemb,4),
-          round(time,4)
-        ))
-        
-        love.filesystem.write(fname..".sha1",hash)
-        print(fname .. " hashed.")
+      if hash_download then
+        print("Hashing thread starting.")
+        local t = love.thread.newThread("hash_"..fname,"core/hash_thread.lua")
+        vapor.currently_hashing[fname] = t
+        t:start()
+        t:set("fname",fname)
       end
     end
   end

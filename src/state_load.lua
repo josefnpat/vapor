@@ -34,6 +34,20 @@ function state_load.start()
   downloader = async.SocketQueue()
   downloader.dt = 0
 
+  hasher = {}
+  hasher.update = function()
+    for i,v in pairs(vapor.currently_hashing) do
+
+     local e = vapor.currently_hashing[i]:get("error")
+     if e then print(e) end
+
+     if love.filesystem.exists(i..".sha1") then
+        vapor.currently_hashing[i] = nil
+      end
+    end
+  end
+  hasher.dt = 0
+
   remote.load(force_local)
   settings.load()
 
