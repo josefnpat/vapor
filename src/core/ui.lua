@@ -268,6 +268,23 @@ function ui.header()
   
 end
 
+-- Based off of Boolsheet's utils.byte_scale from utils.lua
+function ui.bytes_human(b)
+  local units = {"B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"}
+
+  local mag
+  for i = 1,9 do
+    if b >= 1000 then
+      b = b / 1000
+    else
+      mag = i
+      break
+    end
+  end
+
+  return round(b,1).." "..units[mag]
+end
+
 function ui.info()
 
   local x = ui.gameselect_w + settings.padding*2
@@ -279,7 +296,20 @@ function ui.info()
   love.graphics.setFont(fonts.title)
   love.graphics.print(gameobj and gameobj.name or "Vapor",x,y)
   love.graphics.setFont(fonts.basic)
-  love.graphics.printf(gameobj and gameobj.description or "No description available.",x,y+settings.padding*3,w,"left")
+  local desc
+  if gameobj then
+   if gameobj.sizes and gameobj.sizes[gameobj.stable] then
+     love.graphics.printf("Size: " .. ui.bytes_human(gameobj.sizes[gameobj.stable]),x,y,w,"right")
+   end
+   if gameobj.description then
+      desc = gameobj.description
+    else
+      desc = "No description available."
+    end
+  else
+    desc = "Welcome to Vapor."
+  end
+  love.graphics.printf(desc,x,y+settings.padding*3,w,"left")
   
   if gameobj then
     love.graphics.draw(ui.mainbutton.icon,ui.gameselect_w+settings.padding*2, settings.heading.h+settings.padding*3)

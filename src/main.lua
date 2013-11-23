@@ -31,3 +31,8 @@ function openURL(url)
     os.execute('xdg-open "' .. url .. '" &')
   end
 end
+
+function round(num, idp)
+  local mult = 10^(idp or 0)
+  return math.floor(num * mult + 0.5) / mult
+end
