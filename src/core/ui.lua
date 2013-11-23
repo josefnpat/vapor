@@ -147,7 +147,7 @@ function ui.load()
   ui.list = {}
 
   ui.list.all = ui.create_list(ui.conditions.all)
-  tabs:AddTab("All",ui.list.all,"All games")
+  tabs:AddTab("All",ui.list.all,("All games (%d)"):format(#remote.data.games))
 
   ui.list.favorites = ui.create_list(ui.conditions.favorites)
   tabs:AddTab("Favorites",ui.list.favorites,"Your favorite games")
