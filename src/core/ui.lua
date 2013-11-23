@@ -302,7 +302,13 @@ function ui.updatecovers(index)
     if not vapor.currently_downloading[imgn] then
       if love.filesystem.exists(imgn) then
         -- load the image
-        ui.images[index] = love.graphics.newImage(imgn)
+        local status,img = pcall( function() return love.graphics.newImage(imgn) end )
+        if status then -- success!
+          ui.images[index] = img
+        else -- error!
+          print(imgn.." cannot be loaded by love.grapihcs.newImage. Deleting.")
+          love.filesystem.remove(imgn)
+        end
       else
         -- download it!
         print("downloading " .. imgn)
