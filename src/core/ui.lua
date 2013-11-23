@@ -153,10 +153,10 @@ function ui.load()
   tabs:AddTab("Favorites",ui.list.favorites,"Your favorite games")
 
   ui.list.downloaded = ui.create_list(ui.conditions.downloaded)
-  tabs:AddTab("Downloaded",ui.list.downloaded,"Downloaded games.")
+  tabs:AddTab("Downloaded",ui.list.downloaded,"Downloaded games")
 
   ui.list.new = ui.create_list(ui.conditions.all,ui.sorts.new,7)
-  tabs:AddTab("New",ui.list.new,"Recently added games.")
+  tabs:AddTab("New",ui.list.new,"Recently added games (7)")
 
   ui.buttons = {}
   
