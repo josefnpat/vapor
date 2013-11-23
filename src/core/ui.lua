@@ -23,7 +23,13 @@ ui.conditions.downloaded = function(g)
   return love.filesystem.exists(vapor.fname(g,g.stable)..".sha1")
 end
 
-function ui.create_list(condition)
+ui.sorts = {}
+ui.sorts.new = function(a,b)
+  return a.stable > b.stable
+end
+
+function ui.create_list(condition,sort,limit)
+
   local list = loveframes.Create("columnlist")
 
   list.OnRowSelected = function(parent, row, data)
@@ -34,20 +40,35 @@ function ui.create_list(condition)
     end
   end
 
-  return ui.update_list(list,condition)
+  return ui.update_list(list,condition,sort,limit)
   
 end
 
-function ui.update_list(list,condition)
-  list:Clear()
+function ui.update_list(list,condition,sort,limit)
 
-  for gi,gv in pairs(remote.data.games) do
+  list:Clear()
+  local copy
+
+  if sort then
+    copy = {}
+    for _,v in pairs(remote.data.games) do
+      table.insert(copy,v)
+    end
+    table.sort(copy,sort)
+  end
+
+  local count = 0
+  for gi,gv in pairs(copy or remote.data.games) do
     if condition(gv) then
       list:AddRow(gv.name)
+      count = count + 1
+      if limit and count >= limit then
+        return list
+      end
     end
   end
-  
-  return list  
+
+  return list
 end
 
 function ui.update_buttons()
@@ -133,7 +154,10 @@ function ui.load()
 
   ui.list.downloaded = ui.create_list(ui.conditions.downloaded)
   tabs:AddTab("Downloaded",ui.list.downloaded,"Downloaded games.")
-  
+
+  ui.list.new = ui.create_list(ui.conditions.all,ui.sorts.new,7)
+  tabs:AddTab("New",ui.list.new,"Recently added games.")
+
   ui.buttons = {}
   
   local x = ui.gameselect_w+settings.padding*2
