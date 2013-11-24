@@ -3,9 +3,6 @@ local state_load = {}
 state_load.fade_dt_t = 1
 state_load.logo = love.graphics.newImage("assets/logo.png")
 
-state_load.vapor_icon = love.graphics.newImage("assets/vapor_icon.png")
-love.graphics.setIcon(state_load.vapor_icon)
-
 function state_load.start()
 
   require("lib/json/json")

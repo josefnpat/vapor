@@ -1,6 +1,9 @@
 git,git_count = "missing git.lua",0
 pcall(require, "git");
 
+vapor_icon = love.graphics.newImage("assets/vapor_icon.png")
+love.graphics.setIcon(vapor_icon)
+
 state = require("lib/gamestate")
 
 function love.load(args)

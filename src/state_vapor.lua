@@ -2,6 +2,7 @@ local state_vapor = {}
 
 function state_vapor.init(self)
   love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,false,false,0)
+  love.graphics.setIcon(vapor_icon) -- 0.8.0 bug: #667, setMode resets icon
   ui.load()
 end
 
