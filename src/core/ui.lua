@@ -73,6 +73,7 @@ end
 
 function ui.update_buttons()
   local gameobj = remote.data.games[selectindex]
+  ui.mainbutton.visible = selectindex~=nil
   if gameobj then
     local fn = vapor.fname(gameobj,gameobj.stable)
     if vapor.currently_downloading[fn] then
