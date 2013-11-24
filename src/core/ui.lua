@@ -71,31 +71,47 @@ function ui.update_list(list,condition,sort,limit)
   return list
 end
 
-function ui.update_buttons()
+function ui.update_ui()
   local gameobj = remote.data.games[selectindex]
   ui.mainbutton:SetVisible(selectindex~=nil)
+  ui.progressbar:SetVisible(selectindex~=nil)
   if gameobj then
     local fn = vapor.fname(gameobj,gameobj.stable)
     if vapor.currently_downloading[fn] then
       ui.mainbutton:SetText("Downloading ...")
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText("Your game is downloading.")
+      if ui.progressbar:GetValue() ~= 1 then
+        ui.progressbar:SetValue(1)
+      end
     elseif vapor.currently_hashing[fn] then
       ui.mainbutton:SetText("Hashing ...")
       ui.mainbutton.icon = icons.hash[math.floor(hasher.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText("Your game is hashing.")
+      if ui.progressbar:GetValue() ~= 2 then
+        ui.progressbar:SetValue(2)
+      end
     elseif gameobj.invalid then
       ui.mainbutton:SetText("Error")
       ui.mainbutton.icon = icons.delete
       ui.mainbutton_tooltip:SetText("There has been an error. Click to delete this game.")
+      if ui.progressbar:GetValue() ~= 0 then
+        ui.progressbar:SetValue(0)
+      end
     elseif love.filesystem.exists(fn) then
       ui.mainbutton:SetText("Play")
       ui.mainbutton.icon = icons.play
       ui.mainbutton_tooltip:SetText("This game is ready to play.")
+      if ui.progressbar:GetValue() ~= 3 then
+        ui.progressbar:SetValue(3)
+      end
     else
       ui.mainbutton:SetText("Download")
       ui.mainbutton.icon = icons.view
       ui.mainbutton_tooltip:SetText("Download this game now.")
+      if ui.progressbar:GetValue() ~= 0 then
+        ui.progressbar:SetValue(0)
+      end
     end
 
     if ui.conditions.favorites(gameobj) then
@@ -125,8 +141,9 @@ function ui.load()
 
   -- Button
   ui.mainbutton = loveframes.Create("button")
-  ui.mainbutton:SetSize(100, 22)
-  ui.mainbutton:SetPos(ui.gameselect_w+settings.padding*3, settings.heading.h+settings.padding*3)
+  ui.mainbutton:SetSize(100,settings.padding)
+  ui.mainbutton:SetPos(ui.gameselect_w+settings.padding*3.5,
+    settings.heading.h+settings.padding*3)
   ui.mainbutton:SetText("Download")
   ui.mainbutton.OnClick = function(object)
     if remote.data.games[selectindex] then
@@ -137,6 +154,18 @@ function ui.load()
   ui.mainbutton_tooltip = loveframes.Create("tooltip")
   ui.mainbutton_tooltip:SetObject(ui.mainbutton)
   ui.mainbutton_tooltip:SetPadding(4)
+
+  -- progress bar
+
+  ui.progressbar = loveframes.Create("progressbar")
+  ui.progressbar:SetPos(ui.gameselect_w+settings.padding*4+100,
+    settings.heading.h+settings.padding*3)
+  ui.progressbar:SetWidth(ui.gameselect_w-settings.padding*4.5+100)
+  ui.progressbar:SetHeight(settings.padding)
+  ui.progressbar:SetLerp(true)
+  ui.progressbar:SetLerpRate(5)
+  ui.progressbar:SetMax(3)
+  ui.progressbar:SetValue(0)
 
   -- tabs
 
@@ -159,6 +188,8 @@ function ui.load()
   ui.list.new = ui.create_list(ui.conditions.all,ui.sorts.new,7)
   tabs:AddTab("New",ui.list.new,"Recently added games (7)")
 
+  -- buttons
+
   ui.buttons = {}
   
   local x = ui.gameselect_w+settings.padding*2
@@ -171,7 +202,7 @@ function ui.load()
   ui.buttons.favorite:SetPos(x,y)
   ui.buttons.favorite.OnClick = function(object)
     vapor.favoritegame(selectindex)
-    ui.update_buttons()
+    ui.update_ui()
   end
   
   local favorite_tooltip = loveframes.Create("tooltip")
@@ -204,15 +235,15 @@ function ui.load()
   ui.buttons.visitwebsite:SetPos(x,y)
   ui.buttons.visitwebsite.OnClick = function(object)
     vapor.visitwebsitegame(selectindex)
-    ui.update_buttons()
+    ui.update_ui()
   end
   
   local visitwebsite_tooltip = loveframes.Create("tooltip")
   visitwebsite_tooltip:SetObject(ui.buttons.visitwebsite)
   visitwebsite_tooltip:SetPadding(4)
   visitwebsite_tooltip:SetText("Visit the author's website.")
-  
-  ui.update_buttons()
+
+  ui.update_ui()
 
 end
 
@@ -236,7 +267,7 @@ function ui.update(dt)
     end
   end
   
-  ui.update_buttons()
+  ui.update_ui()
 
   if ui.download_change then
     ui.download_change = nil
