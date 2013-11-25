@@ -1,6 +1,6 @@
 #Vapor - LÖVE Distribution Client
 
-![Screenshot](dev/screenshots/screenshot.png)
+![Screenshot](https://raw.github.com/josefnpat/vapor/master/dev/screenshots/screenshot.png)
 
 ## Requirements
 
