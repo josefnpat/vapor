@@ -81,6 +81,7 @@ function ui.update_ui()
       ui.mainbutton:SetText("Downloading ...")
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText("Your game is downloading.")
+      ui.progressbar:SetText("33%")
       if ui.progressbar:GetValue() ~= 1 then
         ui.progressbar:SetValue(1)
       end
@@ -88,6 +89,7 @@ function ui.update_ui()
       ui.mainbutton:SetText("Hashing ...")
       ui.mainbutton.icon = icons.hash[math.floor(hasher.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText("Your game is hashing.")
+      ui.progressbar:SetText("66%")
       if ui.progressbar:GetValue() ~= 2 then
         ui.progressbar:SetValue(2)
       end
@@ -95,6 +97,7 @@ function ui.update_ui()
       ui.mainbutton:SetText("Error")
       ui.mainbutton.icon = icons.delete
       ui.mainbutton_tooltip:SetText("There has been an error. Click to delete this game.")
+      ui.progressbar:SetText("0%")
       if ui.progressbar:GetValue() ~= 0 then
         ui.progressbar:SetValue(0)
       end
@@ -102,6 +105,7 @@ function ui.update_ui()
       ui.mainbutton:SetText("Play")
       ui.mainbutton.icon = icons.play
       ui.mainbutton_tooltip:SetText("This game is ready to play.")
+      ui.progressbar:SetText("100%")
       if ui.progressbar:GetValue() ~= 3 then
         ui.progressbar:SetValue(3)
       end
@@ -109,6 +113,7 @@ function ui.update_ui()
       ui.mainbutton:SetText("Download")
       ui.mainbutton.icon = icons.view
       ui.mainbutton_tooltip:SetText("Download this game now.")
+      ui.progressbar:SetText("0%")
       if ui.progressbar:GetValue() ~= 0 then
         ui.progressbar:SetValue(0)
       end
