@@ -3,7 +3,7 @@
 LF=src/lib/lf
 git clone --depth 1 https://github.com/NikolaiResokav/LoveFrames.git $LF
 cd $LF
-git checkout 2e71e96cf56a2223889fd28821fc8014ae9222dd # 0.9.6.4 Alpha
+git checkout 9aaf07f66ff6ca74dbf709b65ea748246dfd0364 # 0.9.6.4 Alpha
 cd -
 
 LFGT=$LF/skins/Gray
