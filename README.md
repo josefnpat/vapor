@@ -61,4 +61,8 @@ Feature Requests, Suggestions, Bugs, etc. go in the [issue queue](https://github
 
 If you are interested in helping out in the project, you can find josefnpat on [OFTC](irc://irc.oftc.net:6667) in #vapor-dev or #love.
 
+## Documentation
+
+Please visit the [wiki hosted at GitHub](https://github.com/josefnpat/vapor/wiki).
+
 [1] How to on [windows](http://support.microsoft.com/kb/889768), [OS X](http://ss64.com/osx/shasum.html) or [linux](http://en.wikipedia.org/wiki/Sha1sum)
