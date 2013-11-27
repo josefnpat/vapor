@@ -1,16 +1,18 @@
 #!/bin/sh
 
 LF=src/lib/lf
-git clone --depth 1 https://github.com/NikolaiResokav/LoveFrames.git $LF
+git clone https://github.com/NikolaiResokav/LoveFrames.git $LF
 cd $LF
 git checkout 9aaf07f66ff6ca74dbf709b65ea748246dfd0364 # 0.9.6.4 Alpha
+rm -rf .git
 cd -
 
 LFGT=$LF/skins/Gray
-# Switch back to Uneks repo when this merge is resolved
-git clone --depth 1 https://github.com/josefnpat/loveframes-gray-theme.git $LFGT
+git clone https://github.com/unek/loveframes-gray-theme.git $LFGT
 cd $LFGT
-git checkout 54ab5293d949cea3c852235297bee158059f4b1d
+git checkout 578b5948d0ad2ea8da1d317362d40681b73bacb8
+ls -lah $LF/
+rm -rf .git
 cd -
 
 # Download binaries, and unpack
