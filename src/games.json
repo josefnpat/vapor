@@ -2,6 +2,25 @@
   "timestamp":1375504351,
   "games":[
     {
+      "id":"PacPac",
+      "name":"PacPac",
+      "sources":{
+        "1385620902":"http://zarblox.com/pacpac.love"
+      },
+      "hashes":{
+        "1385620902":"ff904e48711248b2fa06bf604d1ce97ca2f7be7a"
+      },
+      "sizes":{
+        "1385620902":621374
+      },
+      "stable":"1385620902",
+      "author":"gaarlicbread",
+      "website":"https://medium.com/i-3-video-games/6b10cfbc0ab0",
+      "description":"Pac-Man from a parallel universe",
+      "engine":"love-0.8.0",
+      "image":"http://zarblox.com/pacpac_vapor2.png"
+    },
+    {
       "id":"Aeternum_Blammo",
       "stable":"1375504351",
       "sizes":{
