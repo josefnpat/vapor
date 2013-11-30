@@ -2,25 +2,6 @@
   "timestamp":1375504351,
   "games":[
     {
-      "id":"PacPac",
-      "name":"PacPac",
-      "sources":{
-        "1385620902":"http://zarblox.com/pacpac.love"
-      },
-      "hashes":{
-        "1385620902":"ff904e48711248b2fa06bf604d1ce97ca2f7be7a"
-      },
-      "sizes":{
-        "1385620902":621374
-      },
-      "stable":"1385620902",
-      "author":"gaarlicbread",
-      "website":"https://medium.com/i-3-video-games/6b10cfbc0ab0",
-      "description":"Pac-Man from a parallel universe",
-      "engine":"love-0.8.0",
-      "image":"http://zarblox.com/pacpac_vapor2.png"
-    },
-    {
       "id":"Aeternum_Blammo",
       "stable":"1375504351",
       "sizes":{
@@ -734,7 +715,7 @@
         "1378837015":"http://cjohnson.id.au/vapor/You-Want-The-Money/YouWantTheMoney.love"
       },
       "name":"You Want The Money?",
-      "description":"You Want the Money is a multiplayer game in which business men scramble over a note that falls from the sky"
+      "description":"You Want the Money is a multiplayer game in which business men scramble over a note that falls from the sky."
     },
     {
       "id":"triad",
@@ -865,7 +846,64 @@
       },
       "id":"ubo",
       "name":"UBO",
-      "description":"UBO (Unknown Bouncing Objects) is a minimalist clone of Qix"
+      "description":"UBO (Unknown Bouncing Objects) is a minimalist clone of Qix."
+    },
+    {
+      "id":"PacPac",
+      "name":"PacPac",
+      "sources":{
+        "1385620902":"http://zarblox.com/pacpac.love"
+      },
+      "hashes":{
+        "1385620902":"ff904e48711248b2fa06bf604d1ce97ca2f7be7a"
+      },
+      "sizes":{
+        "1385620902":621374
+      },
+      "stable":"1385620902",
+      "author":"gaarlicbread",
+      "website":"https://medium.com/i-3-video-games/6b10cfbc0ab0",
+      "description":"Pac-Man from a parallel universe.",
+      "engine":"love-0.8.0",
+      "image":"http://zarblox.com/pacpac_vapor2.png"
+    },
+    {
+      "engine":"love-0.8.0",
+      "stable":"1385845308",
+      "sizes":{
+        "1385845308":15368791
+      },
+      "hashes":{
+        "1385845308":"a0c791030852559e47944f6700bdedda9593d83b"
+      },
+      "image":"http://i.imgur.com/w1lxKEw.png",
+      "author":"Binaryan Orkandyke",
+      "website":"http://vivid.gamedevs.org",
+      "sources":{
+        "1385845308":"http://50.116.63.25/public/vapor_hosted/Scavenge-Alpha_0.9.love"
+      },
+      "id":"Scavenge",
+      "name":"Scavenge",
+      "description":"You find yourself in the wilderness, you see signs along the road, pointing to Amsterdam. According to the signs it's 500 kilometers ahead. With an average walk distance of 5 kilometer an hour it's a daunting trip, especially since the wilderness is haunted with infected animals. You decide to do it anyway, in the hope there will be civilisation."
+    },
+    {
+      "engine":"love-0.8.0",
+      "stable":"1385845308",
+      "sizes":{
+        "1385845308":2596344
+      },
+      "hashes":{
+        "1385845308":"4fc08f42f23199fa06e5b9eae5b3c89964384401"
+      },
+      "image":"http://i.imgur.com/dhrJU3t.png",
+      "author":"Binaryan Orkandyke",
+      "website":"http://vivid.gamedevs.org",
+      "sources":{
+        "1385845308":"http://50.116.63.25/public/vapor_hosted/Golden_Harvest-Alpha.love"
+      },
+      "id":"Golden_Harvest",
+      "name":"Golden Harvest",
+      "description":"Golden Harvest is a roguelite game about survival. You find yourself on a desolate island with wild animals. You've got various skills at your disposal which you can use to survive, like crafting, smithing, cooking and beekeeping."
     }
   ]
 }
