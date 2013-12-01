@@ -904,6 +904,24 @@
       "id":"Golden_Harvest",
       "name":"Golden Harvest",
       "description":"Golden Harvest is a roguelite game about survival. You find yourself on a desolate island with wild animals. You've got various skills at your disposal which you can use to survive, like crafting, smithing, cooking and beekeeping."
+    },
+    {
+      "id":"Love_for_zombies",
+      "stable":"1385893739",
+      "sizes":{
+        "1385893739":1752562
+      },
+      "engine":"love-0.8.0",
+      "hashes":{
+        "1385893739":"f84113bfa0610d2377251d5ab8fd6f0d1135ba49"
+      },
+      "image":"http://i.imgur.com/vDJPRVk.png",
+      "author":"Ellohir",
+      "sources":{
+        "1385893739":"http://cdn.bitbucket.org/ellohir/love-for-zombies/downloads/love_for_zombies_v2.42.love"
+      },
+      "name":"Love for Zombies",
+      "description":"Small game about shooting mindless zombies. Difficult and intense."
     }
   ]
 }
