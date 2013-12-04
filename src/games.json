@@ -922,6 +922,25 @@
       },
       "name":"Love for Zombies",
       "description":"Small game about shooting mindless zombies. Difficult and intense."
+    },
+    {
+      "id":"possession",
+      "name":"Possession: ENR",
+      "sources":{
+        "1386085761":"http://taylor-vaughan.com/possession/possession.love"
+      },
+      "hashes":{
+        "1386085761":"b382c82d821ded22228eaf9d80da6473444e0714"
+      },
+      "sizes":{
+        "1386085761":116973
+      },
+      "stable":"1386085761",
+      "author":"Taylor Vaughan",
+      "website":"http://taylor-vaughan.com/",
+      "description":"Possession: Escape from the Nether Regions. A roguelike made for the 2013 7-Day Roguelike Challenge. You play as a weak ghost who has only one power: the ability to take control of the bodies of other monsters!",
+      "engine":"love-0.8.0",
+      "image":"http://taylor-vaughan.com/possession/screenshot.png"
     }
   ]
 }
