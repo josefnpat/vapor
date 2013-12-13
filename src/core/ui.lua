@@ -20,6 +20,9 @@ ui.conditions.favorites = function(g)
   return settings.data.games[g.id].favorite
 end
 ui.conditions.downloaded = function(g)
+  return love.filesystem.exists(vapor.fname(g,g.stable))
+end
+ui.conditions.hashed = function(g)
   return love.filesystem.exists(vapor.fname(g,g.stable)..".sha1")
 end
 
