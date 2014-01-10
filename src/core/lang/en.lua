@@ -25,7 +25,7 @@ return {
   
   size = "Size",
   welcome = "Welcome to Vapor.",
-  nodescription = "No description availible.",
+  nodescription = "No description availaible.",
   
   -- Info Button Status
 
