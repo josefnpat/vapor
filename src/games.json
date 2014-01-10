@@ -369,22 +369,23 @@
       "author":"ragzouken"
     },
     {
-      "engine":"love-0.8.0",
+      "id":"FOUR",
       "stable":"1367504326",
       "sizes":{
         "1367504326":5787756
       },
+      "engine":"love-0.8.0",
       "hashes":{
         "1367504326":"eaba0ffc43b11a2fe649dc7bc100a50f11f52f49"
       },
       "image":"http://sience.schattenkind.net/devmania/FOUR_schattenkind.png",
-      "id":"FOUR",
-      "website":"http://schattenkind.net",
+      "author":"SiENcE"
+      "website":"http://gamejams.schattenkind.net/",
       "sources":{
         "1367504326":"http://sience.schattenkind.net/devmania/FOUR_schattenkind_net.love"
       },
       "name":"FOUR",
-      "author":"SiENcE"
+      "description":"1-4 Player one button game. You need to reach the green finish line. The first Player wins it all. The world is generated dynamically and new, every time you start a new race!"
     },
     {
       "id":"tower-quest",
