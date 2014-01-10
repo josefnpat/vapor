@@ -3,7 +3,7 @@ return {
   -- Internal
 
   id = "DE",
-  name = "German",
+  name = "Deutsch",
   
   -- Tabs
   
