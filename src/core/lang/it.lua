@@ -33,12 +33,12 @@ return {
   download_tooltip = "Scarica questo gioco.",
   downloading = "Scaricamento ...",
   downloading_tooltip = "Il gioco sta venendo scaricato.",
-  hashing = "Hashando ...", --have to change this
-  hashing_tooltip = "Creando un hash del gioco.", --have to change this
+  hashing = "Verificando ...",
+  hashing_tooltip = "Il gioco sta venendo verificato.",
   invalid = "Errore",
   invalid_tooltip = "C'è stato un errore. Clicca per eliminare il gioco.",
   play = "Gioca",
-  play_tooltip = "Clicca per giocare a questo gioco.", --have to change this
+  play_tooltip = "Il gioco è pronto.",
   
   -- Game Buttons
   
