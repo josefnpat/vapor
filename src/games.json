@@ -960,6 +960,24 @@
       },
       "name":"Wake up call",
       "description":"An experimental interactive piece that takes place inside a comatose man’s mind. Will you be able to wake up back into consciousness?"
+    },
+    {
+      "id":"Revenge_of_Olmec",
+      "stable":"1389318893",
+      "sizes":{
+        "1389318893":14148449
+      },
+      "engine":"love-0.8.0",
+      "hashes":{
+        "1389318893":"0a929689ab4eb342fd5572bebd2fa1e41b1a5eb5"
+      },
+      "image":"http://50.116.63.25/public/vapor_hosted/Revenge_of_Olmec.png",
+      "author":"Bob Somers",
+      "sources":{
+        "1389318893":"http://50.116.63.25/public/vapor_hosted/Revenge_of_Olmec.love"
+      },
+      "name":"Revenge of Olmec (Chan)",
+      "description":"Authors: Bob Somers, Ryan Schmitt, Tim Adam, and Paul Morales\nFeat. Andrew Chan"
     }
   ]
 }
