@@ -14,7 +14,7 @@ return {
   list_downloaded = "Heruntergeladen",
   list_downloaded_tooltip = "Heruntergeladene Spiele",
   list_new = "Neu",
-  list_new_tooltip = "Zuletzt hinzugefügte Spiele (%d)",
+  list_new_tooltip = "Zuletzt hinzugefÃ¼gte Spiele (%d)",
   
   -- Global Buttons
   
@@ -23,27 +23,27 @@ return {
   
   -- Info Section
   
-  size = "Größe",
+  size = "GrÃ¶ÃŸe",
   welcome = "Willkommen bei Vapor.",
-  nodescription = "Keine Beschreibung verfügbar.",
+  nodescription = "Keine Beschreibung verfÃ¼gbar.",
   
   -- Info Button Status
 
   download = "Herunterladen",
   download_tooltip = "Lade dieses Spiel herunter.",
-  downloading = "Läd herunter ...",
+  downloading = "LÃ¤d herunter ...",
   downloading_tooltip = "Das Spiel wird heruntergeladen.",
   hashing = "Hashing ...",
   hashing_tooltip = "Das Spiel wird gehasht.",
   invalid = "Fehler",
-  invalid_tooltip = "Es ist ein Fehler aufgetreten. Click um das Spiel zu löschen.",
+  invalid_tooltip = "Es ist ein Fehler aufgetreten. Click um das Spiel zu lÃ¶schen.",
   play = "Spielen",
   play_tooltip = "Das Spiel kann gespielt werden.",
   
   -- Game Buttons
   
   favorite_tooltip = "Das Spiel als Favoriten markieren.",
-  delete_tooltip = "Lösche das Spiel.",
+  delete_tooltip = "LÃ¶sche das Spiel.",
   website_tooltip = "Webseite des Author's ansehen."
 
 }
