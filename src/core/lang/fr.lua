@@ -1,5 +1,6 @@
 return {
 
+  -- Maintainer: Yonaba
   -- Internal
 
   id = "FR",
