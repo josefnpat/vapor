@@ -1,3 +1,4 @@
+.DS_Store
 src/lib/lf
 src/git.lua
 ._temp.love
