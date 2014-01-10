@@ -61,6 +61,14 @@ Feature Requests, Suggestions, Bugs, etc. go in the [issue queue](https://github
 
 If you are interested in helping out in the project, you can find josefnpat on [OFTC](irc://irc.oftc.net:6667) in #vapor-dev or #love.
 
+## Translations
+
+If you are interested in creating a new language for vapor:
+
+* __Be dedicated__. If you abandon your language, and I cannot get a translation easily, I will have to remove it.
+* __Create a new issue entitled: "Add Language <LANG>"__ so that I can ping you when I need to get translations.
+* __Use `src/core/lang/en.lua` as a guide__, as that will always be up to date, since EN is the default language.
+
 ## Documentation
 
 Please visit the [wiki hosted at GitHub](https://github.com/josefnpat/vapor/wiki).
