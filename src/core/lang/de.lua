@@ -35,9 +35,9 @@ return {
   downloading = "Läd herunter ...",
   downloading_tooltip = "Das Spiel wird heruntergeladen.",
   hashing = "Überprüft ...",
-  hashing_tooltip = "Das Spieldaten wird verifiziert.",
+  hashing_tooltip = "Die Spieldaten werden verifiziert.",
   invalid = "Fehler",
-  invalid_tooltip = "Es ist ein Fehler aufgetreten. Click um das Spiel zu löschen.",
+  invalid_tooltip = "Es ist ein Fehler aufgetreten. Klicke, um das Spiel zu löschen.",
   play = "Spielen",
   play_tooltip = "Das Spiel kann gespielt werden.",
   
