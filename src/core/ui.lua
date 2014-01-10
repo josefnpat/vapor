@@ -78,41 +78,41 @@ function ui.update_ui()
   if gameobj then
     local fn = vapor.fname(gameobj,gameobj.stable)
     if vapor.currently_downloading[fn] then
-      ui.mainbutton:SetText("Downloading ...")
+      ui.mainbutton:SetText(lang_current.downloading)
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
-      ui.mainbutton_tooltip:SetText("Your game is downloading.")
+      ui.mainbutton_tooltip:SetText(lang_current.downloading_tooltip)
       ui.progressbar:SetText("33%")
       if ui.progressbar:GetValue() ~= 1 then
         ui.progressbar:SetValue(1)
       end
     elseif vapor.currently_hashing[fn] then
-      ui.mainbutton:SetText("Hashing ...")
+      ui.mainbutton:SetText(lang_current.hashing)
       ui.mainbutton.icon = icons.hash[math.floor(hasher.dt*10)%4+1]
-      ui.mainbutton_tooltip:SetText("Your game is hashing.")
+      ui.mainbutton_tooltip:SetText(lang_current.hashing_tooltip)
       ui.progressbar:SetText("66%")
       if ui.progressbar:GetValue() ~= 2 then
         ui.progressbar:SetValue(2)
       end
     elseif gameobj.invalid then
-      ui.mainbutton:SetText("Error")
+      ui.mainbutton:SetText(lang_current.invalid)
       ui.mainbutton.icon = icons.delete
-      ui.mainbutton_tooltip:SetText("There has been an error. Click to delete this game.")
+      ui.mainbutton_tooltip:SetText(lang_current.invalid_tooltip)
       ui.progressbar:SetText("0%")
       if ui.progressbar:GetValue() ~= 0 then
         ui.progressbar:SetValue(0)
       end
     elseif love.filesystem.exists(fn) then
-      ui.mainbutton:SetText("Play")
+      ui.mainbutton:SetText(lang_current.play)
       ui.mainbutton.icon = icons.play
-      ui.mainbutton_tooltip:SetText("This game is ready to play.")
+      ui.mainbutton_tooltip:SetText(lang_current.play_tooltip)
       ui.progressbar:SetText("100%")
       if ui.progressbar:GetValue() ~= 3 then
         ui.progressbar:SetValue(3)
       end
     else
-      ui.mainbutton:SetText("Download")
+      ui.mainbutton:SetText(lang_current.download)
       ui.mainbutton.icon = icons.view
-      ui.mainbutton_tooltip:SetText("Download this game now.")
+      ui.mainbutton_tooltip:SetText(lang_current.download_tooltip)
       ui.progressbar:SetText("0%")
       if ui.progressbar:GetValue() ~= 0 then
         ui.progressbar:SetValue(0)
@@ -174,31 +174,84 @@ function ui.load()
 
   -- tabs
 
-  local tabs = loveframes.Create("tabs")
-  tabs:SetPos(settings.padding, settings.heading.h+settings.padding)
+  if ui.tabs then ui.tabs:Remove() end
 
-  tabs:SetSize(ui.gameselect_w,ui.gameselect_h)
+  ui.tabs = loveframes.Create("tabs")
+  ui.tabs:SetPos(settings.padding, settings.heading.h+settings.padding)
+
+  ui.tabs:SetSize(ui.gameselect_w,ui.gameselect_h)
 
   ui.list = {}
 
   ui.list.all = ui.create_list(ui.conditions.all)
-  tabs:AddTab("All",ui.list.all,("All games (%d)"):format(#remote.data.games))
+  ui.tabs:AddTab(lang_current.list_all,
+    ui.list.all,
+    lang_current.list_all_tooltip:format(#remote.data.games))
 
   ui.list.favorites = ui.create_list(ui.conditions.favorites)
-  tabs:AddTab("Favorites",ui.list.favorites,"Your favorite games")
+  ui.tabs:AddTab(lang_current.list_favorite,
+    ui.list.favorites,
+    lang_current.list_favorite)
 
   ui.list.downloaded = ui.create_list(ui.conditions.downloaded)
-  tabs:AddTab("Downloaded",ui.list.downloaded,"Downloaded games")
+  ui.tabs:AddTab(lang_current.list_downloaded,
+    ui.list.downloaded,
+    lang_current.list_downloaded_tooltip)
 
-  ui.list.new = ui.create_list(ui.conditions.all,ui.sorts.new,7)
-  tabs:AddTab("New",ui.list.new,"Recently added games (7)")
+  ui.list.new = ui.create_list(ui.conditions.all,ui.sorts.new)
+  ui.tabs:AddTab(lang_current.list_new,
+    ui.list.new,
+    lang_current.list_new_tooltip:format(7))
 
   -- buttons
 
   ui.buttons = {}
-  
+
   local x = ui.gameselect_w+settings.padding*2
   local y = love.graphics.getHeight()-settings.padding*2
+
+  ui.buttons.settings = loveframes.Create("imagebutton")
+  ui.buttons.settings:SetImage(icons.settings)
+  ui.buttons.settings:SizeToImage()
+  ui.buttons.settings:SetText("")
+  ui.buttons.settings:SetPos(settings.padding,settings.padding)
+  ui.buttons.settings.OnClick = function(object)
+
+    ui.settings = loveframes.Create("frame")
+
+    ui.settings:SetName(lang_current.settings)
+    ui.settings:SetModal(true)
+    ui.settings:Center()
+    ui.settings:SetDraggable(false)
+
+    ui.settings_lang = loveframes.Create("multichoice", ui.settings)
+    ui.settings_lang:SetY(32)
+    ui.settings_lang:CenterX()
+    for _,lang in ipairs(lang_all) do
+      ui.settings_lang:AddChoice(lang.string)
+      if lang.id == lang_default_id then
+        ui.settings_lang:SetChoice(lang.string)
+      end
+    end
+    ui.settings_lang.OnChoiceSelected = function(object, choice)
+      for _,lang in ipairs(lang_all) do
+        if lang.string == choice then
+          lang_current = lang
+          lang_default_id = lang.id
+          settings.data.lang = lang.id
+          ui.load()
+          print(choice .. " was selected.")
+        end
+      end
+    end
+
+  end
+
+  local settings_tooltip = loveframes.Create("tooltip")
+  settings_tooltip:SetObject(ui.buttons.settings)
+  settings_tooltip:SetPadding(4)
+  settings_tooltip:SetText(lang_current.settings_tooltip)
+
   
   ui.buttons.favorite = loveframes.Create("imagebutton")
   ui.buttons.favorite:SetImage(icons.favorite)
@@ -213,7 +266,7 @@ function ui.load()
   local favorite_tooltip = loveframes.Create("tooltip")
   favorite_tooltip:SetObject(ui.buttons.favorite)
   favorite_tooltip:SetPadding(4)
-  favorite_tooltip:SetText("Mark this game as a favorite.")
+  favorite_tooltip:SetText(lang_current.favorite_tooltip)
   
   x = x + settings.padding
   
@@ -229,7 +282,7 @@ function ui.load()
   local delete_tooltip = loveframes.Create("tooltip")
   delete_tooltip:SetObject(ui.buttons.delete)
   delete_tooltip:SetPadding(4)
-  delete_tooltip:SetText("Delete this game.")
+  delete_tooltip:SetText(lang_current.delete_tooltip)
 
   x = x + settings.padding
 
@@ -246,7 +299,7 @@ function ui.load()
   local visitwebsite_tooltip = loveframes.Create("tooltip")
   visitwebsite_tooltip:SetObject(ui.buttons.visitwebsite)
   visitwebsite_tooltip:SetPadding(4)
-  visitwebsite_tooltip:SetText("Visit the author's website.")
+  visitwebsite_tooltip:SetText(lang_current.website_tooltip)
 
   ui.update_ui()
 
@@ -336,15 +389,15 @@ function ui.info()
   local desc
   if gameobj then
    if gameobj.sizes and gameobj.sizes[gameobj.stable] then
-     love.graphics.printf("Size: " .. ui.bytes_human(gameobj.sizes[gameobj.stable]),x,y,w,"right")
+     love.graphics.printf(lang_current.size .. ": " .. ui.bytes_human(gameobj.sizes[gameobj.stable]),x,y,w,"right")
    end
    if gameobj.description then
       desc = gameobj.description
     else
-      desc = "No description available."
+      desc = lang_current.nodescription
     end
   else
-    desc = "Welcome to Vapor."
+    desc = lang_current.welcome
   end
   love.graphics.printf(desc,x,y+settings.padding*3,w,"left")
   

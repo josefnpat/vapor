@@ -15,11 +15,11 @@ function state_load.start()
 
   love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
   
-  vapor = require 'core/vapor'
+  settings = require("core/settings")
+  vapor = require('core/vapor')
   icons = require("core/icons")
   fonts = require("core/fonts")
   colors = require("core/colors")
-  settings = require("core/settings")
   remote = require("core/remote")
   ui = require("core/ui")
 
@@ -50,12 +50,14 @@ function state_load.start()
 
   remote.load(force_local)
   settings.load()
+  vapor.load()
 
 end
 
 function state_load.draw(self)
+
   if not self.ready then
-    love.graphics.printf("LOADING ...",0,0,love.graphics.getWidth(),"center")
+    love.graphics.printf("Loading ...",0,0,love.graphics.getWidth(),"center")
   end
   if self.fade_dt and self.fade_dt >=0 then
     love.graphics.setColor(255,255,255,255*(self.fade_dt/state_load.fade_dt_t))
