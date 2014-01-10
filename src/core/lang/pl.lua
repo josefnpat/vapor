@@ -4,7 +4,7 @@ return {
   -- Internal
 
   id = "PL",
-  name = "polski",
+  name = "Polski",
   
   -- Tabs
   
