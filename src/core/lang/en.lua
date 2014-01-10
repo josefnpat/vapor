@@ -1,5 +1,6 @@
 return {
 
+  -- Maintainer: josefnpat
   -- Internal
 
   id = "EN",
