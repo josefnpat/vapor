@@ -1,5 +1,6 @@
 return {
 
+  -- Maintainer: josefnpat's cat
   -- Internal
 
   id = "MEOW",
