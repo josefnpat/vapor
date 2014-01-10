@@ -1,5 +1,6 @@
 return {
 
+  -- Maintainer: Nixola
   -- Internal
 
   id = "IT",
