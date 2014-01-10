@@ -1,5 +1,6 @@
 return {
 
+  -- Maintainer: SiENcE
   -- Internal
 
   id = "DE",
