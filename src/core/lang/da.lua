@@ -12,10 +12,10 @@ return {
   list_all_tooltip = "Alle spil (%d)",
   list_favorite = "Favoritter",
   list_favorite_tooltip = "Dine favorit spil",
-  list_downloaded = "Downloadede",
-  list_downloaded_tooltip = "Downloadede spil",
+  list_downloaded = "Hentede",
+  list_downloaded_tooltip = "Hentede spil",
   list_new = "Nye",
-  list_new_tooltip = "Nyeligt insættede spil (%d)",
+  list_new_tooltip = "Senest tilføjede spil (%d)",
 
   -- Global Buttons
 
@@ -26,25 +26,25 @@ return {
 
   size = "Størrelse",
   welcome = "Velkommen til Vapor.",
-  nodescription = "Intet resumé tilgængeligt",
+  nodescription = "Ingen beskrivelse tilgængelig.",
 
   -- Info Button Status
 
-  download = "Download",
-  download_tooltip = "Download dette spil nu.",
-  downloading = "Downloader ...",
-  downloading_tooltip = "Dit spil bliver downloadet",
-  hashing = "Tjekker ...",
-  hashing_tooltip = "Dit spil bliver tjekket.",
+  download = "Hent",
+  download_tooltip = "Hent dette spil nu.",
+  downloading = "Henter ...",
+  downloading_tooltip = "Spillet hentes.",
+  hashing = "Verificerer ...",
+  hashing_tooltip = "Dit spil bliver verificeret.",
   invalid = "Fejl",
-  invalid_tooltip = "Der er sket en fejl. Klik for at slette spil.",
+  invalid_tooltip = "Der opstod en fejl. Klik for at slette spil.",
   play = "Spil",
-  play_tooltip = "Dette spil er klar til at blive spillet",
+  play_tooltip = "Dette spil er klar til at blive spillet.",
 
   -- Game Buttons
 
-  favorite_tooltip = "Put det her spil på dine favoritter.",
-  delete_tooltip = "Slet det her spil.",
-  website_tooltip = "Besøg udviklerens hjemmeside."
+  favorite_tooltip = "Tilføj dette spil til dine favoritter.",
+  delete_tooltip = "Slet dette spil.",
+  website_tooltip = "Gå til udviklerens hjemmeside."
 
 }
