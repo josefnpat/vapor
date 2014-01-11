@@ -436,7 +436,7 @@
       "id":"roguefleet",
       "website":"http://www.martianarctic.com",
       "sources":{
-        "1376024769":"http://www.martianarctic.com/games/roguefleet/roguefleet.php"
+        "1376024769":"http://50.116.63.25/public/vapor_hosted/roguefleet-1376024769.love"
       },
       "name":"Rogue Fleet",
       "author":"Martian Arctic Games"
@@ -769,7 +769,7 @@
       "author":"adnzzzzZ",
       "website":"http://notmagi.me",
       "sources":{
-        "1379718108":"http://notmagi.me/downloads/The%20Binding%20of%20Crate%20Box.love"
+        "1379718108":"http://50.116.63.25/public/vapor_hosted/the_binding_of_crate_box-1379718108.love"
       },
       "name":"The Binding of Crate Box",
       "description":"The Binding of Isaac + The Super Crate Box, woo! Are you a bad enough dude to kill all the bad dudes?"
