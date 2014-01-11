@@ -59,7 +59,7 @@ h1, h2, h3, h4 {
 }
 
 .game {
-  height: 261px; /* 245 + 16 */
+  min-height: 261px; /* 245 + 16 */
   background-color: <?php echo $color['black_highlight']; ?>;
   margin: 8px 0px;
 }
