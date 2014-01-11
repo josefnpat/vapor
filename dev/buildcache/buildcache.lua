@@ -73,14 +73,18 @@ for _,game in pairs(data.games) do
     io.write("(NEW)  ")
     love = http.request(game.sources[stable])
   end
-  local sha1obj = hashlib.sha1()
-  sha1obj:process(love)
-  local hash = sha1obj:finish()
-  if hash == game.hashes[stable] then
-    io.write("[OK]")
-    file_put_contents(dir.."/"..base..".love",love)
+  if love then
+    local sha1obj = hashlib.sha1()
+    sha1obj:process(love)
+    local hash = sha1obj:finish()
+    if hash == game.hashes[stable] then
+      io.write("[OK]")
+      file_put_contents(dir.."/"..base..".love",love)
+    else
+      io.write("[HASH MISMATCH]")
+    end
   else
-    io.write("[HASH MISMATCH]")
+    io.write("[NULL DATA]")
   end
   io.write("\n")
 end
