@@ -8,6 +8,7 @@ $gamecount = count($data->games);
   <head>
     <title>Vapor &mdash; L&Ouml;VE Distribution Client</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" type="text/css" href="style.css.php">
   </head>
 
