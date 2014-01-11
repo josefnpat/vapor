@@ -27,6 +27,7 @@ $gamecount = count($data->games);
         <li><a href="https://github.com/josefnpat/vapor#translations">Help translate Vapor</a>.</li>
         <li>See the project at <a href="https://github.com/josefnpat/vapor">GitHub</a>.</li>
         <li>Contribute to vapor! Check out the <a href="https://github.com/josefnpat/vapor/issues">issue queue</a>!</li>
+        <li>Chat with the developers at <a href="http://webchat.oftc.net/?channels=vapor-dev">#vapor-dev@irc.oftc.net</a>!</li>
       </ul>
 
       <h3>Games (<?php echo $gamecount; ?>)</h3>
