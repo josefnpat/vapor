@@ -904,6 +904,25 @@
       "id":"Golden_Harvest",
       "name":"Golden Harvest",
       "description":"Golden Harvest is a roguelite game about survival. You find yourself on a desolate island with wild animals. You've got various skills at your disposal which you can use to survive, like crafting, smithing, cooking and beekeeping."
-    }
+    },
+		{
+			"id":"Grand_Health_Auto",
+			"name":"Grand Health Auto",
+			"sources":{
+				"1359283291":"http://vrld.org/downloads/GrandHealthAuto.love"
+			},
+			"hashes":{
+				"1359283291":"3de0252d5f9cc7d2faf1ad613d097b5497d18018"
+			},
+			"sizes":{
+				"1359283291":15578598
+			},
+			"stable":"1359283291",
+			"author":"Grand Health Auto GGJ13 Team",
+			"website":"http://2013.globalgamejam.org/2013/grand-health-auto",
+			"description":"Grand Health Auto is small parody of GTA where an ambulant driver must rescue accident victims. The ambulant car driver needs to collect injured victims and bring them to the hospital, while trying not to create too many new victims. It's a fun game between life and death, between heart beats and music, between care and greed. You will love the ambulance car, the city, and the radio stations. But watch out for traffic jams. And pedestrians... or maybe not.",
+			"engine":"love-0.8.0",
+			"image":"http://fysx.org/~martin/shared/vapor-gha-game.png"
+		}
   ]
 }
