@@ -63,9 +63,9 @@ To force vapor to read from the current directory / archive, use the `force_loca
 
 You will know if this is done correctly if the console output says, 'Updated from local games.json`.
 
-To remove the cached settings (`settings.json`) and cached database (`games.json`) use the `clearcache` flag. e.g.;
+To remove the cached settings (`settings.json`) and cached database (`games.json`) use the `clear_cache` flag. e.g.;
 
-    love ./vapor-*.love clearcache
+    love ./vapor-*.love clear_cache
 
 ## Game Criteria
 
