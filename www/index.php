@@ -30,6 +30,9 @@ $gamecount = count($data->games);
         <li>Chat with the developers at <a href="http://webchat.oftc.net/?channels=vapor-dev">#vapor-dev@irc.oftc.net</a>!</li>
       </ul>
 
+      <a class="twitter-timeline" href="https://twitter.com/search?q=%23Vapor+AND+%28%23L%C3%96VE+OR+%23love2d%29" data-widget-id="407356618666303488">Tweets about "#Vapor AND (#LÖVE OR #love2d)"</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
       <h3>Games (<?php echo $gamecount; ?>)</h3>
 
 <?php
