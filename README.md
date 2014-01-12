@@ -39,8 +39,33 @@ Please see [/src/games.json](/src/games.json) for an example of how this is done
                    Do not host this on a site that does not allow hotlinking.
                    Sites like imgur.com should do well, but again, private hosts are best.
 
+* [Test your submission.](#testing-your-game-submission)
 * Submit your pull request.
 * Sit back and bask in the glory.
+
+## Testing your game submission
+
+Vapor currently attempts to read the `games.json` file from three locations, in this order:
+
+1. [Remotely, from the server](http://50.116.63.25/public/vapor/games.json) (so that everyone always has the newest version!)
+2. Your cache, which was the last successful download. The cached `games.json` can be found here:
+
+  * Windows XP: `C:\Documents and Settings\user\Application Data\LOVE\vapor-data\` or `%appdata%\LOVE\vapor-data\`
+  * Windows Vista and 7: `C:\Users\user\AppData\Roaming\LOVE\vapor-data\` or `%appdata%\LOVE\vapor-data\`
+  * Linux: `$XDG_DATA_HOME/love/vapor-data/` or `~/.local/share/love/vapor-data/`
+  * Mac: `/Users/user/Library/Application Support/LOVE/vapor-data/`
+
+3. From the current directory / archive (e.g. `vapor-*.love`), which is the `games.json` that the archive will be deployed with.
+
+To force vapor to read from the current directory / archive, use the `force_local` flag. e.g.;
+
+    love ./vapor-*.love force_local
+
+You will know if this is done correctly if the console output says, 'Updated from local games.json`.
+
+To remove the cached settings (`settings.json`) and cached database (`games.json`) use the `clear_cache` flag. e.g.;
+
+    love ./vapor-*.love clear_cache
 
 ## Game Criteria
 

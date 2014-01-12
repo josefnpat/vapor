@@ -23,7 +23,7 @@ function state_load.start()
   remote = require("core/remote")
   ui = require("core/ui")
 
-  if cliargs[2] == "clearcache" then
+  if cliargs[2] == "clear_cache" then
     love.filesystem.remove(settings.file)
     love.filesystem.remove(remote.file)
     print("Cleared "..settings.file.." and "..remote.file)
