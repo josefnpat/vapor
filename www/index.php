@@ -17,22 +17,27 @@ $gamecount = count($data->games);
 
       <div class="logo"><img src="logo.png" alt="Vapor" title="Vapor" /></div>
 
+      <div class="twitter">
+        <a class="twitter-timeline" href="https://twitter.com/search?q=%23Vapor+AND+%28%23L%C3%96VE+OR+%23love2d%29" data-widget-id="407356618666303488">Tweets about "#Vapor AND (#LÖVE OR #love2d)"</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+
       <h2>L&Ouml;VE Distribution Client</h2>
 
-      <p>Information</p>
+      <div class="desc">
+        <p>Information</p>
 
-      <ul>
-        <li><a href="https://github.com/josefnpat/vapor/releases/latest">Download the latest release of Vapor</a>.</li>
-        <li>How to <a href="https://github.com/josefnpat/vapor#how-can-i-add-my-game">add your own L&Ouml;VE game</a> and the <a href="https://github.com/josefnpat/vapor#game-criteria">criteria required</a>.</li>
-        <li><a href="https://github.com/josefnpat/vapor#translations">Help translate Vapor</a>.</li>
-        <li>See the project at <a href="https://github.com/josefnpat/vapor">GitHub</a>.</li>
-        <li>Contribute to vapor! Check out the <a href="https://github.com/josefnpat/vapor/issues">issue queue</a>!</li>
-        <li>Chat with the developers at <a href="http://webchat.oftc.net/?channels=vapor-dev">#vapor-dev@irc.oftc.net</a>!</li>
-        <li><a href="logs">Check the game database health logs</a>.</li>
-      </ul>
+        <ul>
+          <li><a href="https://github.com/josefnpat/vapor/releases/latest">Download the latest release of Vapor</a>.</li>
+          <li>How to <a href="https://github.com/josefnpat/vapor#how-can-i-add-my-game">add your own L&Ouml;VE game</a> and the <a href="https://github.com/josefnpat/vapor#game-criteria">criteria required</a>.</li>
+          <li><a href="https://github.com/josefnpat/vapor#translations">Help translate Vapor</a>.</li>
+          <li>See the project at <a href="https://github.com/josefnpat/vapor">GitHub</a>.</li>
+          <li>Contribute to vapor! Check out the <a href="https://github.com/josefnpat/vapor/issues">issue queue</a>!</li>
+          <li>Chat with the developers at <a href="http://webchat.oftc.net/?channels=vapor-dev">#vapor-dev@irc.oftc.net</a>!</li>
+          <li><a href="logs">Check the game database health logs</a>.</li>
+        </ul>
 
-      <a class="twitter-timeline" href="https://twitter.com/search?q=%23Vapor+AND+%28%23L%C3%96VE+OR+%23love2d%29" data-widget-id="407356618666303488">Tweets about "#Vapor AND (#LÖVE OR #love2d)"</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
 
       <h3>Games (<?php echo $gamecount; ?>)</h3>
 

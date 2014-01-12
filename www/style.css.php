@@ -72,3 +72,12 @@ h1, h2, h3, h4 {
   float: right;
   padding: 0px 8px;
 }
+
+.twitter {
+  float: right;
+  padding-top: 16px;
+}
+
+.desc {
+  min-height: 300px;
+}
