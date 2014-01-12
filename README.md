@@ -39,8 +39,8 @@ Please see [/src/games.json](/src/games.json) for an example of how this is done
                    Do not host this on a site that does not allow hotlinking.
                    Sites like imgur.com should do well, but again, private hosts are best.
 
+* [Test your submission.](#testing-your-game-submission)
 * Submit your pull request.
-* Test your submission.
 * Sit back and bask in the glory.
 
 ## Testing your game submission
