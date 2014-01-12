@@ -997,6 +997,24 @@
       },
       "name":"Meteor Defense",
       "description":"Your city is about to be destroyed by meteors. Use the meteor shield to intercept incoming meteors before they destroy the city. And kill everyone. (Don't forget to record it all with your dash cam.)"
+    },
+    {
+      "id":"115",
+      "stable":"1389494472",
+      "sizes":{
+        "1389494472":13195147
+      },
+      "engine":"love-0.8.0",
+      "hashes":{
+        "1389494472":"a364bd98beac3ca11ade6e6bdf162c64584e407d"
+      },
+      "image":"http://50.116.63.25/public/vapor_hosted/115-1gam-johnwatson-13a59cd.png",
+      "author":"John Watson",
+      "sources":{
+        "1389494472":"http://50.116.63.25/public/vapor_hosted/115-1gam-johnwatson-13a59cd.love"
+      },
+      "name":"Eins Eins Funf",
+      "description":"You are a humble fuel thief trying to make ends meet in a lonely universe."
     }
   ]
 }
