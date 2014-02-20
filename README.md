@@ -2,6 +2,8 @@
 
 ![Screenshot](https://raw.github.com/josefnpat/vapor/master/dev/screenshots/screenshot.png)
 
+Visit the official website at [vapor.love2d.org](http://vapor.love2d.org)
+
 ## Requirements
 
 * LÖVE 0.8.0
