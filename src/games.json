@@ -2,6 +2,25 @@
   "timestamp":1375504351,
   "games":[
     {
+      "id":"Camp_Keepalive_Demo",
+      "stable":"1393798779",
+      "sizes":{
+        "1393798779":32675837
+      },
+      "engine":"love-0.8.0",
+      "hashes":{
+        "1393798779":"b5ae0efc6aa389db436cbb6aea00e5cfd2c78070"
+      },
+      "image":"http://twofoldsecret.com/vapor/campkeepalive.png",
+      "author":"Twofold Secret",
+      "website":"http://twofoldsecret.com",
+      "sources":{
+        "1393798779":"http://twofoldsecret.com/vapor/campkeepalive_1.0.2_vapor.love"
+      },
+      "name":"Camp Keepalive (Demo)",
+      "description":"Camp Keepalive is a turn-based strategy game set in a camp straight out of an 80's horror movie. Save the helpless and dull-witted campers from an onslaught of monsters with a team of counselors, each with a special power."
+    },
+    {
       "id":"Aeternum_Blammo",
       "stable":"1375504351",
       "sizes":{
