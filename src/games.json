@@ -1053,6 +1053,25 @@
       },
       "name":"Camp Keepalive (Demo)",
       "description":"Camp Keepalive is a turn-based strategy game set in a camp straight out of an 80's horror movie. Save the helpless and dull-witted campers from an onslaught of monsters with a team of counselors, each with a special power."
-    }
+    },
+    {
+      "id":"Zuli",
+      "stable":"1394839800",
+      "sizes":{
+        "1394839800":11473724
+      },
+      "engine":"love-0.8.0",
+      "hashes":{
+        "1394839800":"85a91be0b4ef49746be0f7d5bcea6688d46f45ef"
+        },
+      "image":"http://i.imgur.com/mx0kmJt.png",
+      "author":"MinusOneGames",
+      "website":"http://minusonegames.wix.com/site",
+      "sources":{
+        "1394839800":"https://bitbucket.org/MinusOneGames/zuli-project/downloads/ZULI.love"
+       },
+      "name":"Zuli",
+      "description":"Help the albino bat to solve the mazes without being caught by the enemies."
+    } 
   ]
 }
