@@ -1062,13 +1062,13 @@
       },
       "engine":"love-0.8.0",
       "hashes":{
-        "1394839800":"85a91be0b4ef49746be0f7d5bcea6688d46f45ef"
+        "1394839800":"969a116219cbe05bedb2e533b8518a4133fba5ec"
         },
-      "image":"http://i.imgur.com/mx0kmJt.png",
+      "image":"http://imgur.com/swIL4ll&PSMmTzC",
       "author":"MinusOneGames",
       "website":"http://minusonegames.wix.com/site",
       "sources":{
-        "1394839800":"https://bitbucket.org/MinusOneGames/zuli-project/downloads/ZULI.love"
+        "1394839800":"http://cdn.bitbucket.org/MinusOneGames/zuli-project/downloads/ZULI.love"
        },
       "name":"Zuli",
       "description":"Help the albino bat to solve the mazes without being caught by the enemies."
