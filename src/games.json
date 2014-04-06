@@ -784,11 +784,11 @@
       "hashes":{
         "1382456565":"53608b79592dc0feeb38f31927d1ae0f58b1f7a6"
       },
-      "image":"http://dev.novaember.com/s/snaik-0.1.png",
+      "image":"http://novaember.com/s/snaik-0.1.png",
       "author":"Darkwater",
       "website":"http://novaember.com",
       "sources":{
-        "1382456565":"http://dev.novaember.com/files/snaik-0.1.love"
+        "1382456565":"http://novaember.com/misc/snaik-0.1.love"
       },
       "name":"Snaik",
       "description":"A Multiplayer Snake clone."
