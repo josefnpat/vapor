@@ -5,10 +5,12 @@ ui.images = {}
 ui.nogame = love.graphics.newImage("assets/nogame.png")
 ui.overlay = love.graphics.newImage("assets/overlay.png")
 
-ui.headerindex = selectindex or 0
+
+selectindex = 1
+ui.headerindex = selectindex 
 
 ui.snap = 0.01
-ui.changespeed = 10
+ui.changespeed = 20
 ui.buttonwidth = 210
 
 ui.gameselect_w = (settings.gameshow)*settings.padding
@@ -37,8 +39,9 @@ function ui.create_list(condition,sort,limit)
 
   list.OnRowSelected = function(parent, row, data)
     for gi,gv in pairs(remote.data.games) do
-      if data[1] == gv.name then
+      if data[1] == gv.name then  
         selectindex = gi
+
       end
     end
   end
@@ -84,7 +87,7 @@ function ui.update_ui()
       ui.mainbutton:SetText(lang_current.downloading)
       ui.mainbutton.icon = icons.downloading[math.floor(downloader.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText(lang_current.downloading_tooltip)
-      ui.progressbar:SetText("33%")
+      ui.progressbar:SetText("25%")
       if ui.progressbar:GetValue() ~= 1 then
         ui.progressbar:SetValue(1)
       end
@@ -92,10 +95,17 @@ function ui.update_ui()
       ui.mainbutton:SetText(lang_current.hashing)
       ui.mainbutton.icon = icons.hash[math.floor(hasher.dt*10)%4+1]
       ui.mainbutton_tooltip:SetText(lang_current.hashing_tooltip)
-      ui.progressbar:SetText("66%")
+      ui.progressbar:SetText("50%")
       if ui.progressbar:GetValue() ~= 2 then
         ui.progressbar:SetValue(2)
       end
+    elseif vapor.currently_installing[fn] then
+      ui.mainbutton:SetText("Installing...")
+      ui.mainbutton_tooltip:SetText("The game is installing")
+      ui.progressbar:SetText("75%")
+      if ui.progressbar:GetValue() ~= 3 then
+        ui.progressbar:SetValue(3)
+      end 
     elseif gameobj.invalid then
       ui.mainbutton:SetText(lang_current.invalid)
       ui.mainbutton.icon = icons.delete
@@ -109,8 +119,8 @@ function ui.update_ui()
       ui.mainbutton.icon = icons.play
       ui.mainbutton_tooltip:SetText(lang_current.play_tooltip)
       ui.progressbar:SetText("100%")
-      if ui.progressbar:GetValue() ~= 3 then
-        ui.progressbar:SetValue(3)
+      if ui.progressbar:GetValue() ~= 4 then
+        ui.progressbar:SetValue(4)
       end
     else
       ui.mainbutton:SetText(lang_current.download)
@@ -172,7 +182,7 @@ function ui.load()
   ui.progressbar:SetHeight(settings.padding)
   ui.progressbar:SetLerp(true)
   ui.progressbar:SetLerpRate(5)
-  ui.progressbar:SetMax(3)
+  ui.progressbar:SetMax(4)
   ui.progressbar:SetValue(0)
 
   -- tabs
@@ -309,12 +319,12 @@ function ui.load()
 end
 
 function ui.update(dt)
-
   if selectindex then
+   
     if ui.headerindex < selectindex + ui.snap and ui.headerindex > selectindex - ui.snap then
       ui.headerindex = selectindex
     end
-    local change = math.abs(ui.headerindex - selectindex)/2 + ui.changespeed
+    local change =  ui.changespeed*(math.abs(selectindex-ui.headerindex)/7.5)
     if ui.headerindex < selectindex then
       ui.headerindex = ui.headerindex + change*dt
     elseif ui.headerindex > selectindex then
@@ -443,5 +453,4 @@ function ui.updatecovers(index)
     end
   end
 end
-
 return ui

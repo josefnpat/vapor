@@ -13,7 +13,7 @@ function state_load.start()
 
   http = require("socket.http")
 
-  love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
+  love.window.setTitle("Vapor - v"..git_count.." ["..git.."]")
   
   settings = require("core/settings")
   vapor = require('core/vapor')
@@ -38,7 +38,7 @@ function state_load.start()
   hasher.update = function()
     for i,v in pairs(vapor.currently_hashing) do
 
-     local e = vapor.currently_hashing[i]:get("error")
+     local e = vapor.currently_hashing[i]:getError()
      if e then print(e) end
 
      if love.filesystem.exists(i..".sha1") then
@@ -47,6 +47,25 @@ function state_load.start()
     end
   end
   hasher.dt = 0
+  installer = {}
+  installer.update = function()
+ 
+    for i,v in pairs(vapor.currently_installing) do
+      if vapor.currently_installing[i].type and vapor.currently_installing[i].type() == 'Thread' then
+        local e = vapor.currently_installing[i]:getError()
+        if e then print(e) end
+        if love.filesystem.isFile( "unziped-"..string.sub( i, 0, -6 ).."/compat.lua" ) then
+          vapor.currently_installing[i] = nil
+        end
+      elseif vapor.currently_installing[i] == 'no compat' then
+        vapor.currently_installing[i] = nil
+      end
+
+    end
+
+  end
+
+  installer.dt = 0
 
   remote.load(force_local)
   settings.load()
