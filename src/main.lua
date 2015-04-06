@@ -1,13 +1,13 @@
 git,git_count = "missing git.lua",0
 pcall(require, "git");
 
-vapor_icon = love.graphics.newImage("assets/vapor_icon.png")
-love.graphics.setIcon(vapor_icon)
+vapor_icon = love.image.newImageData("assets/vapor_icon.png")
+love.window.setIcon(vapor_icon)
 
 state = require("lib/gamestate")
 
 function love.load(args)
-  love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
+  love.window.setTitle("Vapor - v"..git_count.." ["..git.."]")
   binary = love.arg.getLow(args)
   state.registerEvents()
   state.switch(require("state_load"))

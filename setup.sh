@@ -1,9 +1,8 @@
 #!/bin/sh
 
 LF=src/lib/lf
-git clone https://github.com/NikolaiResokav/LoveFrames.git $LF
+git clone https://github.com/Bobbyjoness/LoveFrames.git $LF
 cd $LF
-git checkout 9aaf07f66ff6ca74dbf709b65ea748246dfd0364 # 0.9.6.4 Alpha
 rm -rf .git
 cd -
 
@@ -18,7 +17,7 @@ cd -
 # Download binaries, and unpack
 
 cd dev/build_data
-VERSION=0.8.0
+VERSION=0.9.2
 
 # windows 32 bit
 wget -t 2 -c https://bitbucket.org/rude/love/downloads/love-$VERSION\-win-x86.zip

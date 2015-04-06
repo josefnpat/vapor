@@ -4,7 +4,7 @@ function vapor.load()
   lang_all = {}
   lang_dir = "core/lang/"
   lang_default_id = settings.data.lang or "EN"
-  for i,v in pairs(love.filesystem.enumerate(lang_dir)) do
+  for i,v in pairs(love.filesystem.getDirectoryItems(lang_dir)) do
     local temp_lang = require(lang_dir..string.sub(v,1,-5))
     temp_lang.string = temp_lang.id .. " — " .. temp_lang.name
     if temp_lang.id == lang_default_id then

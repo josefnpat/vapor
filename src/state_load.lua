@@ -13,7 +13,7 @@ function state_load.start()
 
   http = require("socket.http")
 
-  love.graphics.setCaption("Vapor - v"..git_count.." ["..git.."]")
+  love.window.setTitle("Vapor - v"..git_count.." ["..git.."]")
   
   settings = require("core/settings")
   vapor = require('core/vapor')
@@ -38,7 +38,7 @@ function state_load.start()
   hasher.update = function()
     for i,v in pairs(vapor.currently_hashing) do
 
-     local e = vapor.currently_hashing[i]:get("error")
+     local e = vapor.currently_hashing[i]:getError()
      if e then print(e) end
 
      if love.filesystem.exists(i..".sha1") then
