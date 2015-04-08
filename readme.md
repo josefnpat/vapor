@@ -1,6 +1,6 @@
 #Vapor - LÖVE Distribution Client
 
-![https://github.com/josefnpat/vapor/blob/vapor0.x/dev/vaporlogo/vapT800x300.png?raw=true]()
+![Screenshot](https://github.com/josefnpat/vapor/blob/vapor0.x/dev/vaporlogo/vapT800x300.png?raw=true)
 
 This branch is for the 1.x release of Vapor, currently under development.
 
