@@ -32,6 +32,7 @@ vapor.class = {
 
 vapor.util = require "util"
 vapor.status = {
+  uninitialized = 0,
   ready = 1,
   downloading = 2,
   hashing = 3,
