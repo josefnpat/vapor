@@ -20,14 +20,14 @@ local vapor = {
 }
 
 vapor.class = {
-  game = require "gameclass",
-  framework = require "frameworkclass",
-  image = require "imageclass",
-  release = require "releaseclass",
-  mirror = require "mirrorclass",
-  source = require "sourceclass",
-  download = require "downloadclass",
-  collection = require "collectionclass",
+  game = require "class.game",
+  framework = require "class.framework",
+  image = require "class.image",
+  release = require "class.release",
+  mirror = require "class.mirror",
+  source = require "class.source",
+  download = require "class.download",
+  collection = require "class.collection",
 }
 
 vapor.util = require "util"
