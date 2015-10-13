@@ -4,7 +4,7 @@ local image = {}
 
 function image.new(init)
   init = init or {}
-  local self=vapor.class.download.new()
+  local self=vapor.class.download.new(init)
   self._release=init.release
   self.getRelease=image.getRelease
   self.setRelease=image.setRelease

@@ -1,35 +1,53 @@
 local collection = {}
 
 function collection:all()
-  -- TODO (collectionclass.all.lcg.lua)
+  return self._data
 end
 
-function collection:add()
-  -- TODO (collectionclass.add.lcg.lua)
+function collection:add(val)
+  table.insert(self._data,val)
+  return val
 end
 
-function collection:remove()
-  -- TODO (collectionclass.remove.lcg.lua)
+function collection:remove(val)
+  for i,v in pairs(self._data) do
+    if v == val then
+      return table.remove(self._data,i)
+    end
+  end
+  return false
 end
 
 function collection:empty()
-  -- TODO (collectionclass.empty.lcg.lua)
+  self._data = {}
+  return self._data
 end
 
 function collection:isEmpty()
-  -- TODO (collectionclass.isEmpty.lcg.lua)
+  return #self._data == 0
 end
 
 function collection:count()
-  -- TODO (collectionclass.count.lcg.lua)
+  return #self._data
 end
 
-function collection:has()
-  -- TODO (collectionclass.has.lcg.lua)
+function collection:has(val)
+  for _,v in pairs(self._data) do
+    if v == val then
+      return true
+    end
+  end
+  return false
 end
 
-function collection:find()
-  -- TODO (collectionclass.find.lcg.lua)
+function collection:find(f)
+  local found = {}
+  for _,v in pairs(self._data) do 
+    if f(v) then
+      table.insert(found,v)
+    end
+  end
+  return found
 end
 
 -- LuaClassGen pregenerated functions
@@ -45,6 +63,7 @@ function collection.new(init)
   self.count=collection.count
   self.has=collection.has
   self.find=collection.find
+  self._data=init.data or {}
   return self
 end
 

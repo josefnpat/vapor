@@ -4,10 +4,7 @@ local source = {}
 
 function source.new(init)
   init = init or {}
-  local self=vapor.class.download.new()
-  self._uri=init.uri
-  self.getUri=source.getUri
-  self.setUri=source.setUri
+  local self=vapor.class.download.new(init)
   self._playPingUri=init.playPingUri
   self.getPlayPingUri=source.getPlayPingUri
   self.setPlayPingUri=source.setPlayPingUri
@@ -15,14 +12,6 @@ function source.new(init)
   self.getDownloadPingUri=source.getDownloadPingUri
   self.setDownloadPingUri=source.setDownloadPingUri
   return self
-end
-
-function source:getUri()
-  return self._uri
-end
-
-function source:setUri(val)
-  self._uri=val
 end
 
 function source:getPlayPingUri()

@@ -1,14 +1,16 @@
 local framework = {}
 
 function framework:download()
-  -- TODO (frameworkclass.download.lcg.lua)
+  local stable = self:getRelease():getStableVersion()
+  stable:download()
+  print('framework start')
 end
 
 -- LuaClassGen pregenerated functions
 
 function framework.new(init)
   init = init or {}
-  local self=vapor.class.download.new()
+  local self=vapor.class.download.new(init)
   self.download=framework.download
   self._name=init.name
   self.getName=framework.getName
@@ -22,7 +24,7 @@ function framework.new(init)
   self._website=init.website
   self.getWebsite=framework.getWebsite
   self.setWebsite=framework.setWebsite
-  self._release=init.release
+  self._release=vapor.class.release.new(init.release)
   self.getRelease=framework.getRelease
   self.setRelease=framework.setRelease
   self._exec=init.exec

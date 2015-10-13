@@ -1,11 +1,51 @@
 local download = {}
 
-function download:updateData()
-  -- TODO (downloadclass.updateData.lcg.lua)
+function download:download()
+  self:setStatus(vapor.status.download)
+  return self
 end
 
-function download:clearData()
-  -- TODO (downloadclass.clearData.lcg.lua)
+function download:update()
+
+  if self:getStatus() == vapor.status.downloaded then 
+    -- TODO: perhform hash check
+    self:setStatus(vapor.status.ready)
+  end
+
+  if self:getStatus() == vapor.status.download then
+
+    if self._uri then
+
+      if self._uri:sub(0,7) == "http://" then
+        -- TODO: make async
+        self:setStatus(vapor.status.downloading)
+        print("Downloading URI: "..self._uri)
+        local b, c, h = vapor.util.http.request(self._uri)
+        if c == 200 then
+          self:setStatus(vapor.status.downloaded)
+          self._data = b
+        else
+          self:setStatus(vapor.status.fail)
+        end
+      elseif self._uri:sub(0,8) == "https://" then
+        -- TODO: add https support
+        self:setStatus(vapor.status.fail)
+      elseif self._uri:sub(0,7) == "file://" then
+        -- TODO: add local file support
+        self:setStatus(vapor.status.fail)
+      else -- uh, wat
+        self:setStatus(vapor.status.fail)
+      end
+
+    else
+      print("download does not have uri set.")
+    end
+
+  end
+
+end
+
+function download:clear()
 end
 
 -- LuaClassGen pregenerated functions
@@ -13,8 +53,9 @@ end
 function download.new(init)
   init = init or {}
   local self={}
-  self.updateData=download.updateData
-  self.clearData=download.clearData
+  self.download=download.download
+  self.update=download.update
+  self.clear=download.clear
   self._identifier=init.identifier
   self.getIdentifier=download.getIdentifier
   self.setIdentifier=download.setIdentifier
@@ -36,6 +77,12 @@ function download.new(init)
   self._location=init.location
   self.getLocation=download.getLocation
   self.setLocation=download.setLocation
+  self._status=init.status or vapor.status.uninitialized
+  self.getStatus=download.getStatus
+  self.setStatus=download.setStatus
+  self._uri=init.uri
+  self.getUri=download.getUri
+  self.setUri=download.setUri
   return self
 end
 
@@ -93,6 +140,31 @@ end
 
 function download:setLocation(val)
   self._location=val
+end
+
+function download:getStatus()
+  return self._status
+end
+
+function download:setStatus(val)
+  assert(type(val)=="number")
+  -- TODO: remove for release
+  --[[
+  for i,v in pairs(vapor.status) do
+    if v == val then
+      print("Setting status: "..i)
+    end
+  end
+  --]]
+  self._status=val
+end
+
+function download:getUri()
+  return self._uri
+end
+
+function download:setUri(val)
+  self._uri=val
 end
 
 return download

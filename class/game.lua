@@ -5,14 +5,16 @@ function game:play()
 end
 
 function game:download()
-  -- TODO (gameclass.download.lcg.lua)
+  local stable = self:getRelease():getStableVersion()
+  stable:download()
+  print('game start')
 end
 
 -- LuaClassGen pregenerated functions
 
 function game.new(init)
   init = init or {}
-  local self=vapor.class.download.new()
+  local self=vapor.class.download.new(init)
   self.play=game.play
   self.download=game.download
   self._name=init.name
@@ -33,7 +35,7 @@ function game.new(init)
   self._website=init.website
   self.getWebsite=game.getWebsite
   self.setWebsite=game.setWebsite
-  self._release=init.release
+  self._release=vapor.class.release.new(init.release)
   self.getRelease=game.getRelease
   self.setRelease=game.setRelease
   return self
