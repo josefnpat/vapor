@@ -1,8 +1,7 @@
 local state_vapor = {}
 
 function state_vapor.init(self)
-  love.graphics.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,false,false,0)
-  love.graphics.setIcon(vapor_icon) -- 0.8.0 bug: #667, setMode resets icon
+  love.window.setMode(love.graphics.getWidth(),settings.padding*(settings.gameshow+3)+settings.heading.h,{fullscreen = false, vsync = false, fsaa = 0})
   ui.load()
 end
 
@@ -12,6 +11,8 @@ function state_vapor.update(self,dt)
   downloader.dt = downloader.dt + dt
   hasher:update()
   hasher.dt = hasher.dt + dt
+  installer:update()
+  installer.dt = installer.dt + 1
   
   ui.update(dt)
   loveframes.update(dt)

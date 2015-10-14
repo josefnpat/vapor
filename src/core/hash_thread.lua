@@ -8,9 +8,10 @@ function round(num, idp)
   return math.floor(num * mult + 0.5) / mult
 end
 
-thisThread = love.thread.getThread()
 
-fname = thisThread:demand("fname")
+channel = love.thread.getChannel("fname")
+
+fname = channel:demand("fname")
 
 print(fname .. " is hashing.")
 socket = require "socket"

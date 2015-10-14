@@ -178,10 +178,11 @@ local function love_filesystem_sink(fname,hash_download)
       file:close()
       if hash_download then
         print("Hashing thread starting.")
-        local t = love.thread.newThread("hash_"..fname,"core/hash_thread.lua")
+        local t = love.thread.newThread("core/hash_thread.lua")
+        local c = love.thread.getChannel( "fname" )
+        c:push(fname)
         vapor.currently_hashing[fname] = t
         t:start()
-        t:set("fname",fname)
       end
     end
   end
