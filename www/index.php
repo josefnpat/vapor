@@ -29,8 +29,8 @@ $gamecount = count($data->games);
 
         <ul>
           <li><a href="https://github.com/josefnpat/vapor/releases/latest">Download the latest release of Vapor</a>.</li>
-          <li>How to <a href="https://github.com/josefnpat/vapor#how-can-i-add-my-game">add your own L&Ouml;VE game</a> and the <a href="https://github.com/josefnpat/vapor#game-criteria">criteria required</a>.</li>
-          <li><a href="https://github.com/josefnpat/vapor#translations">Help translate Vapor</a>.</li>
+          <li>How to <a href="https://github.com/josefnpat/vapor/tree/vapor0.x#how-can-i-add-my-game">add your own L&Ouml;VE game</a> and the <a href="https://github.com/josefnpat/vapor/tree/vapor0.x#game-criteria">criteria required</a>.</li>
+          <li><a href="https://github.com/josefnpat/vapor/tree/vapor0.x#translations">Help translate Vapor</a>.</li>
           <li>See the project at <a href="https://github.com/josefnpat/vapor">GitHub</a>.</li>
           <li>Contribute to vapor! Check out the <a href="https://github.com/josefnpat/vapor/issues">issue queue</a>!</li>
           <li>Chat with the developers at <a href="http://webchat.oftc.net/?channels=vapor-dev">#vapor-dev@irc.oftc.net</a>!</li>
