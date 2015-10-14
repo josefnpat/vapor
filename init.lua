@@ -82,13 +82,13 @@ end
 
 function vapor:update()
   for _,v in pairs(self._gameCollection:all()) do
-    v:update()
+    --v:update()
     for _,w in pairs(v:getRelease():getVersionCollection():all()) do
       w:update()
     end
   end
   for _,v in pairs(self._frameworkCollection:all()) do
-    v:update()
+    --v:update()
     for _,w in pairs(v:getRelease():getVersionCollection():all()) do
       w:update()
     end
@@ -99,13 +99,17 @@ function vapor:update()
       for _,game in pairs(v._processedData.games) do
         local g = self._gameCollection:add( vapor.class.game.new(game) )
         for _,version in pairs(game.release.versions) do
-          g:getRelease():getVersionCollection():add( vapor.class.download.new(version) )
+          local v = vapor.class.download.new(version)
+          v:setFilenamePrefix('game_'..g:getIdentifier())
+          g:getRelease():getVersionCollection():add( v )
         end
       end
       for _,framework in pairs(v._processedData.frameworks) do
         local f = self._frameworkCollection:add( vapor.class.framework.new(framework) )
         for _,version in pairs(framework.release.versions) do
-          f:getRelease():getVersionCollection():add( vapor.class.download.new(version) )
+          local v = vapor.class.download.new(version)
+          v:setFilenamePrefix('framework_'..f:getIdentifier())
+          f:getRelease():getVersionCollection():add( v )
         end
       end
       v:setStatus(vapor.status.ready)

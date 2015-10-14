@@ -3,14 +3,14 @@ local framework = {}
 function framework:download()
   local stable = self:getRelease():getStableVersion()
   stable:download()
-  print('framework start')
 end
 
 -- LuaClassGen pregenerated functions
 
 function framework.new(init)
   init = init or {}
-  local self=vapor.class.download.new(init)
+
+  local self={}--vapor.class.download.new(init)
   self.download=framework.download
   self._name=init.name
   self.getName=framework.getName
@@ -36,6 +36,10 @@ function framework.new(init)
   self._autoBinary=init.autoBinary
   self.getAutoBinary=framework.getAutoBinary
   self.setAutoBinary=framework.setAutoBinary
+  self._identifier=init.identifier
+  self.getIdentifier=framework.getIdentifier
+  self.setIdentifier=framework.setIdentifier
+
   return self
 end
 
@@ -101,6 +105,14 @@ end
 
 function framework:setAutoBinary(val)
   self._autoBinary=val
+end
+
+function framework:getIdentifier()
+  return self._identifier
+end
+
+function framework:setIdentifier(val)
+  self._identifier=val
 end
 
 return framework

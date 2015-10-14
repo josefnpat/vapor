@@ -6,6 +6,10 @@ function mirror.new(init)
   init = init or {}
   local self=vapor.class.download.new(init)
 
+  -- TODO: make mirrors fs safe
+  self:setFilenamePrefix("mirror")
+  self:setIdentifier(init.uri)
+
   local download_update = self.update
   self.update = function()
     local ret = download_update(self)
@@ -14,6 +18,9 @@ function mirror.new(init)
       self:setStatus(vapor.status.processing)
       -- This is the basic validation function for 1.0 api.
       local success,data = pcall(function()
+
+        local os = "win"
+
         local data = vapor.util.json.decode( self._data )
         assert(data.api_version == "1.0","invalid api version")
         local r = {}
@@ -62,9 +69,6 @@ function mirror.new(init)
           f.image = framework.image
           f.author = framework.author or "N/A"
           f.website = framework.website or "N/A"
-          f.unzip = framework.unzip or false
-          assert(framework.exec)
-          f.exec = framework.exec
           table.insert(r.frameworks,f)
 
           f.release = {}
@@ -74,12 +78,15 @@ function mirror.new(init)
             local v = {}
             assert(version.id)
             v.identifier = tonumber(version.id)
-            assert(version.uri)
-            v.uri = version.uri
-            assert(version.size)
-            v.size = version.size
-            assert(version.hash)
-            v.hash = version.hash
+            assert(version[os.."-uri"])
+            v.uri = version[os.."-uri"]
+            assert(version[os.."-size"])
+            v.size = version[os.."-size"]
+            assert(version[os.."-hash"])
+            v.hash = version[os.."-hash"]
+            v.unzip = version[os.."-unzip"] or false
+            assert(version[os.."-exec"])
+            v.exec = version[os.."-exec"]
             table.insert(f.release.versions,v)
           end
         end

@@ -24,7 +24,6 @@ function release.new(init)
   self._stable=init.stable
   self.getStable=release.getStable
   self.setStable=release.setStable
-
   return self
 end
 

@@ -1,20 +1,42 @@
 local game = {}
 
 function game:play()
-  -- TODO (gameclass.play.lcg.lua)
+  local framework = vapor:getFrameworkObject(self:getFramework())
+  local framework_stable = framework:getRelease():getStableVersion()
+  local binarypath = framework_stable:getPath().."/"..framework_stable:getExec()
+
+  -- TODO: add local installed handlers
+  if love._os == "Linux" then
+    binarypath = "love"
+  end
+
+  local game_stable = self:getRelease():getStableVersion()
+  local gamepath = game_stable:getFilename()
+
+  local execstr
+  if love._os == "Windows" then
+    local fstr = [[start "" "%s" "%%APPDATA%%/LOVE/vapor1.x/%s"]]
+    execstr = fstr:format(binarypath, gamepath)
+  else
+    -- OS X, Linux
+    local fstr = [["%s" "%s/%s" &]]
+    execstr = fstr:format(binarypath, love.filesystem.getSaveDirectory(), gamepath)
+  end
+  print(gamepath.." starting.")
+  return os.execute(execstr)
+
 end
 
 function game:download()
   local stable = self:getRelease():getStableVersion()
   stable:download()
-  print('game start')
 end
 
 -- LuaClassGen pregenerated functions
 
 function game.new(init)
   init = init or {}
-  local self=vapor.class.download.new(init)
+  local self={}--vapor.class.download.new(init)
   self.play=game.play
   self.download=game.download
   self._name=init.name
@@ -38,6 +60,9 @@ function game.new(init)
   self._release=vapor.class.release.new(init.release)
   self.getRelease=game.getRelease
   self.setRelease=game.setRelease
+  self._identifier=init.identifier
+  self.getIdentifier=game.getIdentifier
+  self.setIdentifier=game.setIdentifier
   return self
 end
 
@@ -95,6 +120,14 @@ end
 
 function game:setRelease(val)
   self._release=val
+end
+
+function game:getIdentifier()
+  return self._identifier
+end
+
+function game:setIdentifier(val)
+  self._identifier=val
 end
 
 return game

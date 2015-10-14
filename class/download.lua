@@ -5,40 +5,71 @@ function download:download()
   return self
 end
 
+function download:getFilename()
+  return self._filenamePrefix.."_"..self._identifier..".dat"
+end
+
+function download:getPath()
+  if self:getUnzip() then
+    return "unzipped-"..self._filenamePrefix.."_"..self._identifier
+  else
+    return ""
+  end
+end
+
 function download:update()
 
-  if self:getStatus() == vapor.status.downloaded then 
-    -- TODO: perhform hash check
-    self:setStatus(vapor.status.ready)
-  end
+  if self:getIdentifier() then
 
-  if self:getStatus() == vapor.status.download then
+    if love.filesystem.exists(self:getFilename()) then
+      self:setStatus(vapor.status.ready)
+    end
 
-    if self._uri then
+    if self:getStatus() == vapor.status.downloaded then 
+      -- TODO: perhform hash check
 
-      if self._uri:sub(0,7) == "http://" then
-        -- TODO: make async
-        self:setStatus(vapor.status.downloading)
-        print("Downloading URI: "..self._uri)
-        local b, c, h = vapor.util.http.request(self._uri)
-        if c == 200 then
-          self:setStatus(vapor.status.downloaded)
-          self._data = b
-        else
-          self:setStatus(vapor.status.fail)
-        end
-      elseif self._uri:sub(0,8) == "https://" then
-        -- TODO: add https support
-        self:setStatus(vapor.status.fail)
-      elseif self._uri:sub(0,7) == "file://" then
-        -- TODO: add local file support
-        self:setStatus(vapor.status.fail)
-      else -- uh, wat
-        self:setStatus(vapor.status.fail)
+      love.filesystem.write(self:getFilename(),self._data)
+      print("data written to ",self:getFilename())
+      self._data = nil
+
+      print(self._unzip)
+      if self._unzip then 
+        print("UNZIPPIN'")
+        vapor.util.unzip(self:getFilename())
       end
 
-    else
-      print("download does not have uri set.")
+      self:setStatus(vapor.status.ready)
+    end
+
+    if self:getStatus() == vapor.status.download then
+
+      if self._uri then
+
+        if self._uri:sub(0,7) == "http://" then
+          -- TODO: make async
+          self:setStatus(vapor.status.downloading)
+          print("Downloading URI: "..self._uri)
+          local b, c, h = vapor.util.http.request(self._uri)
+          if c == 200 then
+            self:setStatus(vapor.status.downloaded)
+            self._data = b
+          else
+            self:setStatus(vapor.status.fail)
+          end
+        elseif self._uri:sub(0,8) == "https://" then
+          -- TODO: add https support
+          self:setStatus(vapor.status.fail)
+        elseif self._uri:sub(0,7) == "file://" then
+          -- TODO: add local file support
+          self:setStatus(vapor.status.fail)
+        else -- uh, wat
+          self:setStatus(vapor.status.fail)
+        end
+
+      else
+        print("download does not have uri set.")
+      end
+
     end
 
   end
@@ -52,8 +83,11 @@ end
 
 function download.new(init)
   init = init or {}
+
   local self={}
   self.download=download.download
+  self.getFilename=download.getFilename
+  self.getPath=download.getPath
   self.update=download.update
   self.clear=download.clear
   self._identifier=init.identifier
@@ -83,6 +117,12 @@ function download.new(init)
   self._uri=init.uri
   self.getUri=download.getUri
   self.setUri=download.setUri
+  self._filenamePrefix=init.filenamePrefix
+  self.getFilenamePrefix=download.getFilenamePrefix
+  self.setFilenamePrefix=download.setFilenamePrefix
+  self._exec=init.exec
+  self.getExec=download.getExec
+  self.setExec=download.setExec
   return self
 end
 
@@ -165,6 +205,22 @@ end
 
 function download:setUri(val)
   self._uri=val
+end
+
+function download:getFilenamePrefix()
+  return self._filenamePrefix
+end
+
+function download:setFilenamePrefix(val)
+  self._filenamePrefix = val
+end
+
+function download:getExec()
+  return self._exec
+end
+
+function download:setExec(val)
+  self._exec=val
 end
 
 return download
